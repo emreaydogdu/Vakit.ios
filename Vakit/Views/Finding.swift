@@ -83,7 +83,7 @@ struct Finding: View {
 						}
 						.font(.system(size: 48, design: .rounded))
 						.padding(.bottom)
-						/* 
+						/*
 						 HStack {
 						 Button(action: { }) {
 						 Image(systemName: "xmark")

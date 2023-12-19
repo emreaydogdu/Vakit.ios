@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8650DD122B1D164200ACE2B2 /* CompassHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8650DD112B1D164200ACE2B2 /* CompassHome.swift */; };
+		860B321F2B30D50C0037D5A9 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860B321E2B30D50C0037D5A9 /* MapView.swift */; };
 		86AC07DF2B2DDB4D0057E19B /* LocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AC07DE2B2DDB4D0057E19B /* LocationProvider.swift */; };
-		86AC07E12B2DDB860057E19B /* CompasTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AC07E02B2DDB860057E19B /* CompasTest.swift */; };
 		86AC07E42B2DEB680057E19B /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 86AC07E32B2DEB680057E19B /* Lottie */; };
-		86AC07E62B2DEC190057E19B /* Finding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AC07E52B2DEC190057E19B /* Finding.swift */; };
+		86AC07E62B2DEC190057E19B /* CompasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AC07E52B2DEC190057E19B /* CompasView.swift */; };
+		86CE9E322B31FD0D00617A48 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CE9E312B31FD0D00617A48 /* TestView.swift */; };
+		86CE9E342B321C4500617A48 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CE9E332B321C4500617A48 /* LocationManager.swift */; };
+		86CE9E362B32382A00617A48 /* Mosques.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CE9E352B32382A00617A48 /* Mosques.swift */; };
 		D44DF6532A811F900051E5E1 /* AthanApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44DF6522A811F900051E5E1 /* AthanApp.swift */; };
 		D44DF6552A811F900051E5E1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44DF6542A811F900051E5E1 /* ContentView.swift */; };
 		D44DF6572A811F910051E5E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D44DF6562A811F910051E5E1 /* Assets.xcassets */; };
@@ -25,8 +27,7 @@
 		D44DF6932A8127B50051E5E1 /* AthanTimeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44DF6922A8127B50051E5E1 /* AthanTimeTable.swift */; };
 		D44DF6952A8129440051E5E1 /* LocationNotFoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44DF6942A8129440051E5E1 /* LocationNotFoundView.swift */; };
 		D44DF6982A812C050051E5E1 /* AthanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44DF6972A812C050051E5E1 /* AthanView.swift */; };
-		D44DF69A2A8140D90051E5E1 /* AthanHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44DF6992A8140D90051E5E1 /* AthanHome.swift */; };
-		D44DF69C2A8141120051E5E1 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44DF69B2A8141120051E5E1 /* TabBar.swift */; };
+		D44DF69C2A8141120051E5E1 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44DF69B2A8141120051E5E1 /* MainView.swift */; };
 		D44DF69E2A8146A40051E5E1 /* PrayerTimesClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44DF69D2A8146A40051E5E1 /* PrayerTimesClass.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,10 +49,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8650DD112B1D164200ACE2B2 /* CompassHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassHome.swift; sourceTree = "<group>"; };
+		860B321E2B30D50C0037D5A9 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		86AC07DE2B2DDB4D0057E19B /* LocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProvider.swift; sourceTree = "<group>"; };
-		86AC07E02B2DDB860057E19B /* CompasTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompasTest.swift; sourceTree = "<group>"; };
-		86AC07E52B2DEC190057E19B /* Finding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Finding.swift; sourceTree = "<group>"; };
+		86AC07E52B2DEC190057E19B /* CompasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompasView.swift; sourceTree = "<group>"; };
+		86CE9E312B31FD0D00617A48 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		86CE9E332B321C4500617A48 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		86CE9E352B32382A00617A48 /* Mosques.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mosques.swift; sourceTree = "<group>"; };
 		D44DF64F2A811F900051E5E1 /* Vakit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vakit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D44DF6522A811F900051E5E1 /* AthanApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthanApp.swift; sourceTree = "<group>"; };
 		D44DF6542A811F900051E5E1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -67,8 +70,7 @@
 		D44DF6922A8127B50051E5E1 /* AthanTimeTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthanTimeTable.swift; sourceTree = "<group>"; };
 		D44DF6942A8129440051E5E1 /* LocationNotFoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationNotFoundView.swift; sourceTree = "<group>"; };
 		D44DF6972A812C050051E5E1 /* AthanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthanView.swift; sourceTree = "<group>"; };
-		D44DF6992A8140D90051E5E1 /* AthanHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthanHome.swift; sourceTree = "<group>"; };
-		D44DF69B2A8141120051E5E1 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		D44DF69B2A8141120051E5E1 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		D44DF69D2A8146A40051E5E1 /* PrayerTimesClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTimesClass.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,6 +133,7 @@
 				D44DF6562A811F910051E5E1 /* Assets.xcassets */,
 				D44DF6582A811F910051E5E1 /* Preview Content */,
 				86AC07DE2B2DDB4D0057E19B /* LocationProvider.swift */,
+				86CE9E332B321C4500617A48 /* LocationManager.swift */,
 			);
 			path = Vakit;
 			sourceTree = "<group>";
@@ -171,7 +174,7 @@
 		D44DF6822A8120B00051E5E1 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				D44DF69B2A8141120051E5E1 /* TabBar.swift */,
+				86CE9E352B32382A00617A48 /* Mosques.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -190,11 +193,11 @@
 		D44DF6962A812BF50051E5E1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D44DF69B2A8141120051E5E1 /* MainView.swift */,
 				D44DF6972A812C050051E5E1 /* AthanView.swift */,
-				D44DF6992A8140D90051E5E1 /* AthanHome.swift */,
-				8650DD112B1D164200ACE2B2 /* CompassHome.swift */,
-				86AC07E02B2DDB860057E19B /* CompasTest.swift */,
-				86AC07E52B2DEC190057E19B /* Finding.swift */,
+				86AC07E52B2DEC190057E19B /* CompasView.swift */,
+				860B321E2B30D50C0037D5A9 /* MapView.swift */,
+				86CE9E312B31FD0D00617A48 /* TestView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -337,20 +340,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86CE9E322B31FD0D00617A48 /* TestView.swift in Sources */,
 				D44DF69E2A8146A40051E5E1 /* PrayerTimesClass.swift in Sources */,
-				8650DD122B1D164200ACE2B2 /* CompassHome.swift in Sources */,
+				86CE9E342B321C4500617A48 /* LocationManager.swift in Sources */,
+				860B321F2B30D50C0037D5A9 /* MapView.swift in Sources */,
 				D44DF6932A8127B50051E5E1 /* AthanTimeTable.swift in Sources */,
+				86CE9E362B32382A00617A48 /* Mosques.swift in Sources */,
 				D44DF6552A811F900051E5E1 /* ContentView.swift in Sources */,
 				D44DF6912A8125FC0051E5E1 /* PrayerTimeTableItem.swift in Sources */,
 				D44DF6532A811F900051E5E1 /* AthanApp.swift in Sources */,
 				D44DF68D2A8121AA0051E5E1 /* PrayerTimeHeader.swift in Sources */,
-				86AC07E12B2DDB860057E19B /* CompasTest.swift in Sources */,
 				D44DF6952A8129440051E5E1 /* LocationNotFoundView.swift in Sources */,
 				D44DF6982A812C050051E5E1 /* AthanView.swift in Sources */,
 				86AC07DF2B2DDB4D0057E19B /* LocationProvider.swift in Sources */,
-				D44DF69A2A8140D90051E5E1 /* AthanHome.swift in Sources */,
-				D44DF69C2A8141120051E5E1 /* TabBar.swift in Sources */,
-				86AC07E62B2DEC190057E19B /* Finding.swift in Sources */,
+				D44DF69C2A8141120051E5E1 /* MainView.swift in Sources */,
+				86AC07E62B2DEC190057E19B /* CompasView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,7 +442,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -493,7 +497,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

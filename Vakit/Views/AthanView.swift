@@ -9,13 +9,12 @@ struct AthanView: View {
 	var body: some View {
 		NavigationView{
 			ZStack{
-				Color("bg")
-					.ignoresSafeArea()
+				Color("bg").ignoresSafeArea()
 				ScrollView{
 					if let error = prayerClass.error {
 						VStack{}
 							.onAppear{
-								isPresented = true
+								isPresented = isPresented
 							}
 					} else {
 						if let prayers = prayerClass.prayers {

@@ -1,5 +1,7 @@
 import SwiftUI
 import CoreLocation
+import CoreHaptics
+import Adhan
 
 enum Mode {
 	case ahead, right
@@ -9,7 +11,12 @@ struct CompasView: View {
 	@State var mode = Mode.right
 	var locationManager = CLLocationManager()
 	@ObservedObject var location: LocationProvider = LocationProvider()
-	@State var angle: CGFloat = 290
+	@State var angle: CGFloat = 0
+	let qiblaDirection = Qibla(coordinates: Coordinates(latitude: 52.463743, longitude: 13.395164)).direction
+	
+	@State private var opacity: Double = 0.0
+	@State private var scale: Double = 1.0
+	@State private var offset: Double = -8.0
 	
 	var body: some View {
 		NavigationView {
@@ -21,8 +28,8 @@ struct CompasView: View {
 								Circle()
 									.fill(Color(mode == .ahead ? UIColor.label : UIColor.secondaryLabel))
 									.frame(width: 16, height: 16)
-									.offset(y: mode == .ahead ? -4 : -8)
-									.scaleEffect(mode == .ahead ? 2 : 1)
+									.offset(y: offset)
+									.scaleEffect(scale)
 								Spacer()
 							}
 							
@@ -30,13 +37,13 @@ struct CompasView: View {
 								.trim(from: 0.025, to: mod(self.angle, 360) < 180 ? (self.angle.remainder(dividingBy: 360) / 360) - 0.025 : 0)
 								.rotation(Angle(degrees: -90))
 								.stroke(Color(UIColor.label), style: StrokeStyle(lineWidth: 16, lineCap: .round))
-								.opacity(mode == .ahead ? 0 : 1)
+								.opacity(opacity)
 							
 							Circle()
 								.trim(from: mod(self.angle, 360) >= 180 ? (1 - abs(self.angle.remainder(dividingBy: 360)) / 360) + 0.025 : 1, to: 0.975)
 								.rotation(Angle(degrees: -90))
 								.stroke(Color(UIColor.label), style: StrokeStyle(lineWidth: 16, lineCap: .round))
-								.opacity(mode == .ahead ? 0 : 1)
+								.opacity(opacity)
 						}
 						.frame(width: 312, height: 312)
 						
@@ -46,7 +53,7 @@ struct CompasView: View {
 								Circle()
 									.frame(width: 16, height: 16)
 									.offset(x: 8)
-									.opacity(mode == .ahead ? 0 : 1)
+									.opacity(opacity)
 							}
 						}
 						.frame(width: 312, height: 312)
@@ -63,7 +70,8 @@ struct CompasView: View {
 						Spacer()
 						VStack {
 							HStack {
-								Text("\(mod(self.angle, 360))")
+								//Text("\(abs(round(Double(mod(self.angle, 180)))))")
+								Text("\(mod(self.angle, 360) < 180 ? mod(self.angle, 360) : abs(mod(self.angle, 360) - 360))")
 								Text("°")
 									.foregroundColor(Color(UIColor.secondaryLabel))
 								Spacer()
@@ -72,7 +80,7 @@ struct CompasView: View {
 							HStack {
 								if mode == .right {
 									Text("to your")
-									Text("right")
+									Text(mod(self.angle, 360) < 180 ? "left" : "right")
 										.foregroundColor(Color(UIColor.secondaryLabel))
 								} else {
 									Text("ahead")
@@ -117,16 +125,27 @@ struct CompasView: View {
 				}
 				.background((mode == .ahead ? Color.green : Color(UIColor.systemBackground)).edgesIgnoringSafeArea(.all))
 				.onReceive(self.location.heading) { heading in
-					var diff = (heading - self.angle + 180).truncatingRemainder(dividingBy: 360) - 180
+					let diff = (heading - self.angle + 180).truncatingRemainder(dividingBy: 360) - 180 - round(qiblaDirection)
 					if diff < -300 {
-						diff += 360
+						//diff += 360
 					}
 					withAnimation {
 						self.angle += diff
 					}
+					withAnimation(.easeInOut(duration: 0.4)) {
+						opacity = mode == .ahead ? 0.0 : 1.0
+						scale = mode == .ahead ? 2.0 : 1.0
+						offset = mode == .ahead ? -4.0 : -8.0
+					}
 					if (mod(self.angle, 360) <= 10 || mod(self.angle, 360) >= 350){
 						toggleMode(opt: true)
+						if ((mod(self.angle, 2)) == 0) {
+							UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+						}
 					} else {
+						if ((mod(self.angle, 2)) == 0) {
+							UIImpactFeedbackGenerator(style: .soft).impactOccurred()
+						}
 						toggleMode(opt: false)
 					}
 				}

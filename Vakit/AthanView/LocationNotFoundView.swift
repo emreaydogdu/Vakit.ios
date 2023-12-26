@@ -69,6 +69,5 @@ struct LocationNotFoundView: View {
 struct LocationNotFoundView_Previews: PreviewProvider {
     static var previews: some View {
         LocationNotFoundView()
-            .preferredColorScheme(.dark)
     }
 }

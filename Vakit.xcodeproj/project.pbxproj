@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		860B321F2B30D50C0037D5A9 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860B321E2B30D50C0037D5A9 /* MapView.swift */; };
+		8675D0DB2B388E6900355925 /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8675D0DA2B388E6900355925 /* MoreView.swift */; };
+		8675D0DD2B39B49C00355925 /* DhikrView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8675D0DC2B39B49C00355925 /* DhikrView.swift */; };
+		8675D0DF2B39D4FF00355925 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8675D0DE2B39D4FF00355925 /* SettingsView.swift */; };
+		869DE13F2B3B15A60061724F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 869DE13E2B3B15A60061724F /* Localizable.xcstrings */; };
 		86AC07DF2B2DDB4D0057E19B /* LocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AC07DE2B2DDB4D0057E19B /* LocationProvider.swift */; };
 		86AC07E42B2DEB680057E19B /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 86AC07E32B2DEB680057E19B /* Lottie */; };
 		86AC07E62B2DEC190057E19B /* CompasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AC07E52B2DEC190057E19B /* CompasView.swift */; };
@@ -15,9 +19,7 @@
 		86CE9E342B321C4500617A48 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CE9E332B321C4500617A48 /* LocationManager.swift */; };
 		86CE9E362B32382A00617A48 /* Mosques.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CE9E352B32382A00617A48 /* Mosques.swift */; };
 		D44DF6532A811F900051E5E1 /* AthanApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44DF6522A811F900051E5E1 /* AthanApp.swift */; };
-		D44DF6552A811F900051E5E1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44DF6542A811F900051E5E1 /* ContentView.swift */; };
 		D44DF6572A811F910051E5E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D44DF6562A811F910051E5E1 /* Assets.xcassets */; };
-		D44DF65A2A811F910051E5E1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D44DF6592A811F910051E5E1 /* Preview Assets.xcassets */; };
 		D44DF6642A811F910051E5E1 /* VakitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44DF6632A811F910051E5E1 /* VakitTests.swift */; };
 		D44DF66E2A811F910051E5E1 /* AthanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44DF66D2A811F910051E5E1 /* AthanUITests.swift */; };
 		D44DF6702A811F910051E5E1 /* AthanUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44DF66F2A811F910051E5E1 /* AthanUITestsLaunchTests.swift */; };
@@ -50,6 +52,10 @@
 
 /* Begin PBXFileReference section */
 		860B321E2B30D50C0037D5A9 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		8675D0DA2B388E6900355925 /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; wrapsLines = 0; };
+		8675D0DC2B39B49C00355925 /* DhikrView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DhikrView.swift; sourceTree = "<group>"; };
+		8675D0DE2B39D4FF00355925 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		869DE13E2B3B15A60061724F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		86AC07DE2B2DDB4D0057E19B /* LocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProvider.swift; sourceTree = "<group>"; };
 		86AC07E52B2DEC190057E19B /* CompasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompasView.swift; sourceTree = "<group>"; };
 		86CE9E312B31FD0D00617A48 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
@@ -57,9 +63,7 @@
 		86CE9E352B32382A00617A48 /* Mosques.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mosques.swift; sourceTree = "<group>"; };
 		D44DF64F2A811F900051E5E1 /* Vakit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vakit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D44DF6522A811F900051E5E1 /* AthanApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthanApp.swift; sourceTree = "<group>"; };
-		D44DF6542A811F900051E5E1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D44DF6562A811F910051E5E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D44DF6592A811F910051E5E1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D44DF65F2A811F910051E5E1 /* VakitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VakitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D44DF6632A811F910051E5E1 /* VakitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VakitTests.swift; sourceTree = "<group>"; };
 		D44DF6692A811F910051E5E1 /* VakitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VakitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +105,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		869DE13D2B3B155F0061724F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D44DF6562A811F910051E5E1 /* Assets.xcassets */,
+				869DE13E2B3B15A60061724F /* Localizable.xcstrings */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		D44DF6462A811F900051E5E1 = {
 			isa = PBXGroup;
 			children = (
@@ -128,22 +141,11 @@
 				D44DF6892A8121920051E5E1 /* AthanView */,
 				D44DF6822A8120B00051E5E1 /* Components */,
 				D44DF67F2A8120520051E5E1 /* Model */,
-				D44DF6522A811F900051E5E1 /* AthanApp.swift */,
-				D44DF6542A811F900051E5E1 /* ContentView.swift */,
-				D44DF6562A811F910051E5E1 /* Assets.xcassets */,
-				D44DF6582A811F910051E5E1 /* Preview Content */,
+				869DE13D2B3B155F0061724F /* Resources */,
 				86AC07DE2B2DDB4D0057E19B /* LocationProvider.swift */,
 				86CE9E332B321C4500617A48 /* LocationManager.swift */,
 			);
 			path = Vakit;
-			sourceTree = "<group>";
-		};
-		D44DF6582A811F910051E5E1 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				D44DF6592A811F910051E5E1 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		D44DF6622A811F910051E5E1 /* VakitTests */ = {
@@ -193,11 +195,15 @@
 		D44DF6962A812BF50051E5E1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D44DF6522A811F900051E5E1 /* AthanApp.swift */,
 				D44DF69B2A8141120051E5E1 /* MainView.swift */,
 				D44DF6972A812C050051E5E1 /* AthanView.swift */,
 				86AC07E52B2DEC190057E19B /* CompasView.swift */,
 				860B321E2B30D50C0037D5A9 /* MapView.swift */,
 				86CE9E312B31FD0D00617A48 /* TestView.swift */,
+				8675D0DA2B388E6900355925 /* MoreView.swift */,
+				8675D0DC2B39B49C00355925 /* DhikrView.swift */,
+				8675D0DE2B39D4FF00355925 /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -291,7 +297,8 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
+				de,
+				tr,
 			);
 			mainGroup = D44DF6462A811F900051E5E1;
 			packageReferences = (
@@ -314,7 +321,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D44DF65A2A811F910051E5E1 /* Preview Assets.xcassets in Resources */,
+				869DE13F2B3B15A60061724F /* Localizable.xcstrings in Resources */,
 				D44DF6572A811F910051E5E1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -343,16 +350,18 @@
 				86CE9E322B31FD0D00617A48 /* TestView.swift in Sources */,
 				D44DF69E2A8146A40051E5E1 /* PrayerTimesClass.swift in Sources */,
 				86CE9E342B321C4500617A48 /* LocationManager.swift in Sources */,
+				8675D0DF2B39D4FF00355925 /* SettingsView.swift in Sources */,
 				860B321F2B30D50C0037D5A9 /* MapView.swift in Sources */,
 				D44DF6932A8127B50051E5E1 /* AthanTimeTable.swift in Sources */,
 				86CE9E362B32382A00617A48 /* Mosques.swift in Sources */,
-				D44DF6552A811F900051E5E1 /* ContentView.swift in Sources */,
+				8675D0DB2B388E6900355925 /* MoreView.swift in Sources */,
 				D44DF6912A8125FC0051E5E1 /* PrayerTimeTableItem.swift in Sources */,
 				D44DF6532A811F900051E5E1 /* AthanApp.swift in Sources */,
 				D44DF68D2A8121AA0051E5E1 /* PrayerTimeHeader.swift in Sources */,
 				D44DF6952A8129440051E5E1 /* LocationNotFoundView.swift in Sources */,
 				D44DF6982A812C050051E5E1 /* AthanView.swift in Sources */,
 				86AC07DF2B2DDB4D0057E19B /* LocationProvider.swift in Sources */,
+				8675D0DD2B39B49C00355925 /* DhikrView.swift in Sources */,
 				D44DF69C2A8141120051E5E1 /* MainView.swift in Sources */,
 				86AC07E62B2DEC190057E19B /* CompasView.swift in Sources */,
 			);
@@ -443,6 +452,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -499,6 +509,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -526,6 +537,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -558,6 +570,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

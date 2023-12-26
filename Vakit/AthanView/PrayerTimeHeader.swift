@@ -130,7 +130,7 @@ struct PrayerTimeHeader: View {
 					Text("\(prayerName) Time")
 						.font(.system(size: 15))
 						.fontWeight(.bold)
-						.foregroundColor(Color("ColorIcon"))
+						.foregroundColor(Color("color"))
 				}
 				.padding(.horizontal)
 				
@@ -143,7 +143,7 @@ struct PrayerTimeHeader: View {
 					Text("\(getFormattedDate(date: currentDate, calendar: hijriCalender))")
 						.font(.system(size: 15))
 						.fontWeight(.bold)
-						.foregroundColor(Color("ColorIcon"))
+						.foregroundColor(Color("color"))
 				}
 				.padding(.bottom)
 				.padding(.horizontal)

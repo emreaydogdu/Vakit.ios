@@ -49,6 +49,5 @@ struct AthanTimeTable: View {
 struct AthanTimeTable_Previews: PreviewProvider {
     static var previews: some View {
         AthanTimeTable(prayerClass: PrayerTimesClass())
-            .preferredColorScheme(.dark)
     }
 }

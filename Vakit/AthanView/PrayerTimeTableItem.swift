@@ -46,6 +46,5 @@ struct PrayerTimeTableItem: View {
 struct PrayerTimeTableItem_Previews: PreviewProvider {
     static var previews: some View {
         PrayerTimeTableItem(prayerName: "Fajr", prayerTime: "04:17:00")
-            .preferredColorScheme(.dark)
     }
 }

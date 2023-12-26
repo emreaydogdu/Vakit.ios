@@ -8,14 +8,19 @@ struct AthanView: View {
 	
 	var body: some View {
 		NavigationView{
-			ZStack{
-				Color("bg")
+			ZStack (alignment: .top){
+				Color("backgroundColor").ignoresSafeArea()
+				Image("pattern")
+					.frame(alignment: .top)
+					.mask(LinearGradient(gradient: Gradient(colors: [.black.opacity(0.15),  .black.opacity(0.1), .black.opacity(0)]), startPoint: .top, endPoint: .bottom))
+					.opacity(0.6)
+					.foregroundColor(Color("patternColor").opacity(0.4))
 					.ignoresSafeArea()
 				ScrollView{
-					if let error = prayerClass.error {
+					if prayerClass.error != nil {
 						VStack{}
 							.onAppear{
-								isPresented = true
+								isPresented = isPresented
 							}
 					} else {
 						if let prayers = prayerClass.prayers {
@@ -35,7 +40,7 @@ struct AthanView: View {
 						}
 					}
 				}
-				.navigationTitle("Athan")
+				.navigationTitle("Hello")
 				
 				.fullScreenCover(isPresented: $isPresented, content: { LocationNotFoundView() })
 				
@@ -46,14 +51,10 @@ struct AthanView: View {
 					prayerClass.stopUpdatingLocation()
 				}
 			}
-			
 		}
-		
 	}
-	
 }
 
 #Preview {
 	AthanView(prayerClass: PrayerTimesClass())
-		.preferredColorScheme(.dark)
 }

@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 @main
 struct AthanApp: App {
@@ -11,5 +12,6 @@ struct AthanApp: App {
 			MainView()
 				.preferredColorScheme(themeMode == "Dark" ? .dark : themeMode == "Light" ? .light : nil)
 		}
+		.modelContainer(for: [Dhikr.self])
 	}
 }

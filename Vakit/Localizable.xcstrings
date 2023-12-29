@@ -7,6 +7,9 @@
     "%@ Time" : {
 
     },
+    "%@x" : {
+
+    },
     "%lld" : {
 
     },
@@ -127,6 +130,9 @@
     "Dhikr" : {
 
     },
+    "Dhikr routine after every salah" : {
+
+    },
     "Discover more" : {
       "localizations" : {
         "de" : {
@@ -185,9 +191,6 @@
           }
         }
       }
-    },
-    "Hello, World!" : {
-
     },
     "Language" : {
       "localizations" : {
@@ -386,6 +389,9 @@
 
     },
     "Location" : {
+
+    },
+    "Press" : {
 
     },
     "Qibla Direction" : {

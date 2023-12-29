@@ -70,9 +70,14 @@ struct MoreView: View {
 											.multilineTextAlignment(.leading)
 											.fixedSize(horizontal: false, vertical: true)
 									}.padding(.trailing, 40)
-									RoundedRectangle(cornerRadius: 15, style: .continuous)
-										.fill(Color(hex: "#C9B3F4"))
-										.frame(width: 70, height: 70)
+									ZStack {
+										RoundedRectangle(cornerRadius: 15, style: .continuous)
+										 .fill(Color(hex: "#C9B3F4"))
+										Image("ic_tasbih")
+											.resizable()
+											.padding(19)
+											.frame(width: 70, height: 70)
+									}.frame(width: 70, height: 70)
 								}
 							}
 							Divider().frame(height: 2).overlay(Color("cardView.sub"))

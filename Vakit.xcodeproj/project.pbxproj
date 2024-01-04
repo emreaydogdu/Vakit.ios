@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		860B321F2B30D50C0037D5A9 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860B321E2B30D50C0037D5A9 /* MapView.swift */; };
+		86414EB72B40B9B600225946 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86414EB62B40B9B600225946 /* Extentions.swift */; };
 		8675D0DB2B388E6900355925 /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8675D0DA2B388E6900355925 /* MoreView.swift */; };
 		8675D0DD2B39B49C00355925 /* DhikrView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8675D0DC2B39B49C00355925 /* DhikrView.swift */; };
 		8675D0DF2B39D4FF00355925 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8675D0DE2B39D4FF00355925 /* SettingsView.swift */; };
@@ -52,6 +53,10 @@
 
 /* Begin PBXFileReference section */
 		860B321E2B30D50C0037D5A9 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		8639D8852B45E26900055204 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		8639D8862B45E26900055204 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		8639D8872B45E26900055204 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Bold.ttf"; path = "Vakit/Fonts/Roboto-Bold.ttf"; sourceTree = SOURCE_ROOT; };
+		86414EB62B40B9B600225946 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 		8675D0DA2B388E6900355925 /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		8675D0DC2B39B49C00355925 /* DhikrView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DhikrView.swift; sourceTree = "<group>"; };
 		8675D0DE2B39D4FF00355925 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -105,9 +110,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8639D8842B45E26100055204 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				8639D8872B45E26900055204 /* Roboto-Bold.ttf */,
+				8639D8852B45E26900055204 /* Roboto-Light.ttf */,
+				8639D8862B45E26900055204 /* Roboto-Medium.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		86414EB52B40B9A300225946 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				86414EB62B40B9B600225946 /* Extentions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		869DE13D2B3B155F0061724F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8639D8842B45E26100055204 /* Fonts */,
 				D44DF6562A811F910051E5E1 /* Assets.xcassets */,
 				869DE13E2B3B15A60061724F /* Localizable.xcstrings */,
 			);
@@ -141,6 +165,7 @@
 				D44DF6892A8121920051E5E1 /* AthanView */,
 				D44DF6822A8120B00051E5E1 /* Components */,
 				D44DF67F2A8120520051E5E1 /* Model */,
+				86414EB52B40B9A300225946 /* Utils */,
 				869DE13D2B3B155F0061724F /* Resources */,
 				86AC07DE2B2DDB4D0057E19B /* LocationProvider.swift */,
 				86CE9E332B321C4500617A48 /* LocationManager.swift */,
@@ -355,6 +380,7 @@
 				D44DF6932A8127B50051E5E1 /* AthanTimeTable.swift in Sources */,
 				86CE9E362B32382A00617A48 /* Mosques.swift in Sources */,
 				8675D0DB2B388E6900355925 /* MoreView.swift in Sources */,
+				86414EB72B40B9B600225946 /* Extentions.swift in Sources */,
 				D44DF6912A8125FC0051E5E1 /* PrayerTimeTableItem.swift in Sources */,
 				D44DF6532A811F900051E5E1 /* AthanApp.swift in Sources */,
 				D44DF68D2A8121AA0051E5E1 /* PrayerTimeHeader.swift in Sources */,
@@ -532,6 +558,7 @@
 				DEVELOPMENT_TEAM = 3HQB937GUU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Vakit/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Vakit;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "In order to have instant access to the most accurate prayer times via the Vakit app, you need to allow location access.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -565,6 +592,7 @@
 				DEVELOPMENT_TEAM = 3HQB937GUU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Vakit/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Vakit;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "In order to have instant access to the most accurate prayer times via the Vakit app, you need to allow location access.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

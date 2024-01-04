@@ -95,9 +95,6 @@
         }
       }
     },
-    "Blessed" : {
-
-    },
     "Correct" : {
 
     },
@@ -123,9 +120,6 @@
           }
         }
       }
-    },
-    "Days" : {
-
     },
     "Dhikr" : {
 
@@ -391,7 +385,7 @@
     "Location" : {
 
     },
-    "Press" : {
+    "No prayers" : {
 
     },
     "Qibla Direction" : {
@@ -447,7 +441,7 @@
     "to your" : {
 
     },
-    "Today" : {
+    "Try" : {
 
     },
     "We only need your location information while you are using the app. This enables us to provide prayer times specific to your location and is not shared with any other parties." : {

@@ -85,7 +85,7 @@ extension UIVisualEffectView {
 	var gaussianBlur: NSObject?{
 		return backDrop?.value(key: "filters", filter: "gaussianBlur")
 	}
-
+	
 }
 extension UIView {
 	func subView(forClass: AnyClass?)->UIView?{
@@ -112,71 +112,45 @@ struct PrayerTimeHeader: View {
 	let hijriCalender = Calendar(identifier: .islamicUmmAlQura)
 	
 	var body: some View {
-		VStack(alignment: .center, spacing: 20){
-			CardView()
-			VStack(spacing: 20){
-				VStack{
+		ZStack {
+			RoundedRectangle(cornerRadius: 25)
+				.fill(Color("cardView"))
+				.frame(maxHeight: 180)
+				.padding()
+			VStack(alignment: .center, spacing: 20){
+				VStack(spacing: 10){
 					HStack{
-						Text("Blessed")
-							.font(.title2)
-							.fontWeight(.bold)
-						Text("Days")
-							.font(.title2)
+						Text("\(location)")
+							.bold()
+						Image(systemName: "location.circle.fill")
+							.foregroundColor(Color("color"))
+							.frame(maxWidth: .infinity, alignment: .leading)
+					}
+					.padding(.horizontal)
+					
+					VStack{
+						Text("\(prayerName) Time")
+							.font(.title)
 							.fontWeight(.bold)
 							.foregroundColor(Color("color"))
+							.frame(maxWidth: .infinity, alignment: .leading)
 					}
-					.padding()
+					.padding(.horizontal)
 					
-					Text("\(prayerName) Time")
-						.font(.system(size: 15))
-						.fontWeight(.bold)
-						.foregroundColor(Color("color"))
+					VStack {
+						Text("\(prayerTime, style: .timer)")
+							.font(.system(size: 64))
+							.fontWeight(.semibold)
+							.padding(.bottom)
+					}
 				}
-				.padding(.horizontal)
-				
-				VStack {
-					Text("\(prayerTime, style: .timer)")
-						.font(.system(size: 64))
-						.fontWeight(.semibold)
-				}
-				HStack{
-					Text("\(getFormattedDate(date: currentDate, calendar: hijriCalender))")
-						.font(.system(size: 15))
-						.fontWeight(.bold)
-						.foregroundColor(Color("color"))
-				}
-				.padding(.bottom)
-				.padding(.horizontal)
+				.padding(.top)
 			}
-			.padding(.top)
-			HStack{
-				Text("\(location)")
-					.bold()
-				
-				Image(systemName: "location.circle.fill")
-					.foregroundColor(Color("color"))
-					.frame(maxWidth: .infinity, alignment: .leading)
-				
-				Spacer()
-				
-				Text("Today")
-					.font(.caption)
-					.foregroundColor(.gray)
-			}
+			.padding()
 		}
-		.padding()
-	}
-	
-	func getFormattedDate(date: Date, calendar: Calendar) -> String {
-		let components = calendar.dateComponents([.year, .month, .day], from: date)
-		let dateFormatter = DateFormatter()
-		dateFormatter.calendar = calendar
-		dateFormatter.dateFormat = "yyyy MMMM dd"
-		let formatteDate = dateFormatter.string(from: calendar.date(from: components) ?? date)
-		return formatteDate
 	}
 }
 
 #Preview {
-	PrayerTimeHeader(prayerName: "Imsak", prayerTime: Date(), location: "__")
+	PrayerTimeHeader(prayerName: "Imsak", prayerTime: Date(), location: "Berlin")
 }

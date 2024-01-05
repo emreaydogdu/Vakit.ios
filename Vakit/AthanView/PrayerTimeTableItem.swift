@@ -2,7 +2,7 @@ import SwiftUI
 
 struct PrayerTimeTableItem: View {
     
-    let prayerName: String
+    let prayerName: LocalizedStringKey
     let prayerTime: String
     @State var isPlayin = true
     
@@ -45,6 +45,6 @@ struct PrayerTimeTableItem: View {
 
 struct PrayerTimeTableItem_Previews: PreviewProvider {
     static var previews: some View {
-        PrayerTimeTableItem(prayerName: "Fajr", prayerTime: "04:17:00")
+        PrayerTimeTableItem(prayerName: LocalizedStringKey("ttFajr"), prayerTime: "04:17:00")
     }
 }

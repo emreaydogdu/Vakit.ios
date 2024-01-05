@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		860B321F2B30D50C0037D5A9 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860B321E2B30D50C0037D5A9 /* MapView.swift */; };
+		861A26C82B48C0D2001C6F8C /* Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861A26C72B48C0D2001C6F8C /* Default.swift */; };
+		8639D8892B475D4500055204 /* Dhikr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8639D8882B475D4500055204 /* Dhikr.swift */; };
 		86414EB72B40B9B600225946 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86414EB62B40B9B600225946 /* Extentions.swift */; };
 		8675D0DB2B388E6900355925 /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8675D0DA2B388E6900355925 /* MoreView.swift */; };
 		8675D0DD2B39B49C00355925 /* DhikrView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8675D0DC2B39B49C00355925 /* DhikrView.swift */; };
@@ -16,6 +18,7 @@
 		86AC07DF2B2DDB4D0057E19B /* LocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AC07DE2B2DDB4D0057E19B /* LocationProvider.swift */; };
 		86AC07E42B2DEB680057E19B /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 86AC07E32B2DEB680057E19B /* Lottie */; };
 		86AC07E62B2DEC190057E19B /* CompasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AC07E52B2DEC190057E19B /* CompasView.swift */; };
+		86B1B4E12B48A4AA003CA145 /* KazaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B1B4E02B48A4AA003CA145 /* KazaView.swift */; };
 		86CE9E322B31FD0D00617A48 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CE9E312B31FD0D00617A48 /* TestView.swift */; };
 		86CE9E342B321C4500617A48 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CE9E332B321C4500617A48 /* LocationManager.swift */; };
 		86CE9E362B32382A00617A48 /* Mosques.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CE9E352B32382A00617A48 /* Mosques.swift */; };
@@ -53,9 +56,11 @@
 
 /* Begin PBXFileReference section */
 		860B321E2B30D50C0037D5A9 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		861A26C72B48C0D2001C6F8C /* Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Default.swift; sourceTree = "<group>"; };
 		8639D8852B45E26900055204 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		8639D8862B45E26900055204 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		8639D8872B45E26900055204 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Bold.ttf"; path = "Vakit/Fonts/Roboto-Bold.ttf"; sourceTree = SOURCE_ROOT; };
+		8639D8882B475D4500055204 /* Dhikr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dhikr.swift; sourceTree = "<group>"; };
 		86414EB62B40B9B600225946 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 		8675D0DA2B388E6900355925 /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		8675D0DC2B39B49C00355925 /* DhikrView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DhikrView.swift; sourceTree = "<group>"; };
@@ -63,6 +68,7 @@
 		869DE13E2B3B15A60061724F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		86AC07DE2B2DDB4D0057E19B /* LocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProvider.swift; sourceTree = "<group>"; };
 		86AC07E52B2DEC190057E19B /* CompasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompasView.swift; sourceTree = "<group>"; };
+		86B1B4E02B48A4AA003CA145 /* KazaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KazaView.swift; sourceTree = "<group>"; };
 		86CE9E312B31FD0D00617A48 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		86CE9E332B321C4500617A48 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		86CE9E352B32382A00617A48 /* Mosques.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mosques.swift; sourceTree = "<group>"; };
@@ -124,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				86414EB62B40B9B600225946 /* Extentions.swift */,
+				861A26C72B48C0D2001C6F8C /* Default.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -194,7 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				D44DF69D2A8146A40051E5E1 /* PrayerTimesClass.swift */,
-				861ED03B2B3E31C3007F191C /* Dhikr.swift */,
+				8639D8882B475D4500055204 /* Dhikr.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -230,6 +237,7 @@
 				8675D0DA2B388E6900355925 /* MoreView.swift */,
 				8675D0DC2B39B49C00355925 /* DhikrView.swift */,
 				8675D0DE2B39D4FF00355925 /* SettingsView.swift */,
+				86B1B4E02B48A4AA003CA145 /* KazaView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -384,14 +392,16 @@
 				86414EB72B40B9B600225946 /* Extentions.swift in Sources */,
 				D44DF6912A8125FC0051E5E1 /* PrayerTimeTableItem.swift in Sources */,
 				D44DF6532A811F900051E5E1 /* AthanApp.swift in Sources */,
+				86B1B4E12B48A4AA003CA145 /* KazaView.swift in Sources */,
 				D44DF68D2A8121AA0051E5E1 /* PrayerTimeHeader.swift in Sources */,
 				D44DF6952A8129440051E5E1 /* LocationNotFoundView.swift in Sources */,
 				D44DF6982A812C050051E5E1 /* AthanView.swift in Sources */,
 				86AC07DF2B2DDB4D0057E19B /* LocationProvider.swift in Sources */,
-				861ED03C2B3E31C3007F191C /* Dhikr.swift in Sources */,
+				861A26C82B48C0D2001C6F8C /* Default.swift in Sources */,
 				8675D0DD2B39B49C00355925 /* DhikrView.swift in Sources */,
 				D44DF69C2A8141120051E5E1 /* MainView.swift in Sources */,
 				86AC07E62B2DEC190057E19B /* CompasView.swift in Sources */,
+				8639D8892B475D4500055204 /* Dhikr.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

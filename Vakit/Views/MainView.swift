@@ -9,26 +9,26 @@ struct MainView: View {
 			TabView(selection: $selectedTab) {
 				AthanView(prayerClass: PrayerTimesClass())
 					.tabItem {
-						Image(systemName: "house.fill")
+						Image("ic_home")
 					}
 					.tag(0)
 				
 				CompasView()
 					.tabItem {
-						Image(systemName: "location.fill")
+						Image("ic_compas")
 					}
 					.tag(1)
 				
 				MapView()
 					.tabItem {
-						Image(systemName: "mappin.and.ellipse")
+						Image("ic_marker_mosque")
 					}
 					.toolbar(.visible, for: .tabBar)
 					.tag(2)
 				
 				MoreView(card: Card.example)
 					.tabItem {
-						Image(systemName: "square.fill.on.circle.fill")
+						Image("ic_menu")
 					}
 					.toolbar(.visible, for: .tabBar)
 					.tag(3)

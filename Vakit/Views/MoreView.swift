@@ -75,8 +75,7 @@ struct MoreView: View {
 										 .fill(Color(hex: "#C9B3F4"))
 										Image("ic_tasbih")
 											.resizable()
-											.padding(19)
-											.frame(width: 70, height: 70)
+											.frame(width: 28, height: 28)
 									}.frame(width: 70, height: 70)
 								}
 							}
@@ -98,9 +97,13 @@ struct MoreView: View {
 											.multilineTextAlignment(.leading)
 											.fixedSize(horizontal: false, vertical: true)
 									}.padding(.trailing, 40)
-									RoundedRectangle(cornerRadius: 15, style: .continuous)
-										.fill(Color(hex: "#B0DDF0"))
-										.frame(width: 70, height: 70)
+									ZStack {
+										RoundedRectangle(cornerRadius: 15, style: .continuous)
+										 .fill(Color(hex: "#B0DDF0"))
+										Image("ic_kaza")
+											.resizable()
+											.frame(width: 28, height: 28)
+									}.frame(width: 70, height: 70)
 								}
 							}
 							Divider().frame(height: 2).overlay(Color("cardView.sub"))
@@ -120,9 +123,14 @@ struct MoreView: View {
 										.multilineTextAlignment(.leading)
 										.fixedSize(horizontal: false, vertical: true)
 								}.padding(.trailing, 40)
-								RoundedRectangle(cornerRadius: 15, style: .continuous)
-									.fill(Color(hex: "#C6E7B8"))
-									.frame(width: 70, height: 70)
+								ZStack {
+									RoundedRectangle(cornerRadius: 15, style: .continuous)
+										.fill(Color(hex: "#C6E7B8"))
+										.frame(width: 70, height: 70)
+									Image("ic_tasbih")
+									   .resizable()
+									   .frame(width: 28, height: 28)
+							   }.frame(width: 70, height: 70)
 							}
 							Divider().frame(height: 4).overlay(Color("cardView.sub")).padding(.vertical)
 							
@@ -137,9 +145,14 @@ struct MoreView: View {
 											.multilineTextAlignment(.leading)
 									}
 									.padding(.trailing, 40)
-									RoundedRectangle(cornerRadius: 10, style: .continuous)
-										.fill(Color("cardView.sub"))
-										.frame(width: 40, height: 40)
+									ZStack {
+										RoundedRectangle(cornerRadius: 10, style: .continuous)
+										 .fill(Color("cardView.sub"))
+										 .frame(width: 40, height: 40)
+									 Image("ic_settings")
+										.resizable()
+										.frame(width: 24, height: 23)
+									}
 								}
 							}
 							HStack{
@@ -152,9 +165,14 @@ struct MoreView: View {
 										.multilineTextAlignment(.leading)
 								}
 								.padding(.trailing, 40)
-								RoundedRectangle(cornerRadius: 10, style: .continuous)
-									.fill(Color("cardView.sub"))
-									.frame(width: 40, height: 40)
+								ZStack {
+									   RoundedRectangle(cornerRadius: 10, style: .continuous)
+										.fill(Color("cardView.sub"))
+										.frame(width: 40, height: 40)
+									Image("ic_about")
+									   .resizable()
+									   .frame(width: 24, height: 23)
+								}
 							}
 						}
 						.padding()

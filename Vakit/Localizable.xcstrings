@@ -105,7 +105,20 @@
 
     },
     "Daily dhikr routine after every Salah" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dhikr-Routine nach jedem Salah"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Namazdan sonra zikir rutini"
+          }
+        }
+      }
     },
     "Dark" : {
       "extractionState" : "manual",
@@ -125,10 +138,36 @@
       }
     },
     "Dhikr" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dhikr"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zikir"
+          }
+        }
+      }
     },
     "Dhikr routine after every salah" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dhikr-Routine nach jedem Gebet"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Namazdan sonra zikir rutini"
+          }
+        }
+      }
     },
     "Discover more" : {
       "localizations" : {

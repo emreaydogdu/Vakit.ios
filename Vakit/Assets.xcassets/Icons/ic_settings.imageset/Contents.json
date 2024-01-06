@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "dikhr.png",
+      "filename" : "2.0@2x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "2.0@1x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "2.0.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

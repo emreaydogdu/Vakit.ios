@@ -33,24 +33,15 @@ struct AthanView: View {
 								PrayerTimeHeader(prayerName: "\(nextPrayer)", prayerTime: prayers.time(for: nextPrayer), location: prayerClass.city ?? "__")
 									.frame(maxWidth: .infinity, alignment: .center)
 									.padding(.top, 100)
-									.onAppear{
-										print("hello")
-									}
 							} else if let prayers2 = prayerClass.prayers2 {
 								if let nextPrayer2 = prayers2.nextPrayer(){
 									PrayerTimeHeader(prayerName: "Imsak", prayerTime: prayers2.time(for: nextPrayer2), location: prayerClass.city ?? "__")
 										.frame(maxWidth: .infinity, alignment: .center)
 										.padding(.top, 100)
-										.onAppear {
-											print("worked")
-										}
 								} else {			
 									PrayerTimeHeader(prayerName: "Imsak", prayerTime: Date(), location: prayerClass.city ?? "__")
 										.frame(maxWidth: .infinity, alignment: .center)
 										.padding(.top, 100)
-										.onAppear {
-											print("failed")
-										}
 								}
 							}
 							AthanTimeTable(prayerClass: prayerClass)

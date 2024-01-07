@@ -56,4 +56,31 @@ public extension Date {
 			return formatteDate
 	}
 
+	func getHolyGregorian(dateStr: String) -> Date? {
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "yyyy-MM-dd"
+		return dateFormatter.date(from: dateStr)
+	}
+	
+	func getHolyGregorianStr(dateStr: Date!) -> String {
+		let calender = Calendar(identifier: .gregorian)
+		
+		let components = calender.dateComponents([.year, .month, .day], from: dateStr!)
+		let dateFormatter = DateFormatter()
+		dateFormatter.calendar = calender
+		dateFormatter.dateFormat = "EEE\ndd.MM"
+		let formatteDate = dateFormatter.string(from: (calender.date(from: components) ?? dateStr)!)
+		return formatteDate
+	}
+	
+	func getHolyHijri(dateStr: Date!) -> String {
+		let hijriCalender 	= Calendar(identifier: .islamicCivil)
+		
+		let components = hijriCalender.dateComponents([.year, .month, .day], from: dateStr!)
+		let dateFormatter = DateFormatter()
+		dateFormatter.calendar = hijriCalender
+		dateFormatter.dateFormat = "dd MMMM, yyyy"
+		let formatteDate = dateFormatter.string(from: (hijriCalender.date(from: components) ?? dateStr)!)
+		return formatteDate
+	}
 }

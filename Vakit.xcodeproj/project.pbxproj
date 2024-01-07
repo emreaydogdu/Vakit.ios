@@ -10,6 +10,9 @@
 		860B321F2B30D50C0037D5A9 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860B321E2B30D50C0037D5A9 /* MapView.swift */; };
 		861A26C82B48C0D2001C6F8C /* Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861A26C72B48C0D2001C6F8C /* Default.swift */; };
 		8639D8892B475D4500055204 /* Dhikr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8639D8882B475D4500055204 /* Dhikr.swift */; };
+		863AC0AB2B49FDD90021BD10 /* HolyDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863AC0AA2B49FDD90021BD10 /* HolyDateView.swift */; };
+		863AC0AD2B49FE220021BD10 /* HolyDates.csv in Resources */ = {isa = PBXBuildFile; fileRef = 863AC0AC2B49FE220021BD10 /* HolyDates.csv */; };
+		863AC0AF2B4A0FAB0021BD10 /* HolyDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863AC0AE2B4A0FAB0021BD10 /* HolyDate.swift */; };
 		86414EB72B40B9B600225946 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86414EB62B40B9B600225946 /* Extentions.swift */; };
 		8675D0DB2B388E6900355925 /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8675D0DA2B388E6900355925 /* MoreView.swift */; };
 		8675D0DD2B39B49C00355925 /* DhikrView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8675D0DC2B39B49C00355925 /* DhikrView.swift */; };
@@ -61,6 +64,9 @@
 		8639D8862B45E26900055204 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		8639D8872B45E26900055204 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Bold.ttf"; path = "Vakit/Fonts/Roboto-Bold.ttf"; sourceTree = SOURCE_ROOT; };
 		8639D8882B475D4500055204 /* Dhikr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dhikr.swift; sourceTree = "<group>"; };
+		863AC0AA2B49FDD90021BD10 /* HolyDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolyDateView.swift; sourceTree = "<group>"; };
+		863AC0AC2B49FE220021BD10 /* HolyDates.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = HolyDates.csv; sourceTree = "<group>"; };
+		863AC0AE2B4A0FAB0021BD10 /* HolyDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolyDate.swift; sourceTree = "<group>"; };
 		86414EB62B40B9B600225946 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 		8675D0DA2B388E6900355925 /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		8675D0DC2B39B49C00355925 /* DhikrView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DhikrView.swift; sourceTree = "<group>"; };
@@ -141,6 +147,7 @@
 				8639D8842B45E26100055204 /* Fonts */,
 				D44DF6562A811F910051E5E1 /* Assets.xcassets */,
 				869DE13E2B3B15A60061724F /* Localizable.xcstrings */,
+				863AC0AC2B49FE220021BD10 /* HolyDates.csv */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -202,6 +209,7 @@
 			children = (
 				D44DF69D2A8146A40051E5E1 /* PrayerTimesClass.swift */,
 				8639D8882B475D4500055204 /* Dhikr.swift */,
+				863AC0AE2B4A0FAB0021BD10 /* HolyDate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -238,6 +246,7 @@
 				8675D0DC2B39B49C00355925 /* DhikrView.swift */,
 				8675D0DE2B39D4FF00355925 /* SettingsView.swift */,
 				86B1B4E02B48A4AA003CA145 /* KazaView.swift */,
+				863AC0AA2B49FDD90021BD10 /* HolyDateView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -355,6 +364,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				863AC0AD2B49FE220021BD10 /* HolyDates.csv in Resources */,
 				869DE13F2B3B15A60061724F /* Localizable.xcstrings in Resources */,
 				D44DF6572A811F910051E5E1 /* Assets.xcassets in Resources */,
 			);
@@ -395,10 +405,12 @@
 				86B1B4E12B48A4AA003CA145 /* KazaView.swift in Sources */,
 				D44DF68D2A8121AA0051E5E1 /* PrayerTimeHeader.swift in Sources */,
 				D44DF6952A8129440051E5E1 /* LocationNotFoundView.swift in Sources */,
+				863AC0AB2B49FDD90021BD10 /* HolyDateView.swift in Sources */,
 				D44DF6982A812C050051E5E1 /* AthanView.swift in Sources */,
 				86AC07DF2B2DDB4D0057E19B /* LocationProvider.swift in Sources */,
 				861A26C82B48C0D2001C6F8C /* Default.swift in Sources */,
 				8675D0DD2B39B49C00355925 /* DhikrView.swift in Sources */,
+				863AC0AF2B4A0FAB0021BD10 /* HolyDate.swift in Sources */,
 				D44DF69C2A8141120051E5E1 /* MainView.swift in Sources */,
 				86AC07E62B2DEC190057E19B /* CompasView.swift in Sources */,
 				8639D8892B475D4500055204 /* Dhikr.swift in Sources */,

@@ -107,30 +107,32 @@ struct MoreView: View {
 								}
 							}
 							Divider().frame(height: 2).overlay(Color("cardView.sub"))
-							HStack{
-								VStack{
-									Text("Realtime collaburation")
-										.fontWeight(.bold)
-										.frame(maxWidth: .infinity, alignment: .leading)
-										.font(.headline)
-										.foregroundColor(Color("cardView.title"))
-										.multilineTextAlignment(.leading)
-									Text("Create, enable and use across your team")
-										.frame(maxWidth: .infinity, alignment: .leading)
-										.font(.subheadline)
-										.fontWeight(.semibold)
-										.foregroundColor(Color("cardView.subtitle"))
-										.multilineTextAlignment(.leading)
-										.fixedSize(horizontal: false, vertical: true)
-								}.padding(.trailing, 40)
-								ZStack {
-									RoundedRectangle(cornerRadius: 15, style: .continuous)
-										.fill(Color(hex: "#C6E7B8"))
-										.frame(width: 70, height: 70)
-									Image("ic_tasbih")
-									   .resizable()
-									   .frame(width: 28, height: 28)
-							   }.frame(width: 70, height: 70)
+							NavigationLink(destination: HolyDateView()) {
+								HStack{
+									VStack{
+										Text("Holy Days")
+											.fontWeight(.bold)
+											.frame(maxWidth: .infinity, alignment: .leading)
+											.font(.headline)
+											.foregroundColor(Color("cardView.title"))
+											.multilineTextAlignment(.leading)
+										Text("Create, enable and use across your team")
+											.frame(maxWidth: .infinity, alignment: .leading)
+											.font(.subheadline)
+											.fontWeight(.semibold)
+											.foregroundColor(Color("cardView.subtitle"))
+											.multilineTextAlignment(.leading)
+											.fixedSize(horizontal: false, vertical: true)
+									}.padding(.trailing, 40)
+									ZStack {
+										RoundedRectangle(cornerRadius: 15, style: .continuous)
+											.fill(Color(hex: "#C6E7B8"))
+											.frame(width: 70, height: 70)
+										Image("ic_calendar")
+										   .resizable()
+										   .frame(width: 28, height: 28)
+								   }.frame(width: 70, height: 70)
+								}
 							}
 							Divider().frame(height: 4).overlay(Color("cardView.sub")).padding(.vertical)
 							

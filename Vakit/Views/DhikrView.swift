@@ -3,109 +3,130 @@ import SwiftData
 
 struct DhikrView: View {
 	
-	@Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-	var btnBack : some View { Button(action: { self.presentationMode.wrappedValue.dismiss()}) {
-		ZStack {
-			RoundedRectangle(cornerRadius: 15, style: .continuous)
-				.fill(Color("cardView"))
-				.shadow(color: .black.opacity(0.1), radius: 24, x: 0, y: 8)
-				.frame(width: 40, height: 40)
-			Image(systemName: "chevron.left")
-				.resizable()
-				.foregroundColor(Color("cardView.title"))
-				.aspectRatio(contentMode: .fit)
-				.frame(width: 15, height: 15)
-			//.padding(20)
-		}
-	}}
-	
 	@Environment(\.modelContext) var context
 	@Query var dhikrs: [Dhikr]
 	@State var selectedDhikr: Dhikr?
+	@State private var show = false
+	@State private var defaultv: CGPoint = .zero
 	
 	var body: some View {
-		NavigationView {
-			ZStack(alignment: .top){
-				Color("backgroundColor").ignoresSafeArea()
-				Image("pattern")
-					.frame(minWidth: 0, maxWidth: .infinity)
-					.mask(LinearGradient(gradient: Gradient(colors: [.black.opacity(0.15),  .black.opacity(0.1), .black.opacity(0)]), startPoint: .top, endPoint: .bottom))
-					.opacity(0.6)
-					.foregroundColor(Color("patternColor").opacity(0.4))
-					.ignoresSafeArea()
-				ScrollView {
-					ForEach(dhikrs, id: \.self) { dhikr in
-						   VStack {
-							ZStack(alignment: .topLeading) {
-								RoundedRectangle(cornerRadius: 15, style: .continuous)
-									.fill(Color("cardView"))
-									.shadow(color: .black.opacity(0.05), radius: 15, x: 0, y: 7)
-									.frame(height: 150)
-									.padding()
-								RoundedRectangle(cornerRadius: 15, style: .continuous)
-									.fill(Color("color1").opacity(0.1))
-									.shadow(color: .black.opacity(0.05), radius: 15, x: 0, y: 7)
-									.frame(height: 150)
-									.padding()
+		ZStack(alignment: .top){
+			PatternBG(pattern: false)
+			ScrollView {
+				ForEach(dhikrs, id: \.self) { dhikr in
+					VStack {
+						ZStack(alignment: .topLeading) {
+							RoundedRectangle(cornerRadius: 15, style: .continuous)
+								.fill(Color("cardView"))
+								.shadow(color: .black.opacity(0.05), radius: 15, x: 0, y: 7)
+								.frame(height: 150)
+								.padding()
+							RoundedRectangle(cornerRadius: 15, style: .continuous)
+								.fill(Color("cardView").opacity(0.1))
+								.shadow(color: .black.opacity(0.05), radius: 15, x: 0, y: 7)
+								.frame(height: 150)
+								.padding()
+							VStack(alignment: .leading) {
 								VStack(alignment: .leading) {
-									VStack(alignment: .leading) {
-										Text(dhikr.name)
-											.font(.title)
-											.fontWeight(.bold)
-											.foregroundColor(Color("cardView.title"))
-											.frame(maxWidth: .infinity, alignment: .leading)
-										Text("Dhikr routine after every salah")
-											.font(.headline)
-											.foregroundColor(Color("cardView.subtitle"))
-											.frame(maxWidth: .infinity, alignment: .leading)
-									}
-									.padding([.top, .leading], 30)
+									Text(dhikr.name)
+										.font(.title)
+										.fontWeight(.bold)
+										.foregroundColor(Color("cardView.title"))
+										.frame(maxWidth: .infinity, alignment: .leading)
+									Text("Dhikr routine after every salah")
+										.font(.headline)
+										.foregroundColor(Color("cardView.subtitle"))
+										.frame(maxWidth: .infinity, alignment: .leading)
+								}
+								.padding([.top, .leading], 30)
+								Spacer()
+								HStack {
+									Text("\(dhikr.count)")
+										.font(.largeTitle)
+										.fontWeight(.bold)
+										.foregroundColor(Color("cardView.title"))
+										.frame(maxWidth: .infinity, alignment: .bottomLeading)
+										.padding([.bottom, .leading], 30)
 									Spacer()
-									HStack {
-										Text("\(dhikr.count)")
-											.font(.largeTitle)
-											.fontWeight(.bold)
-											.foregroundColor(Color("cardView.title"))
-											.frame(maxWidth: .infinity, alignment: .bottomLeading)
-											.padding([.bottom, .leading], 30)
-										Spacer()
-										ZStack {
-											RoundedRectangle(cornerRadius: 15, style: .continuous)
-												.fill(Color("color1"))
-												.frame(width: 60, height: 60)
-											Image(systemName: "chevron.right")
-												.resizable()
-												.foregroundColor(.white)
-												.aspectRatio(contentMode: .fit)
-												.frame(width: 15, height: 15)
-											//.padding(20)
-										}
-										.padding([.bottom, .trailing], 30)
-										.frame(alignment: .bottomTrailing)
+									ZStack {
+										RoundedRectangle(cornerRadius: 15, style: .continuous)
+											.fill(Color("color1"))
+											.frame(width: 60, height: 60)
+										Image(systemName: "chevron.right")
+											.resizable()
+											.foregroundColor(.white)
+											.aspectRatio(contentMode: .fit)
+											.frame(width: 15, height: 15)
+										//.padding(20)
 									}
+									.padding([.bottom, .trailing], 30)
+									.frame(alignment: .bottomTrailing)
 								}
 							}
-							.onTapGesture {
-								selectedDhikr = dhikr
-							}
-							.sheet(item: $selectedDhikr) { dhikr in
-								DhikrCountView(dhikr: dhikr)
-							}
 						}
-					   }
+						.onTapGesture {
+							selectedDhikr = dhikr
+						}
+						.sheet(item: $selectedDhikr) { dhikr in
+							DhikrCountView(dhikr: dhikr)
+						}
+					}
 				}
-				.onAppear {
-					if dhikrs.isEmpty {
-						let dhikr2 = Dhikr(id: UUID(), name: "After Salah", count: 99)
-						context.insert(dhikr2)
+				.background(GeometryReader { geometry in
+					Color.clear
+						.preference(key: ScrollOffsetPreferenceKey.self, value: geometry.frame(in: .named("scroll")).origin)
+						.onAppear{
+							defaultv = geometry.frame(in: .named("scroll")).origin
+						}
+				})
+				.onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
+					withAnimation(.linear(duration: 0.1)){
+						show = value.y < defaultv.y - 30.0
 					}
 				}
 			}
-			.navigationTitle("Dhikr")
+			.coordinateSpace(name: "scroll")
+			.contentMargins(.top, 80, for: .scrollContent)
+			.onAppear {
+				if dhikrs.isEmpty {
+					let dhikr2 = Dhikr(id: UUID(), name: "After Salah", count: 99)
+					context.insert(dhikr2)
+				}
+			}
+			Toolbar(show: $show)
 		}
 		.navigationBarBackButtonHidden(true)
-		.navigationBarItems(leading: btnBack)
-		//.toolbar(.hidden, for: .tabBar)
+	}
+}
+
+private struct Toolbar : View {
+	
+	@Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+	@Binding var show: Bool
+	
+	var body: some View {
+		ZStack(alignment: .leading){
+			Button(action: {self.presentationMode.wrappedValue.dismiss()}) {
+				Image(systemName: "chevron.left")
+					.foregroundColor(Color("cardView.title"))
+					.padding(5)
+			}
+			.buttonStyle(.bordered)
+			.clipShape(Circle())
+			Text("Dhikr")
+				.font(.title2)
+				.fontWeight(.bold)
+				.frame(maxWidth: .infinity, alignment: .center)
+				.padding(.leading, 5.0)
+		}
+		.padding(.top, UIApplication.safeAreaInsets.top == 0 ? 15 : UIApplication.safeAreaInsets.top + 5)
+		.padding(.horizontal)
+		.padding(.bottom)
+		.background(show ? BlurBG() : nil)
+		.onChange(of: show, { oldValue, newValue in
+			UIImpactFeedbackGenerator(style: .soft).impactOccurred()
+		})
+		.ignoresSafeArea()
 	}
 }
 
@@ -118,10 +139,10 @@ struct DhikrCountView: View {
 		ZStack(alignment: .top) {
 			Color("backgroundColor").ignoresSafeArea()
 			Capsule()
-			   .fill(Color.secondary)
-			   .opacity(0.5)
-			   .frame(width: 35, height: 5)
-			   .padding(10)
+				.fill(Color.secondary)
+				.opacity(0.5)
+				.frame(width: 35, height: 5)
+				.padding(10)
 			VStack {
 				Text("\(dhikr.count.description)x")
 					.frame(maxWidth: .infinity, alignment: .leading)
@@ -162,8 +183,8 @@ struct DhikrCountView: View {
 		.modelContainer(for: [Dhikr.self])
 }
 /*
-#Preview {
-	let dhikr = Dhikr(id: UUID(), name: "After Salah", count: 99)
-	DhikrCountView(dhikr: dhikr)
-}
+ #Preview {
+ let dhikr = Dhikr(id: UUID(), name: "After Salah", count: 99)
+ DhikrCountView(dhikr: dhikr)
+ }
  */

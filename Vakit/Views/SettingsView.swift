@@ -13,52 +13,109 @@ struct SettingsView: View {
 	var themeModes = ["Auto", "Light", "Dark"]
 	
 	@State private var showLanguage = false
+	@State private var show = false
+	@State private var defaultv: CGPoint = .zero
 	
 	var body: some View {
-		NavigationView {
-			Form {
-				Section(header: Text("Generally")) {
-					Button("Language") {
-						showLanguage.toggle()
-					}
-					.foregroundColor(Color("cardView.title"))
-					.sheet(isPresented: $showLanguage) {
-						LanguageSettingsView()
-							.presentationDetents([.large])
-							.presentationDragIndicator(.visible)
-					}
-				}
-				
-				Section(header: Text("Appereance")) {
-					HStack(content: {
-						Text("Theme")
-							.foregroundColor(Color("cardView.title"))
-						Spacer()
-						Picker("Theme", selection: $themeMode) {
-							ForEach(themeModes, id: \.self) {
-								Text(LocalizedStringKey($0))
-							}
+		ZStack(alignment: .top){
+			PatternBG(pattern: false)
+			ScrollView {
+				Form {
+					Section{
+						Button("Language") {
+							showLanguage.toggle()
 						}
-						.pickerStyle(.segmented)
-						.fixedSize()
-						.frame(alignment: .trailing)
-					})
-				}
-				
-				Section {
-					Button("Review the app") {
-						requestReview()
+						.foregroundColor(Color("cardView.title"))
+						.sheet(isPresented: $showLanguage) {
+							LanguageSettingsView()
+								.presentationDetents([.large])
+								.presentationDragIndicator(.visible)
+						}
+					} header: {
+						Text("Generally")
+							.padding(.top, 70)
 					}
-					.foregroundColor(Color("cardView.title"))
-					Button("Restore purchase") {
+					.listRowBackground(Color("cardView"))
+					
+					
+					Section(header: Text("Appereance")) {
+						HStack(content: {
+							Text("Theme")
+								.foregroundColor(Color("cardView.title"))
+							Spacer()
+							Picker("Theme", selection: $themeMode) {
+								ForEach(themeModes, id: \.self) {
+									Text(LocalizedStringKey($0))
+								}
+							}
+							.pickerStyle(.segmented)
+							.fixedSize()
+							.frame(alignment: .trailing)
+						})
 					}
-					.foregroundColor(Color("cardView.title"))
+					.listRowBackground(Color("cardView"))
+					
+					Section {
+						Button("Review the app") {
+							requestReview()
+						}
+						.foregroundColor(Color("cardView.title"))
+						Button("Restore purchase") {
+						}
+						.foregroundColor(Color("cardView.title"))
+					}.listRowBackground(Color("cardView"))
 				}
+				.frame(height: 600)
+				.background(GeometryReader { geometry in
+					Color.clear
+						.preference(key: ScrollOffsetPreferenceKey.self, value: geometry.frame(in: .named("scroll")).origin)
+						.onAppear{
+							defaultv = geometry.frame(in: .named("scroll")).origin
+						}
+				})
+				.onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
+					withAnimation(.linear(duration: 0.1)){
+						show = value.y < defaultv.y - 30.0
+					}
+				}
+				.scrollContentBackground(.hidden)
 			}
-			.scrollContentBackground(.hidden)
-			.background(Color("backgroundColor"))
-			.navigationBarTitle(Text("Settings"))
+			.coordinateSpace(name: "scroll")
+			
+			Toolbar(show: $show)
 		}
+		.navigationBarBackButtonHidden(true)
+	}
+}
+
+private struct Toolbar : View {
+	
+	@Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+	@Binding var show: Bool
+	
+	var body: some View {
+		ZStack(alignment: .leading){
+			Button(action: {self.presentationMode.wrappedValue.dismiss()}) {
+				Image(systemName: "chevron.left")
+					.foregroundColor(Color("cardView.title"))
+					.padding(5)
+			}
+			.buttonStyle(.bordered)
+			.clipShape(Circle())
+			Text("Settings")
+				.font(.title2)
+				.fontWeight(.bold)
+				.frame(maxWidth: .infinity, alignment: .center)
+				.padding(.leading, 5.0)
+		}
+		.padding(.top, UIApplication.safeAreaInsets.top == 0 ? 15 : UIApplication.safeAreaInsets.top + 5)
+		.padding(.horizontal)
+		.padding(.bottom)
+		.background(show ? BlurBG() : nil)
+		.onChange(of: show, { oldValue, newValue in
+			UIImpactFeedbackGenerator(style: .soft).impactOccurred()
+		})
+		.ignoresSafeArea()
 	}
 }
 
@@ -79,7 +136,6 @@ struct LanguageSettingsView: View {
 								.resizable()
 								.frame(width: 35, height: 35)
 								.clipShape(Circle())
-
 							VStack {
 								Text(LocalizedStringKey(languagesd[idx]))
 									.fontWeight(.bold)

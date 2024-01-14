@@ -7,9 +7,6 @@
     "%@" : {
 
     },
-    "%@ Time" : {
-
-    },
     "%@x" : {
 
     },
@@ -31,9 +28,6 @@
           }
         }
       }
-    },
-    "14 : 45 : 34" : {
-
     },
     "About" : {
       "comment" : ".",
@@ -96,6 +90,9 @@
 
     },
     "Create, enable and use across your team" : {
+
+    },
+    "Current" : {
 
     },
     "Daily dhikr routine after every Salah" : {
@@ -733,13 +730,13 @@
         }
       }
     },
+    "Next" : {
+
+    },
     "No prayers" : {
 
     },
     "Press" : {
-
-    },
-    "Qibla Direction" : {
 
     },
     "Restore purchase" : {

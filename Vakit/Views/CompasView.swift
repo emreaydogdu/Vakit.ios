@@ -19,7 +19,8 @@ struct CompasView: View {
 	@State private var offset: Double = -8.0
 	
 	var body: some View {
-		NavigationView {
+		ZStack(alignment: .top){
+			PatternBG(pattern: true)
 			GeometryReader { geometry in
 				ZStack {
 					ZStack {
@@ -123,7 +124,7 @@ struct CompasView: View {
 					}
 					.padding()
 				}
-				.background((mode == .ahead ? Color.green : Color(UIColor.systemBackground)).edgesIgnoringSafeArea(.all))
+				.background((mode == .ahead ? Color.green : Color.clear).edgesIgnoringSafeArea(.all))
 				.onReceive(self.location.heading) { heading in
 					let diff = (heading - self.angle + 180).truncatingRemainder(dividingBy: 360) - 180 - round(qiblaDirection)
 					if diff < -300 {
@@ -149,8 +150,10 @@ struct CompasView: View {
 						toggleMode(opt: false)
 					}
 				}
+				.onAppear{ self.location.updateHeading() }
+				.onDisappear{ self.location.disableHeading() }
 			}
-			.navigationTitle("Qibla Direction")
+			.background(.clear)
 		}
 	}
 	

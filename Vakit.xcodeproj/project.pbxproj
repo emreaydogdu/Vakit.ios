@@ -237,16 +237,16 @@
 			isa = PBXGroup;
 			children = (
 				D44DF6522A811F900051E5E1 /* AthanApp.swift */,
-				D44DF69B2A8141120051E5E1 /* MainView.swift */,
 				D44DF6972A812C050051E5E1 /* AthanView.swift */,
 				86AC07E52B2DEC190057E19B /* CompasView.swift */,
-				860B321E2B30D50C0037D5A9 /* MapView.swift */,
-				86CE9E312B31FD0D00617A48 /* TestView.swift */,
-				8675D0DA2B388E6900355925 /* MoreView.swift */,
 				8675D0DC2B39B49C00355925 /* DhikrView.swift */,
-				8675D0DE2B39D4FF00355925 /* SettingsView.swift */,
-				86B1B4E02B48A4AA003CA145 /* KazaView.swift */,
 				863AC0AA2B49FDD90021BD10 /* HolyDateView.swift */,
+				86B1B4E02B48A4AA003CA145 /* KazaView.swift */,
+				D44DF69B2A8141120051E5E1 /* MainView.swift */,
+				860B321E2B30D50C0037D5A9 /* MapView.swift */,
+				8675D0DA2B388E6900355925 /* MoreView.swift */,
+				86CE9E312B31FD0D00617A48 /* TestView.swift */,
+				8675D0DE2B39D4FF00355925 /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

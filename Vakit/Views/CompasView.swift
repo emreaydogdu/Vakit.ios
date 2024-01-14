@@ -17,10 +17,11 @@ struct CompasView: View {
 	@State private var opacity: Double = 0.0
 	@State private var scale: Double = 1.0
 	@State private var offset: Double = -8.0
+	@State private var show = false
 	
 	var body: some View {
 		ZStack(alignment: .top){
-			PatternBG(pattern: true)
+			PatternBG(pattern: false)
 			GeometryReader { geometry in
 				ZStack {
 					ZStack {
@@ -154,6 +155,7 @@ struct CompasView: View {
 				.onDisappear{ self.location.disableHeading() }
 			}
 			.background(.clear)
+			ToolbarStd(title: "Compas", show: $show)
 		}
 	}
 	

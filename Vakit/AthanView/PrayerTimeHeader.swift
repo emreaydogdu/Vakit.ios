@@ -32,8 +32,7 @@ struct PrayerTimeHeader: View {
 					.frame(maxWidth: .infinity, alignment: .leading)
 					
 					Text("\(prayerTime, style: .timer)")
-						.font(.system(size: 44))
-						.fontWeight(.semibold)
+						.font(.custom("Montserrat-Bold ", size: 44.0))
 						.frame(maxWidth: .infinity, alignment: .leading)
 					
 					ProgressView(value: 0.5)

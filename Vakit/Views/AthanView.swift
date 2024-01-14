@@ -12,7 +12,7 @@ struct AthanView: View {
 	
 	var body: some View {
 		NavigationView {
-			ZStack (alignment: .top){
+			ZStack (alignment: .top) {
 				PatternBG(pattern: true)
 				ScrollView(showsIndicators: false) {
 					if prayerClass.error != nil {
@@ -89,9 +89,9 @@ private struct TopView : View {
 		HStack {
 			VStack(alignment: .leading, spacing: 5) {
 				Text(Date().getNavDate())
-					.font(.custom("Fonts/Roboto-Medium", size: 20.0))
+					.font(.custom("Montserrat-Bold", size: 20.0))
 				Text(Date().getHijriDate())
-					.font(.custom("Roboto-Light", size: 18.0))
+					.font(.custom("Montserrat-Medium", size: 18.0))
 			}
 			Spacer(minLength: 0)
 			Button(action: {}) {

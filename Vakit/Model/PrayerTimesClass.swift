@@ -108,7 +108,7 @@ class PrayerTimesClass: NSObject, ObservableObject, CLLocationManagerDelegate {
             if let error = error {
                 print("Error requesting authorization for notifications: \(error.localizedDescription)")
             } else if granted {
-                print("User granted permission for notifications.")
+                //print("User granted permission for notifications.")
             } else {
                 print("User denied permission for notifications.")
             }

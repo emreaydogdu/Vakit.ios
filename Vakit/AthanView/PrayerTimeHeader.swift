@@ -1,110 +1,9 @@
 import SwiftUI
 
-struct CardView: View {
-	var body: some View {
-		ZStack {
-			ZStack {
-				Image("gradient1")
-					.resizable()
-					.aspectRatio(contentMode: .fit)
-				
-			}
-			.cornerRadius(10)
-			.overlay(
-				RoundedRectangle(cornerRadius: 15)
-					.stroke(Color(.sRGB, red: 150/255, green: 150/255, blue: 150/255, opacity: 0.2), lineWidth: 1)
-			)
-			//.padding([.top, .horizontal], 0)
-			
-			Image("mosque1")
-				.resizable()
-				.frame(width: 200, height: 200, alignment: .leading)
-				.offset(y: -100)
-				.offset(x: 100)
-			//.padding(.top, -200)
-			//.padding(.leading, 180)
-			
-			GlassMorphicCard()
-				.padding(.top, 90)
-			
-			HStack {
-				VStack(alignment: .leading) {
-					Text("14 : 45 : 34")
-						.font(.title)
-						.fontWeight(.black)
-						.foregroundColor(.black)
-						.lineLimit(3)
-				}
-				
-				Spacer()
-			}
-			.padding()
-			.padding(.horizontal, 15)
-			.padding(.top, 70)
-			
-		}
-		.frame(height: 300)
-		//.background(.red)
-		
-	}
-	
-	@ViewBuilder
-	func GlassMorphicCard() -> some View {
-		ZStack{
-			CustomBlurView(effect: .systemUltraThinMaterialDark){ view in
-				
-			}
-			.clipShape(RoundedRectangle(cornerRadius: 15.0, style: .continuous))
-		}
-		.padding(.horizontal, 15)
-		.frame(height: 100, alignment: .bottom)
-	}
-}
-
-struct CustomBlurView: UIViewRepresentable {
-	var effect: UIBlurEffect.Style
-	var onChange: (UIVisualEffectView)->()
-	
-	func makeUIView(context: Context) -> UIVisualEffectView {
-		let view = UIVisualEffectView(effect: UIBlurEffect(style: effect))
-		return view
-	}
-	
-	func updateUIView(_ uiView: UIVisualEffectView, context: Context) {
-		DispatchQueue.main.async {
-			onChange(uiView)
-		}
-	}
-}
-
-extension UIVisualEffectView {
-	var backDrop: UIView?{
-		return subView(forClass: NSClassFromString("_UIVisualEffectBackdropView"))
-	}
-	
-	var gaussianBlur: NSObject?{
-		return backDrop?.value(key: "filters", filter: "gaussianBlur")
-	}
-	
-}
-extension UIView {
-	func subView(forClass: AnyClass?)->UIView?{
-		return subviews.first { view in
-			type(of: view) == forClass
-		}
-	}
-}
-extension NSObject{
-	func value(key: String, filter: String)->NSObject?{
-		(value(forKey: key) as? [NSObject])?.first(where: { obj in
-			return obj.value(forKeyPath: "filterType") as? String == filter
-		})
-	}
-}
-
 struct PrayerTimeHeader: View {
 	
 	let prayerName: String
+	let nextPrayerName: String
 	let prayerTime: Date
 	let location: String
 	let currentDate = Date()
@@ -115,42 +14,72 @@ struct PrayerTimeHeader: View {
 		ZStack {
 			RoundedRectangle(cornerRadius: 25)
 				.fill(Color("cardView"))
-				.frame(maxHeight: 180)
-				.padding()
-			VStack(alignment: .center, spacing: 20){
-				VStack(spacing: 10){
+				.shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
+			HStack(alignment: .bottom){
+				VStack(alignment: .center, spacing: 20){
 					HStack{
 						Text("\(location)")
 							.bold()
 						Image(systemName: "location.circle.fill")
-							.foregroundColor(Color("color"))
-							.frame(maxWidth: .infinity, alignment: .leading)
+							.foregroundColor(.white)
+							.frame(alignment: .leading)
 					}
-					.padding(.horizontal)
+					.padding(3)
+					.padding(.horizontal, 6)
+					.foregroundColor(.white)
+					.background(.black)
+					.clipShape(.capsule)
+					.frame(maxWidth: .infinity, alignment: .leading)
 					
-					VStack{
-						Text("\(prayerName) Time")
-							.font(.title)
-							.fontWeight(.bold)
-							.foregroundColor(Color("color"))
-							.frame(maxWidth: .infinity, alignment: .leading)
-					}
-					.padding(.horizontal)
+					Text("\(prayerTime, style: .timer)")
+						.font(.custom("Montserrat-Bold ", size: 44.0))
+						.frame(maxWidth: .infinity, alignment: .leading)
 					
-					VStack {
-						Text("\(prayerTime, style: .timer)")
-							.font(.system(size: 64))
-							.fontWeight(.semibold)
-							.padding(.bottom)
+					ProgressView(value: 0.5)
+						.frame(height: 8.0)
+						.scaleEffect(x: 1, y: 2, anchor: .center)
+						.clipShape(RoundedRectangle(cornerRadius: 6))
+						.tint(.black)
+					
+					HStack(alignment: .bottom){
+						VStack {
+							Text("Current")
+								.font(.subheadline)
+								.frame(maxWidth: .infinity, alignment: .leading)
+							
+							Text("\(prayerName)")
+								.font(.headline)
+								.fontWeight(.bold)
+								.foregroundColor(.black)
+								.frame(maxWidth: .infinity, alignment: .leading)
+						}
+						VStack {
+							Text("Next")
+								.font(.subheadline)
+								.frame(maxWidth: .infinity, alignment: .leading)
+							
+							Text("\(nextPrayerName)")
+								.font(.headline)
+								.fontWeight(.bold)
+								.foregroundColor(.black)
+								.frame(maxWidth: .infinity, alignment: .leading)
+						}
 					}
 				}
-				.padding(.top)
+				.padding(.vertical)
+				.padding(.leading)
+				Spacer()
+				Image("tst")
+					.resizable()
+					.frame(width: 150,height: 180)
+					.clipShape(UnevenRoundedRectangle(cornerRadii: .init(topLeading: 0.0, bottomLeading: 0.0, bottomTrailing: 25.0, topTrailing: 0.0), style: .continuous))
 			}
-			.padding()
+			.frame(maxWidth: .infinity)
 		}
+		.padding()
 	}
 }
 
 #Preview {
-	PrayerTimeHeader(prayerName: "Imsak", prayerTime: Date(), location: "Berlin")
+	PrayerTimeHeader(prayerName: "Yatsi", nextPrayerName: "Imsak", prayerTime: Date(), location: "Berlin")
 }

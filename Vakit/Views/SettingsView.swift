@@ -13,52 +13,78 @@ struct SettingsView: View {
 	var themeModes = ["Auto", "Light", "Dark"]
 	
 	@State private var showLanguage = false
+	@State private var show = false
+	@State private var defaultv: CGPoint = .zero
 	
 	var body: some View {
-		NavigationView {
-			Form {
-				Section(header: Text("Generally")) {
-					Button("Language") {
-						showLanguage.toggle()
-					}
-					.foregroundColor(Color("cardView.title"))
-					.sheet(isPresented: $showLanguage) {
-						LanguageSettingsView()
-							.presentationDetents([.large])
-							.presentationDragIndicator(.visible)
-					}
-				}
-				
-				Section(header: Text("Appereance")) {
-					HStack(content: {
-						Text("Theme")
-							.foregroundColor(Color("cardView.title"))
-						Spacer()
-						Picker("Theme", selection: $themeMode) {
-							ForEach(themeModes, id: \.self) {
-								Text(LocalizedStringKey($0))
-							}
+		ZStack(alignment: .top){
+			PatternBG(pattern: false)
+			ScrollView {
+				Form {
+					Section{
+						Button("Language") {
+							showLanguage.toggle()
 						}
-						.pickerStyle(.segmented)
-						.fixedSize()
-						.frame(alignment: .trailing)
-					})
-				}
-				
-				Section {
-					Button("Review the app") {
-						requestReview()
+						.foregroundColor(Color("cardView.title"))
+						.sheet(isPresented: $showLanguage) {
+							LanguageSettingsView()
+								.presentationDetents([.large])
+								.presentationDragIndicator(.visible)
+						}
+					} header: {
+						Text("Generally")
+							.padding(.top, 70)
 					}
-					.foregroundColor(Color("cardView.title"))
-					Button("Restore purchase") {
+					.listRowBackground(Color("cardView"))
+					
+					
+					Section(header: Text("Appereance")) {
+						HStack(content: {
+							Text("Theme")
+								.foregroundColor(Color("cardView.title"))
+							Spacer()
+							Picker("Theme", selection: $themeMode) {
+								ForEach(themeModes, id: \.self) {
+									Text(LocalizedStringKey($0))
+								}
+							}
+							.pickerStyle(.segmented)
+							.fixedSize()
+							.frame(alignment: .trailing)
+						})
 					}
-					.foregroundColor(Color("cardView.title"))
+					.listRowBackground(Color("cardView"))
+					
+					Section {
+						Button("Review the app") {
+							requestReview()
+						}
+						.foregroundColor(Color("cardView.title"))
+						Button("Restore purchase") {
+						}
+						.foregroundColor(Color("cardView.title"))
+					}.listRowBackground(Color("cardView"))
 				}
+				.frame(height: 600)
+				.background(GeometryReader { geometry in
+					Color.clear
+						.preference(key: ScrollOffsetPreferenceKey.self, value: geometry.frame(in: .named("scroll")).origin)
+						.onAppear{
+							defaultv = geometry.frame(in: .named("scroll")).origin
+						}
+				})
+				.onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
+					withAnimation(.linear(duration: 0.1)){
+						show = value.y < defaultv.y - 30.0
+					}
+				}
+				.scrollContentBackground(.hidden)
 			}
-			.scrollContentBackground(.hidden)
-			.background(Color("backgroundColor"))
-			.navigationBarTitle(Text("Settings"))
+			.coordinateSpace(name: "scroll")
+			
+			ToolbarBck(title: "Settings", show: $show)
 		}
+		.navigationBarBackButtonHidden(true)
 	}
 }
 
@@ -79,7 +105,6 @@ struct LanguageSettingsView: View {
 								.resizable()
 								.frame(width: 35, height: 35)
 								.clipShape(Circle())
-
 							VStack {
 								Text(LocalizedStringKey(languagesd[idx]))
 									.fontWeight(.bold)

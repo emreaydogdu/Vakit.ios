@@ -26,6 +26,9 @@ public class LocationProvider: NSObject, CLLocationManagerDelegate, ObservableOb
   public func updateHeading() {
     locationManager.startUpdatingHeading()
   }
+  public func disableHeading() {
+    locationManager.stopUpdatingHeading()
+  }
 
   public func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
     DispatchQueue.main.async {

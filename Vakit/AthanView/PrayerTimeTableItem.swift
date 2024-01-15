@@ -15,7 +15,7 @@ struct PrayerTimeTableItem: View {
                             Button(action: {
                                 isPlayin.toggle()
                             }, label: {
-                                Image(systemName: "clock.circle.fill")
+                                Image(systemName: "clock.fill")
                                     .foregroundColor(Color("color"))
                                     .padding(.leading, 60)
                                     .padding(.bottom, 70)
@@ -23,13 +23,13 @@ struct PrayerTimeTableItem: View {
                         }
                         VStack(alignment: .leading){
                             Text(prayerName)
-                                .font(.system(size: 15))
+								.font(.subheadline)
                                 .fontWeight(.medium)
                                 .frame(maxHeight: 15, alignment: .leading)
                             
                             Text(prayerTime)
-                                .font(.system(size: 15))
-                                .fontWeight(.medium)
+								.font(.headline)
+								.fontWeight(.bold)
                         }
                         .padding(.trailing, 30)
                         .padding(.top, 30)

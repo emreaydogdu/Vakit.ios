@@ -1,52 +1,12 @@
 import SwiftUI
 
-struct Card {
-	let prompt: String
-	let answer: String
-	
-	static let example = Card(prompt: "Who played the 13th Doctor in Doctor Who?", answer: "Jodie Whittaker")
-}
-
-extension Color {
-	init(hex: String) {
-		var cleanHexCode = hex.trimmingCharacters(in: .whitespacesAndNewlines)
-		cleanHexCode = cleanHexCode.replacingOccurrences(of: "#", with: "")
-		var rgb: UInt64 = 0
-		
-		Scanner(string: cleanHexCode).scanHexInt64(&rgb)
-		
-		let redValue = Double((rgb >> 16) & 0xFF) / 255.0
-		let greenValue = Double((rgb >> 8) & 0xFF) / 255.0
-		let blueValue = Double(rgb & 0xFF) / 255.0
-		self.init(red: redValue, green: greenValue, blue: blueValue)
-	}
-}
-
-extension UINavigationController: UIGestureRecognizerDelegate {
-	override open func viewDidLoad() {
-		super.viewDidLoad()
-		interactivePopGestureRecognizer?.delegate = self
-	}
-	
-	public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-		return viewControllers.count > 1
-	}
-}
-
 struct MoreView: View {
-	let card: Card
 	@State private var hideTabBar = true
 	
 	var body: some View {
 		NavigationView {
 			ZStack(alignment: .top){
-				Color("backgroundColor").ignoresSafeArea()
-				Image("pattern")
-					.frame(minWidth: 0, maxWidth: .infinity)
-					.mask(LinearGradient(gradient: Gradient(colors: [.black.opacity(0.15),  .black.opacity(0.1), .black.opacity(0)]), startPoint: .top, endPoint: .bottom))
-					.opacity(0.6)
-					.foregroundColor(Color("patternColor").opacity(0.4))
-					.ignoresSafeArea()
+				PatternBG(pattern: true)
 				ScrollView {
 					ZStack {
 						RoundedRectangle(cornerRadius: 25, style: .continuous)
@@ -154,6 +114,7 @@ struct MoreView: View {
 									 Image("ic_settings")
 										.resizable()
 										.frame(width: 24, height: 23)
+										.foregroundColor(Color("cardView.title"))
 									}
 								}
 							}
@@ -168,12 +129,13 @@ struct MoreView: View {
 								}
 								.padding(.trailing, 40)
 								ZStack {
-									   RoundedRectangle(cornerRadius: 10, style: .continuous)
+									RoundedRectangle(cornerRadius: 10, style: .continuous)
 										.fill(Color("cardView.sub"))
 										.frame(width: 40, height: 40)
 									Image("ic_about")
 									   .resizable()
 									   .frame(width: 24, height: 23)
+									   .foregroundColor(Color("cardView.title"))
 								}
 							}
 						}
@@ -190,5 +152,5 @@ struct MoreView: View {
 }
 
 #Preview {
-	MoreView(card: Card.example)
+	MoreView()
 }

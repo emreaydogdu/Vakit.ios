@@ -1,4 +1,5 @@
 import SwiftUI
+import Adhan
 
 struct AthanView: View {
 	
@@ -8,19 +9,11 @@ struct AthanView: View {
 	
 	@State var show = false
 	@State private var defaultv: CGPoint = .zero
-	@State private var scrollPosition: CGPoint = .zero
 	
 	var body: some View {
-		NavigationView{
-			ZStack (alignment: .top){
-				Color("backgroundColor").ignoresSafeArea()
-				Image("pattern")
-					.frame(alignment: .top)
-					.mask(LinearGradient(gradient: Gradient(colors: [.black.opacity(0.15),  .black.opacity(0.1), .black.opacity(0)]), startPoint: .top, endPoint: .bottom))
-					.opacity(0.9)
-					.foregroundColor(Color("patternColor").opacity(0.4))
-					.ignoresSafeArea()
-				
+		NavigationView {
+			ZStack (alignment: .top) {
+				PatternBG(pattern: true)
 				ScrollView(showsIndicators: false) {
 					if prayerClass.error != nil {
 						VStack{}
@@ -29,17 +22,18 @@ struct AthanView: View {
 							}
 					} else {
 						if let prayers = prayerClass.prayers {
+							//let currentPrayer = prayers.currentPrayer()
 							if let nextPrayer = prayers.nextPrayer(){
-								PrayerTimeHeader(prayerName: "\(nextPrayer)", prayerTime: prayers.time(for: nextPrayer), location: prayerClass.city ?? "__")
+								PrayerTimeHeader(prayerName: "\(nextPrayer)", nextPrayerName: "\(nextPrayer)", prayerTime: prayers.time(for: nextPrayer), location: prayerClass.city ?? "__")
 									.frame(maxWidth: .infinity, alignment: .center)
 									.padding(.top, 100)
 							} else if let prayers2 = prayerClass.prayers2 {
 								if let nextPrayer2 = prayers2.nextPrayer(){
-									PrayerTimeHeader(prayerName: "Imsak", prayerTime: prayers2.time(for: nextPrayer2), location: prayerClass.city ?? "__")
+									PrayerTimeHeader(prayerName: "Yatsi", nextPrayerName: "Imsak", prayerTime: prayers2.time(for: nextPrayer2), location: prayerClass.city ?? "__")
 										.frame(maxWidth: .infinity, alignment: .center)
 										.padding(.top, 100)
 								} else {			
-									PrayerTimeHeader(prayerName: "Imsak", prayerTime: Date(), location: prayerClass.city ?? "__")
+									PrayerTimeHeader(prayerName: "Yatsi", nextPrayerName: "Imsak", prayerTime: Date(), location: prayerClass.city ?? "__")
 										.frame(maxWidth: .infinity, alignment: .center)
 										.padding(.top, 100)
 								}
@@ -58,15 +52,8 @@ struct AthanView: View {
 										}
 								})
 								.onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
-									self.scrollPosition = value
-									if (value.y < defaultv.y - 20.0){
-										withAnimation(.linear(duration: 0.2)){
-											show = true
-										}
-									} else {
-										withAnimation(.easeOut(duration: 0.2)){
-											show = false
-										}
+									withAnimation(.linear(duration: 0.2)){
+										show = value.y < defaultv.y - 20.0
 									}
 								}
 						}
@@ -83,16 +70,7 @@ struct AthanView: View {
 				.onDisappear{
 					prayerClass.stopUpdatingLocation()
 				}
-				TopView()
-					.ignoresSafeArea()
-				if (show){
-					TopView()
-						.background(BlurBG())
-						.ignoresSafeArea()
-						.onAppear{
-							UIImpactFeedbackGenerator(style: .soft).impactOccurred()
-						}
-				}
+				TopView(show: $show)
 			}
 		}
 	}
@@ -104,16 +82,16 @@ struct ScrollOffsetPreferenceKey: PreferenceKey {
 	static func reduce(value: inout CGPoint, nextValue: () -> CGPoint) {}
 }
 
-struct TopView : View {
+private struct TopView : View {
 	
+	@Binding var show: Bool
 	var body: some View {
-		
 		HStack {
 			VStack(alignment: .leading, spacing: 5) {
 				Text(Date().getNavDate())
-					.font(.custom("Fonts/Roboto-Medium", size: 20.0))
+					.font(.custom("Montserrat-Bold", size: 20.0))
 				Text(Date().getHijriDate())
-					.font(.custom("Roboto-Light", size: 18.0))
+					.font(.custom("Montserrat-Medium", size: 18.0))
 			}
 			Spacer(minLength: 0)
 			Button(action: {}) {
@@ -121,24 +99,19 @@ struct TopView : View {
 					.foregroundColor(.white)
 					.padding(.vertical,10)
 					.padding(.horizontal, 25)
-					.background(Color.blue)
+					.background(Color("color"))
 					.clipShape(Capsule())
 			}
 		}
-		// for non safe area phones padding will be 15...
-		.padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top == 0 ? 15 : (UIApplication.shared.windows.first?.safeAreaInsets.top)! + 5)
+		.padding(.top, UIApplication.safeAreaInsets.top == 0 ? 15 : UIApplication.safeAreaInsets.top + 5)
 		.padding(.horizontal)
 		.padding(.bottom)
+		.background(show ? BlurBG() : nil)
+		.onChange(of: show, { oldValue, newValue in
+			UIImpactFeedbackGenerator(style: .soft).impactOccurred()
+		})
+		.ignoresSafeArea()
 	}
-}
-
-struct BlurBG : UIViewRepresentable {
-	func makeUIView(context: Context) -> UIVisualEffectView {
-		let view = UIVisualEffectView(effect: UIBlurEffect(style: .systemChromeMaterial))
-		return view
-	}
-	
-	func updateUIView(_ uiView: UIVisualEffectView, context: Context) {}
 }
 
 #Preview {

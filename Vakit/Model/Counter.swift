@@ -1,8 +1,8 @@
-//
-//  Counter.swift
-//  Vakit
-//
-//  Created by Emre Aydogdu on 16.03.24.
-//
-
 import Foundation
+
+struct Counter {
+	let id 		= UUID()
+	let day		: Int
+	let week 	: Int
+	let month	: Int
+}

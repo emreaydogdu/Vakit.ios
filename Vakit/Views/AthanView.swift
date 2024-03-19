@@ -61,6 +61,9 @@ struct AthanView: View {
 							Text("No prayers")
 						}
 					}
+					DailyDuaView()
+						.padding(.horizontal)
+						.padding(.bottom, 50)
 				}
 				.coordinateSpace(name: "scroll")
 				.fullScreenCover(isPresented: $isPresented, content: { LocationNotFoundView() })

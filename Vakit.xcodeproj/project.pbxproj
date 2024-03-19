@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		86079F312BA7259800364ECF /* Json in Frameworks */ = {isa = PBXBuildFile; productRef = 86079F302BA7259800364ECF /* Json */; };
+		86079F332BA7259800364ECF /* Request in Frameworks */ = {isa = PBXBuildFile; productRef = 86079F322BA7259800364ECF /* Request */; };
+		86079F362BA73BAC00364ECF /* QuranApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86079F352BA73BAC00364ECF /* QuranApi.swift */; };
 		860B321F2B30D50C0037D5A9 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860B321E2B30D50C0037D5A9 /* MapView.swift */; };
 		861A26C82B48C0D2001C6F8C /* Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861A26C72B48C0D2001C6F8C /* Default.swift */; };
 		8639D8892B475D4500055204 /* Dhikr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8639D8882B475D4500055204 /* Dhikr.swift */; };
@@ -29,6 +32,7 @@
 		8675D0DD2B39B49C00355925 /* DhikrView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8675D0DC2B39B49C00355925 /* DhikrView.swift */; };
 		8675D0DF2B39D4FF00355925 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8675D0DE2B39D4FF00355925 /* SettingsView.swift */; };
 		869DE13F2B3B15A60061724F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 869DE13E2B3B15A60061724F /* Localizable.xcstrings */; };
+		869E8EC12BA5E58400A964B9 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869E8EC02BA5E58400A964B9 /* Counter.swift */; };
 		86AC07DF2B2DDB4D0057E19B /* LocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AC07DE2B2DDB4D0057E19B /* LocationProvider.swift */; };
 		86AC07E42B2DEB680057E19B /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 86AC07E32B2DEB680057E19B /* Lottie */; };
 		86AC07E62B2DEC190057E19B /* CompasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AC07E52B2DEC190057E19B /* CompasView.swift */; };
@@ -36,6 +40,7 @@
 		86CE9E322B31FD0D00617A48 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CE9E312B31FD0D00617A48 /* TestView.swift */; };
 		86CE9E342B321C4500617A48 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CE9E332B321C4500617A48 /* LocationManager.swift */; };
 		86CE9E362B32382A00617A48 /* Mosques.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CE9E352B32382A00617A48 /* Mosques.swift */; };
+		86E12A332BA5E0FC00A531EC /* DailyDuaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E12A322BA5E0FC00A531EC /* DailyDuaView.swift */; };
 		D44DF6532A811F900051E5E1 /* AthanApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44DF6522A811F900051E5E1 /* AthanApp.swift */; };
 		D44DF6572A811F910051E5E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D44DF6562A811F910051E5E1 /* Assets.xcassets */; };
 		D44DF6642A811F910051E5E1 /* VakitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44DF6632A811F910051E5E1 /* VakitTests.swift */; };
@@ -69,6 +74,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		86079F352BA73BAC00364ECF /* QuranApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuranApi.swift; sourceTree = "<group>"; };
 		860B321E2B30D50C0037D5A9 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		861A26C72B48C0D2001C6F8C /* Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Default.swift; sourceTree = "<group>"; };
 		8639D8852B45E26900055204 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
@@ -91,12 +97,14 @@
 		8675D0DC2B39B49C00355925 /* DhikrView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DhikrView.swift; sourceTree = "<group>"; };
 		8675D0DE2B39D4FF00355925 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		869DE13E2B3B15A60061724F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		869E8EC02BA5E58400A964B9 /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		86AC07DE2B2DDB4D0057E19B /* LocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProvider.swift; sourceTree = "<group>"; };
 		86AC07E52B2DEC190057E19B /* CompasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompasView.swift; sourceTree = "<group>"; };
 		86B1B4E02B48A4AA003CA145 /* KazaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KazaView.swift; sourceTree = "<group>"; };
 		86CE9E312B31FD0D00617A48 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		86CE9E332B321C4500617A48 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		86CE9E352B32382A00617A48 /* Mosques.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mosques.swift; sourceTree = "<group>"; };
+		86E12A322BA5E0FC00A531EC /* DailyDuaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDuaView.swift; sourceTree = "<group>"; };
 		D44DF64F2A811F900051E5E1 /* Vakit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vakit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D44DF6522A811F900051E5E1 /* AthanApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthanApp.swift; sourceTree = "<group>"; };
 		D44DF6562A811F910051E5E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -119,8 +127,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86079F332BA7259800364ECF /* Request in Frameworks */,
 				D44DF67E2A81201A0051E5E1 /* Adhan in Frameworks */,
 				86AC07E42B2DEB680057E19B /* Lottie in Frameworks */,
+				86079F312BA7259800364ECF /* Json in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +151,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		86079F342BA73B9700364ECF /* API */ = {
+			isa = PBXGroup;
+			children = (
+				86079F352BA73BAC00364ECF /* QuranApi.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		8639D8842B45E26100055204 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,9 +221,9 @@
 			isa = PBXGroup;
 			children = (
 				D44DF6962A812BF50051E5E1 /* Views */,
-				D44DF6892A8121920051E5E1 /* AthanView */,
 				D44DF6822A8120B00051E5E1 /* Components */,
 				D44DF67F2A8120520051E5E1 /* Model */,
+				86079F342BA73B9700364ECF /* API */,
 				86414EB52B40B9A300225946 /* Utils */,
 				869DE13D2B3B155F0061724F /* Resources */,
 				86AC07DE2B2DDB4D0057E19B /* LocationProvider.swift */,
@@ -237,6 +255,7 @@
 				D44DF69D2A8146A40051E5E1 /* PrayerTimesClass.swift */,
 				8639D8882B475D4500055204 /* Dhikr.swift */,
 				863AC0AE2B4A0FAB0021BD10 /* HolyDate.swift */,
+				869E8EC02BA5E58400A964B9 /* Counter.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -249,20 +268,22 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		D44DF6892A8121920051E5E1 /* AthanView */ = {
+		D44DF6892A8121920051E5E1 /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
 				D44DF68C2A8121AA0051E5E1 /* PrayerTimeHeader.swift */,
 				D44DF6902A8125FC0051E5E1 /* PrayerTimeTableItem.swift */,
 				D44DF6922A8127B50051E5E1 /* AthanTimeTable.swift */,
 				D44DF6942A8129440051E5E1 /* LocationNotFoundView.swift */,
+				86E12A322BA5E0FC00A531EC /* DailyDuaView.swift */,
 			);
-			path = AthanView;
+			path = HomeView;
 			sourceTree = "<group>";
 		};
 		D44DF6962A812BF50051E5E1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D44DF6892A8121920051E5E1 /* HomeView */,
 				D44DF6522A811F900051E5E1 /* AthanApp.swift */,
 				D44DF6972A812C050051E5E1 /* AthanView.swift */,
 				86AC07E52B2DEC190057E19B /* CompasView.swift */,
@@ -297,6 +318,8 @@
 			packageProductDependencies = (
 				D44DF67D2A81201A0051E5E1 /* Adhan */,
 				86AC07E32B2DEB680057E19B /* Lottie */,
+				86079F302BA7259800364ECF /* Json */,
+				86079F322BA7259800364ECF /* Request */,
 			);
 			productName = Athan;
 			productReference = D44DF64F2A811F900051E5E1 /* Vakit.app */;
@@ -374,6 +397,7 @@
 			packageReferences = (
 				D44DF67C2A81201A0051E5E1 /* XCRemoteSwiftPackageReference "adhan-swift" */,
 				86AC07E22B2DEB680057E19B /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				86079F2F2BA7255500364ECF /* XCRemoteSwiftPackageReference "swift-request" */,
 			);
 			productRefGroup = D44DF6502A811F900051E5E1 /* Products */;
 			projectDirPath = "";
@@ -430,10 +454,13 @@
 			files = (
 				86CE9E322B31FD0D00617A48 /* TestView.swift in Sources */,
 				D44DF69E2A8146A40051E5E1 /* PrayerTimesClass.swift in Sources */,
+				869E8EC12BA5E58400A964B9 /* Counter.swift in Sources */,
 				86CE9E342B321C4500617A48 /* LocationManager.swift in Sources */,
 				867401002B548B3100346972 /* Toolbar.swift in Sources */,
 				8675D0DF2B39D4FF00355925 /* SettingsView.swift in Sources */,
 				860B321F2B30D50C0037D5A9 /* MapView.swift in Sources */,
+				86079F362BA73BAC00364ECF /* QuranApi.swift in Sources */,
+				86E12A332BA5E0FC00A531EC /* DailyDuaView.swift in Sources */,
 				D44DF6932A8127B50051E5E1 /* AthanTimeTable.swift in Sources */,
 				86CE9E362B32382A00617A48 /* Mosques.swift in Sources */,
 				8675D0DB2B388E6900355925 /* MoreView.swift in Sources */,
@@ -790,6 +817,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		86079F2F2BA7255500364ECF /* XCRemoteSwiftPackageReference "swift-request" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/carson-katri/swift-request";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.0;
+			};
+		};
 		86AC07E22B2DEB680057E19B /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios";
@@ -809,6 +844,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		86079F302BA7259800364ECF /* Json */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 86079F2F2BA7255500364ECF /* XCRemoteSwiftPackageReference "swift-request" */;
+			productName = Json;
+		};
+		86079F322BA7259800364ECF /* Request */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 86079F2F2BA7255500364ECF /* XCRemoteSwiftPackageReference "swift-request" */;
+			productName = Request;
+		};
 		86AC07E32B2DEB680057E19B /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 86AC07E22B2DEB680057E19B /* XCRemoteSwiftPackageReference "lottie-ios" */;

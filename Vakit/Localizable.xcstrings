@@ -95,6 +95,23 @@
     "Current" : {
 
     },
+    "Daily Ayah" : {
+      "comment" : "Describe what is being localized here",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Täglicher Vers"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Günün Ayeti"
+          }
+        }
+      }
+    },
     "Daily dhikr routine after every Salah" : {
       "localizations" : {
         "de" : {

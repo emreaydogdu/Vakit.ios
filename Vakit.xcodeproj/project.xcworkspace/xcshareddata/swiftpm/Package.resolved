@@ -17,6 +17,15 @@
         "revision" : "3f1202f254ad5d71f6c5b518ed2d6b9e2abe6969",
         "version" : "4.3.4"
       }
+    },
+    {
+      "identity" : "swift-request",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/carson-katri/swift-request",
+      "state" : {
+        "revision" : "6266d884d7ded618cceb0e0920431be4d6f4c4aa",
+        "version" : "1.4.0"
+      }
     }
   ],
   "version" : 2

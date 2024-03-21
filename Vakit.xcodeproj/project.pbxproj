@@ -28,6 +28,7 @@
 		867400FD2B543F8D00346972 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 867400F62B543F8D00346972 /* Montserrat-Bold.ttf */; };
 		867400FE2B543F8D00346972 /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 867400F72B543F8D00346972 /* Montserrat-ExtraBold.ttf */; };
 		867401002B548B3100346972 /* Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867400FF2B548B3100346972 /* Toolbar.swift */; };
+		867562762BAA246600D262DE /* NextHolyDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867562752BAA246600D262DE /* NextHolyDayView.swift */; };
 		8675D0DB2B388E6900355925 /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8675D0DA2B388E6900355925 /* MoreView.swift */; };
 		8675D0DD2B39B49C00355925 /* DhikrView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8675D0DC2B39B49C00355925 /* DhikrView.swift */; };
 		8675D0DF2B39D4FF00355925 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8675D0DE2B39D4FF00355925 /* SettingsView.swift */; };
@@ -93,6 +94,7 @@
 		867400F62B543F8D00346972 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		867400F72B543F8D00346972 /* Montserrat-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.ttf"; sourceTree = "<group>"; };
 		867400FF2B548B3100346972 /* Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbar.swift; sourceTree = "<group>"; };
+		867562752BAA246600D262DE /* NextHolyDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextHolyDayView.swift; sourceTree = "<group>"; };
 		8675D0DA2B388E6900355925 /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		8675D0DC2B39B49C00355925 /* DhikrView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DhikrView.swift; sourceTree = "<group>"; };
 		8675D0DE2B39D4FF00355925 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 				D44DF6922A8127B50051E5E1 /* AthanTimeTable.swift */,
 				D44DF6942A8129440051E5E1 /* LocationNotFoundView.swift */,
 				86E12A322BA5E0FC00A531EC /* DailyDuaView.swift */,
+				867562752BAA246600D262DE /* NextHolyDayView.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -369,7 +372,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					D44DF64E2A811F900051E5E1 = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -392,6 +395,7 @@
 				en,
 				de,
 				tr,
+				Base,
 			);
 			mainGroup = D44DF6462A811F900051E5E1;
 			packageReferences = (
@@ -464,6 +468,7 @@
 				D44DF6932A8127B50051E5E1 /* AthanTimeTable.swift in Sources */,
 				86CE9E362B32382A00617A48 /* Mosques.swift in Sources */,
 				8675D0DB2B388E6900355925 /* MoreView.swift in Sources */,
+				867562762BAA246600D262DE /* NextHolyDayView.swift in Sources */,
 				86414EB72B40B9B600225946 /* Extentions.swift in Sources */,
 				D44DF6912A8125FC0051E5E1 /* PrayerTimeTableItem.swift in Sources */,
 				D44DF6532A811F900051E5E1 /* AthanApp.swift in Sources */,
@@ -519,6 +524,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -582,6 +589,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -711,7 +720,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = eyh.com.VakitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -730,7 +739,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = eyh.com.VakitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

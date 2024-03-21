@@ -53,16 +53,16 @@ struct HolyDateView: View {
 				}
 				.background(GeometryReader { geometry in
 					Color.clear
-					 .preference(key: ScrollOffsetPreferenceKey.self, value: geometry.frame(in: .named("scroll")).origin)
-					 .onAppear{
-						 defaultv = geometry.frame(in: .named("scroll")).origin
-					 }
-				 })
-				 .onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
-					 withAnimation(.linear(duration: 0.1)){
-						 show = value.y < defaultv.y - 10.0
-					 }
-				 }
+						.preference(key: ScrollOffsetPreferenceKey.self, value: geometry.frame(in: .named("scroll")).origin)
+						.onAppear{
+							defaultv = geometry.frame(in: .named("scroll")).origin
+						}
+				})
+				.onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
+					withAnimation(.linear(duration: 0.1)){
+						show = value.y < defaultv.y - 10.0
+					}
+				}
 			}
 			.coordinateSpace(name: "scroll")
 			.contentMargins(.top, 80, for: .scrollContent)

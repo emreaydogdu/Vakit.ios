@@ -1,6 +1,6 @@
 import Foundation
 
-struct HolyDate {
+struct HolyDate: Identifiable{
 	let id 		  = UUID()
 	let name 	  : String
 	let desc 	  : String

@@ -2,16 +2,96 @@
   "sourceLanguage" : "en",
   "strings" : {
     "" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
     },
     "%@" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
+    },
+    "%@ Days left" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ Tage übrig"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ gün kaldı"
+          }
+        }
+      }
     },
     "%@x" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@x"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
     },
     "%lld" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
     },
     "°" : {
       "localizations" : {
@@ -35,14 +115,14 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Über"
+            "state" : "translated",
+            "value" : "Info"
           }
         },
         "tr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Üzeri"
+            "state" : "translated",
+            "value" : "Hakkında"
           }
         }
       }
@@ -51,7 +131,14 @@
 
     },
     "Allow Location Access" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konum Erişimine İzin Verin"
+          }
+        }
+      }
     },
     "Appereance" : {
       "localizations" : {
@@ -87,7 +174,14 @@
       }
     },
     "Correct" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Doğru"
+          }
+        }
+      }
     },
     "Create, enable and use across your team" : {
 
@@ -194,7 +288,14 @@
       }
     },
     "Enable Location Access from Settings" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayarlar'dan Konum Erişimini Etkinleştirin"
+          }
+        }
+      }
     },
     "Generally" : {
       "localizations" : {
@@ -213,7 +314,14 @@
       }
     },
     "Holy Days" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dini Günler"
+          }
+        }
+      }
     },
     "holy1" : {
       "extractionState" : "manual",
@@ -516,6 +624,17 @@
         }
       }
     },
+    "holyDesc6" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Müslümanlar için çok önemli bir gecedir çünkü bu gece duaların kabul olduğuna, günahların affedildiğine inanılır. Kur'an-ı Kerim'in bu gece indirilmeye başladığına inanılır ve bu sebeple ibadetlerin ve duaların yoğunlaştığı bir zaman dilimidir. Müslümanlar, bu geceyi ibadetle geçirir, Kur'an okur, dua eder ve günahlardan arınma fırsatı bulduklarına inanırlar."
+          }
+        }
+      }
+    },
     "KazaViewFooter" : {
 
     },
@@ -729,7 +848,14 @@
       }
     },
     "Location" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konum"
+          }
+        }
+      }
     },
     "Missed prayers" : {
       "localizations" : {
@@ -748,7 +874,30 @@
       }
     },
     "Next" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sonraki"
+          }
+        }
+      }
+    },
+    "Next Holy Date" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nächster religiöser Tag"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En Yakın Dini Gün"
+          }
+        }
+      }
     },
     "No prayers" : {
 
@@ -781,6 +930,12 @@
         }
       }
     },
+    "Show less" : {
+
+    },
+    "Show more" : {
+
+    },
     "Theme" : {
       "localizations" : {
         "de" : {
@@ -798,7 +953,14 @@
       }
     },
     "To access the most accurate prayer times instantly through the Salah app, you need to allow location access." : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uygulama üzerinden en doğru namaz vakitlerine ulaşabilmek için konum erişimine izin vermeniz gerekmektedir."
+          }
+        }
+      }
     },
     "to your" : {
 
@@ -939,7 +1101,14 @@
       }
     },
     "We only need your location information while you are using the app. This enables us to provide prayer times specific to your location and is not shared with any other parties." : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yalnızca uygulamayı kullanırken konum bilgilerinize ihtiyacımız var. Bu, bulunduğunuz yere özel namaz vakitleri sunmamızı sağlar ve başka hiçbir tarafla paylaşılmaz."
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

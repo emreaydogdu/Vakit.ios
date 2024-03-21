@@ -61,6 +61,8 @@ struct AthanView: View {
 							Text("No prayers")
 						}
 					}
+					NextHolyDayView()
+						.padding(.horizontal)
 					DailyDuaView()
 						.padding(.horizontal)
 						.padding(.bottom, 50)

@@ -41,6 +41,8 @@
 		86B31B3B2BACCB6D00449FD0 /* LocalizableNames.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 86B31B3A2BACCB6D00449FD0 /* LocalizableNames.xcstrings */; };
 		86B31B3F2BACCD5400449FD0 /* DailyNamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B31B3E2BACCD5400449FD0 /* DailyNamesView.swift */; };
 		86B31B412BACDC9F00449FD0 /* NamesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B31B402BACDC9F00449FD0 /* NamesListView.swift */; };
+		86B31B452BAF1D1900449FD0 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 86B31B442BAF1D1900449FD0 /* GoogleMobileAds */; };
+		86B31B472BAF3C7E00449FD0 /* AdsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B31B462BAF3C7E00449FD0 /* AdsApi.swift */; };
 		86CE9E322B31FD0D00617A48 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CE9E312B31FD0D00617A48 /* TestView.swift */; };
 		86CE9E342B321C4500617A48 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CE9E332B321C4500617A48 /* LocationManager.swift */; };
 		86CE9E362B32382A00617A48 /* Mosques.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CE9E352B32382A00617A48 /* Mosques.swift */; };
@@ -109,6 +111,7 @@
 		86B31B3A2BACCB6D00449FD0 /* LocalizableNames.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = LocalizableNames.xcstrings; sourceTree = "<group>"; };
 		86B31B3E2BACCD5400449FD0 /* DailyNamesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyNamesView.swift; sourceTree = "<group>"; };
 		86B31B402BACDC9F00449FD0 /* NamesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamesListView.swift; sourceTree = "<group>"; };
+		86B31B462BAF3C7E00449FD0 /* AdsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsApi.swift; sourceTree = "<group>"; };
 		86CE9E312B31FD0D00617A48 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		86CE9E332B321C4500617A48 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		86CE9E352B32382A00617A48 /* Mosques.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mosques.swift; sourceTree = "<group>"; };
@@ -137,6 +140,7 @@
 			files = (
 				86079F332BA7259800364ECF /* Request in Frameworks */,
 				D44DF67E2A81201A0051E5E1 /* Adhan in Frameworks */,
+				86B31B452BAF1D1900449FD0 /* GoogleMobileAds in Frameworks */,
 				86AC07E42B2DEB680057E19B /* Lottie in Frameworks */,
 				86079F312BA7259800364ECF /* Json in Frameworks */,
 			);
@@ -163,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				86079F352BA73BAC00364ECF /* QuranApi.swift */,
+				86B31B462BAF3C7E00449FD0 /* AdsApi.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -206,6 +211,13 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		86B31B432BAF1D1900449FD0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D44DF6462A811F900051E5E1 = {
 			isa = PBXGroup;
 			children = (
@@ -213,6 +225,7 @@
 				D44DF6622A811F910051E5E1 /* VakitTests */,
 				D44DF66C2A811F910051E5E1 /* VakitUITests */,
 				D44DF6502A811F900051E5E1 /* Products */,
+				86B31B432BAF1D1900449FD0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -332,6 +345,7 @@
 				86AC07E32B2DEB680057E19B /* Lottie */,
 				86079F302BA7259800364ECF /* Json */,
 				86079F322BA7259800364ECF /* Request */,
+				86B31B442BAF1D1900449FD0 /* GoogleMobileAds */,
 			);
 			productName = Athan;
 			productReference = D44DF64F2A811F900051E5E1 /* Vakit.app */;
@@ -411,6 +425,7 @@
 				D44DF67C2A81201A0051E5E1 /* XCRemoteSwiftPackageReference "adhan-swift" */,
 				86AC07E22B2DEB680057E19B /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				86079F2F2BA7255500364ECF /* XCRemoteSwiftPackageReference "swift-request" */,
+				86B31B422BAF1B3E00449FD0 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 			);
 			productRefGroup = D44DF6502A811F900051E5E1 /* Products */;
 			projectDirPath = "";
@@ -487,6 +502,7 @@
 				D44DF68D2A8121AA0051E5E1 /* PrayerTimeHeader.swift in Sources */,
 				D44DF6952A8129440051E5E1 /* LocationNotFoundView.swift in Sources */,
 				863AC0AB2B49FDD90021BD10 /* HolyDateView.swift in Sources */,
+				86B31B472BAF3C7E00449FD0 /* AdsApi.swift in Sources */,
 				D44DF6982A812C050051E5E1 /* AthanView.swift in Sources */,
 				86AC07DF2B2DDB4D0057E19B /* LocationProvider.swift in Sources */,
 				861A26C82B48C0D2001C6F8C /* Default.swift in Sources */,
@@ -854,6 +870,14 @@
 				minimumVersion = 4.3.4;
 			};
 		};
+		86B31B422BAF1B3E00449FD0 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.2.0;
+			};
+		};
 		D44DF67C2A81201A0051E5E1 /* XCRemoteSwiftPackageReference "adhan-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/batoulapps/adhan-swift";
@@ -879,6 +903,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 86AC07E22B2DEB680057E19B /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		86B31B442BAF1D1900449FD0 /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 86B31B422BAF1B3E00449FD0 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
 		};
 		D44DF67D2A81201A0051E5E1 /* Adhan */ = {
 			isa = XCSwiftPackageProductDependency;

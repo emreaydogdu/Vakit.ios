@@ -39,7 +39,7 @@ struct NextHolyDayView: View {
 							.foregroundColor(Color("cardView.title"))
 					}
 				}
-				VStack(spacing: 10){
+				VStack(){
 					VStack {
 						Text(holyDayTitle)
 							.font(.body)
@@ -53,7 +53,7 @@ struct NextHolyDayView: View {
 							.frame(maxWidth: .infinity, alignment: .leading)
 							.padding(.bottom)
 						Text(leftDaysT)
-							.font(.title2)
+							.font(.title3)
 							.foregroundColor(Color("textColor"))
 							.frame(maxWidth: .infinity, alignment: .trailing)
 							.padding(.bottom)

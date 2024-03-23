@@ -127,12 +127,12 @@ struct CompasView: View {
 				}
 				.background((mode == .ahead ? Color.green : Color.clear).edgesIgnoringSafeArea(.all))
 				.onReceive(self.location.heading) { heading in
-					let diff = (heading - self.angle + 180).truncatingRemainder(dividingBy: 360) - 180 - round(qiblaDirection)
+					let diff = (heading - self.angle + CGFloat(180)).truncatingRemainder(dividingBy: 360) - CGFloat(180) - round(qiblaDirection)
 					if diff < -300 {
 						//diff += 360
 					}
 					withAnimation {
-						self.angle += diff
+						self.angle += CGFloat(diff)
 					}
 					withAnimation(.easeInOut(duration: 0.4)) {
 						opacity = mode == .ahead ? 0.0 : 1.0

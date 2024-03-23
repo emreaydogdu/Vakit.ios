@@ -32,10 +32,10 @@ struct MoreView: View {
 									}.padding(.trailing, 40)
 									ZStack {
 										RoundedRectangle(cornerRadius: 15, style: .continuous)
-										 .fill(Color(hex: "#C9B3F4"))
+											.fill(Color("cardView.sub"))
 										Image("ic_tasbih")
 											.resizable()
-											.frame(width: 28, height: 28)
+											.frame(width: 38, height: 38)
 									}.frame(width: 70, height: 70)
 								}
 							}
@@ -59,10 +59,10 @@ struct MoreView: View {
 									}.padding(.trailing, 40)
 									ZStack {
 										RoundedRectangle(cornerRadius: 15, style: .continuous)
-										 .fill(Color(hex: "#B0DDF0"))
+											.fill(Color("cardView.sub"))
 										Image("ic_kaza")
 											.resizable()
-											.frame(width: 28, height: 28)
+											.frame(width: 38, height: 38)
 									}.frame(width: 70, height: 70)
 								}
 							}
@@ -86,11 +86,39 @@ struct MoreView: View {
 									}.padding(.trailing, 40)
 									ZStack {
 										RoundedRectangle(cornerRadius: 15, style: .continuous)
-											.fill(Color(hex: "#C6E7B8"))
+											.fill(Color("cardView.sub"))
 											.frame(width: 70, height: 70)
 										Image("ic_calendar")
 										   .resizable()
-										   .frame(width: 28, height: 28)
+										   .frame(width: 38, height: 38)
+								   }.frame(width: 70, height: 70)
+								}
+							}
+							Divider().frame(height: 2).overlay(Color("cardView.sub"))
+							NavigationLink(destination: NamesListView()) {
+								HStack{
+									VStack{
+										Text("Al-Asma-ul-Husna", tableName: "LocalizableNames")
+											.fontWeight(.bold)
+											.frame(maxWidth: .infinity, alignment: .leading)
+											.font(.headline)
+											.foregroundColor(Color("cardView.title"))
+											.multilineTextAlignment(.leading)
+										Text("Create, enable and use across your team")
+											.frame(maxWidth: .infinity, alignment: .leading)
+											.font(.subheadline)
+											.fontWeight(.semibold)
+											.foregroundColor(Color("cardView.subtitle"))
+											.multilineTextAlignment(.leading)
+											.fixedSize(horizontal: false, vertical: true)
+									}.padding(.trailing, 40)
+									ZStack {
+										RoundedRectangle(cornerRadius: 15, style: .continuous)
+											.fill(Color("cardView.sub"))
+											.frame(width: 70, height: 70)
+										Image("ic_99names")
+										   .resizable()
+										   .frame(width: 38, height: 38)
 								   }.frame(width: 70, height: 70)
 								}
 							}

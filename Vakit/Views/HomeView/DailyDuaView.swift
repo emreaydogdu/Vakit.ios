@@ -8,7 +8,7 @@ struct DailyDuaView: View {
 	private var dailyCount = 1
 	let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 	@State var count = 0
-	let title = NSLocalizedString("Daily Ayah", comment: "Describe what is being localized here")
+	let title = LocalizedStringKey("Daily Ayah").localized!
 	@State var dua = "The redacted view modifier is enabled on the first SwiftUI view, compared to an unredacted view at the bottom"
 	@State var duaArab = "The redacted view modifier is enabled on the first SwiftUI view, compared to an unredacted view at the bottom"
 	@State var chapter = "Al-Fatihah"
@@ -29,6 +29,7 @@ struct DailyDuaView: View {
 						Text(title)
 							.font(.headline)
 							.fontWeight(.bold)
+							.foregroundColor(Color("textColor"))
 							.frame(maxWidth: .infinity, alignment: .leading)
 							.task {
 								dua = "The redacted view modifier is enabled on the first SwiftUI view, compared to an unredacted view at the bottom"
@@ -45,6 +46,7 @@ struct DailyDuaView: View {
 				}
 				Text(dua.replacingOccurrences(of: "&quot;", with: "\""))
 					.font(.body)
+					.foregroundColor(Color("subTextColor"))
 					.frame(maxWidth: .infinity, alignment: .leading)
 					.padding(.top, 8)
 					.padding(.bottom)
@@ -53,6 +55,7 @@ struct DailyDuaView: View {
 					.id(dua)
 				Text(duaArab.replacingOccurrences(of: "&quot;", with: "\""))
 					.font(.body)
+					.foregroundColor(Color("textColor"))
 					.frame(maxWidth: .infinity, alignment: .leading)
 					.padding(.bottom)
 					.transition(.opacity)
@@ -61,6 +64,7 @@ struct DailyDuaView: View {
 					.id(duaArab)
 				Text(chapter)
 					.font(.headline)
+					.foregroundColor(Color("textColor"))
 					.fontWeight(.bold)
 					.frame(maxWidth: .infinity, alignment: .leading)
 					.onReceive(timer, perform: { time in

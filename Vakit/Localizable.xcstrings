@@ -313,6 +313,9 @@
         }
       }
     },
+    "Hello" : {
+
+    },
     "Holy Days" : {
       "localizations" : {
         "tr" : {
@@ -685,9 +688,6 @@
           }
         }
       }
-    },
-    "Latitude: %@" : {
-
     },
     "lc_de" : {
       "extractionState" : "manual",

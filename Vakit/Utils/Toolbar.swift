@@ -8,7 +8,7 @@ struct ToolbarStd : View {
 	@Binding var show: Bool
 	
 	var body: some View {
-		Text(title)
+		Text(LocalizedStringKey(title))
 			.font(.title2)
 			.fontWeight(.bold)
 			.frame(maxWidth: .infinity, alignment: .center)
@@ -39,7 +39,7 @@ struct ToolbarBck : View {
 			}
 			.buttonStyle(.bordered)
 			.clipShape(Circle())
-			Text(title)
+			Text(LocalizedStringKey(title))
 				.font(.title2)
 				.fontWeight(.bold)
 				.frame(maxWidth: .infinity, alignment: .center)

@@ -109,6 +109,9 @@
         }
       }
     },
+    "99" : {
+
+    },
     "About" : {
       "comment" : ".",
       "extractionState" : "manual",
@@ -183,6 +186,12 @@
         }
       }
     },
+    "Create" : {
+
+    },
+    "Create a new Dhikr" : {
+
+    },
     "Create, enable and use across your team" : {
 
     },
@@ -256,6 +265,7 @@
       }
     },
     "Dhikr routine after every salah" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -903,6 +913,9 @@
     "No prayers" : {
 
     },
+    "Original" : {
+
+    },
     "Press" : {
 
     },
@@ -913,6 +926,9 @@
 
     },
     "right" : {
+
+    },
+    "Select Dhikr" : {
 
     },
     "Settings" : {
@@ -964,6 +980,9 @@
       }
     },
     "to your" : {
+
+    },
+    "Translation" : {
 
     },
     "Try" : {

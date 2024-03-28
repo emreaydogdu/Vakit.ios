@@ -41,6 +41,7 @@
 		86B31B3B2BACCB6D00449FD0 /* LocalizableNames.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 86B31B3A2BACCB6D00449FD0 /* LocalizableNames.xcstrings */; };
 		86B31B3F2BACCD5400449FD0 /* DailyNamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B31B3E2BACCD5400449FD0 /* DailyNamesView.swift */; };
 		86B31B412BACDC9F00449FD0 /* NamesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B31B402BACDC9F00449FD0 /* NamesListView.swift */; };
+		86B4917E2BB4DADB00C81873 /* SwipeActions in Frameworks */ = {isa = PBXBuildFile; productRef = 86B4917D2BB4DADB00C81873 /* SwipeActions */; };
 		86CE9E322B31FD0D00617A48 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CE9E312B31FD0D00617A48 /* TestView.swift */; };
 		86CE9E342B321C4500617A48 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CE9E332B321C4500617A48 /* LocationManager.swift */; };
 		86CE9E362B32382A00617A48 /* Mosques.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CE9E352B32382A00617A48 /* Mosques.swift */; };
@@ -136,6 +137,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				86079F332BA7259800364ECF /* Request in Frameworks */,
+				86B4917E2BB4DADB00C81873 /* SwipeActions in Frameworks */,
 				D44DF67E2A81201A0051E5E1 /* Adhan in Frameworks */,
 				86AC07E42B2DEB680057E19B /* Lottie in Frameworks */,
 				86079F312BA7259800364ECF /* Json in Frameworks */,
@@ -206,6 +208,13 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		86B4917C2BB4DADB00C81873 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D44DF6462A811F900051E5E1 = {
 			isa = PBXGroup;
 			children = (
@@ -213,6 +222,7 @@
 				D44DF6622A811F910051E5E1 /* VakitTests */,
 				D44DF66C2A811F910051E5E1 /* VakitUITests */,
 				D44DF6502A811F900051E5E1 /* Products */,
+				86B4917C2BB4DADB00C81873 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -332,6 +342,7 @@
 				86AC07E32B2DEB680057E19B /* Lottie */,
 				86079F302BA7259800364ECF /* Json */,
 				86079F322BA7259800364ECF /* Request */,
+				86B4917D2BB4DADB00C81873 /* SwipeActions */,
 			);
 			productName = Athan;
 			productReference = D44DF64F2A811F900051E5E1 /* Vakit.app */;
@@ -411,6 +422,7 @@
 				D44DF67C2A81201A0051E5E1 /* XCRemoteSwiftPackageReference "adhan-swift" */,
 				86AC07E22B2DEB680057E19B /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				86079F2F2BA7255500364ECF /* XCRemoteSwiftPackageReference "swift-request" */,
+				86B4917B2BB4DA8B00C81873 /* XCRemoteSwiftPackageReference "SwipeActions" */,
 			);
 			productRefGroup = D44DF6502A811F900051E5E1 /* Products */;
 			projectDirPath = "";
@@ -854,6 +866,14 @@
 				minimumVersion = 4.3.4;
 			};
 		};
+		86B4917B2BB4DA8B00C81873 /* XCRemoteSwiftPackageReference "SwipeActions" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aheze/SwipeActions";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
 		D44DF67C2A81201A0051E5E1 /* XCRemoteSwiftPackageReference "adhan-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/batoulapps/adhan-swift";
@@ -879,6 +899,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 86AC07E22B2DEB680057E19B /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		86B4917D2BB4DADB00C81873 /* SwipeActions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 86B4917B2BB4DA8B00C81873 /* XCRemoteSwiftPackageReference "SwipeActions" */;
+			productName = SwipeActions;
 		};
 		D44DF67D2A81201A0051E5E1 /* Adhan */ = {
 			isa = XCSwiftPackageProductDependency;

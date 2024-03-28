@@ -1,5 +1,6 @@
 import SwiftUI
 import SwiftData
+import SwipeActions
 
 struct DhikrView: View {
 	
@@ -14,79 +15,101 @@ struct DhikrView: View {
 		ZStack(alignment: .top){
 			PatternBG(pattern: false)
 			ScrollView {
-				ForEach(dhikrs + Dhikr.preDefined, id: \.self) { dhikr in
-					VStack {
-						ZStack(alignment: .topLeading) {
-							RoundedRectangle(cornerRadius: 20, style: .continuous)
-								.fill(Color("cardView.sub"))
-								.shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
-							RoundedRectangle(cornerRadius: 16, style: .continuous)
-								.fill(Color("cardView"))
-								.shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
-								.padding(5)
-							HStack{
-								Spacer()
-								VStack{
-									Image("ic_share")
-										.resizable()
-										.imageScale(.small)
-										.frame(width: 28, height: 28)
-										.foregroundColor(Color("cardView.title"))
-										.padding()
-									Spacer()
+				SwipeViewGroup {
+					ForEach(Array((dhikrs.reversed() + Dhikr.preDefined).enumerated()), id: \.element) { (i, dhikr) in
+						SwipeView {
+							VStack {
+								ZStack(alignment: .topLeading) {
+									RoundedRectangle(cornerRadius: 20, style: .continuous)
+										.fill(Color("cardView.sub"))
+										.shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
+									RoundedRectangle(cornerRadius: 16, style: .continuous)
+										.fill(Color("cardView"))
+										.shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
+										.padding(5)
+									HStack{
+										Spacer()
+										VStack{
+											Image("ic_share")
+												.resizable()
+												.imageScale(.small)
+												.frame(width: 28, height: 28)
+												.foregroundColor(Color("cardView.title"))
+												.padding()
+											Spacer()
+										}
+									}
+									VStack{
+										Text(dhikr.nameAr)
+											.font(.title)
+											.padding(.top, 12)
+										Text(dhikr.name)
+											.font(.headline)
+											.fontWeight(.bold)
+											.foregroundColor(Color("textColor"))
+											.frame(maxWidth: .infinity, alignment: .leading)
+											.padding(.top, 1)
+										Text("\(dhikr.count)")
+											.font(.body)
+											.foregroundColor(Color("subTextColor"))
+											.frame(maxWidth: .infinity, alignment: .leading)
+									}
+									.padding(22)
+								}
+								.onTapGesture {
+									selectedDhikr = dhikr
+								}
+								.sheet(item: $selectedDhikr) { dhikr in
+									DhikrCountView(dhikr: dhikr)
 								}
 							}
-							VStack{
-								Text(dhikr.nameAr)
-									.font(.title)
-									.padding(.top, 12)
-								Text(dhikr.name)
-									.font(.headline)
-									.fontWeight(.bold)
-									.foregroundColor(Color("textColor"))
-									.frame(maxWidth: .infinity, alignment: .leading)
-									.padding(.top, 1)
-								Text("\(dhikr.count)")
-									.font(.body)
-									.foregroundColor(Color("subTextColor"))
-									.frame(maxWidth: .infinity, alignment: .leading)
+							//.padding(.horizontal)
+							.padding(.bottom, 6)
+						} trailingActions: { _ in
+							ZStack{
+								
+								RoundedRectangle(cornerRadius: 16, style: .continuous)
+									.fill(Color.red)
+									.padding(10)
+								
+								Image("ic_share")
+									.resizable()
+									.imageScale(.small)
+									.frame(width: 28, height: 28)
+									.foregroundColor(Color("cardView.title"))
+									.padding()
 							}
-							.padding(22)
+							.onTapGesture{
+								withAnimation(.spring()){
+									context.delete(dhikr)
+								}
+							}
 						}
-						.onTapGesture {
-							selectedDhikr = dhikr
-						}
-						.sheet(item: $selectedDhikr) { dhikr in
-							DhikrCountView(dhikr: dhikr)
-						}
+						.swipeMinimumDistance(10)
+						.swipeReadyToExpandPadding(50)
+						.swipeActionCornerRadius(16)
+						.swipeActionsMaskCornerRadius(16)
+						.padding(.horizontal)
 					}
-					.padding(.horizontal)
-					.padding(.bottom, 6)
-				}
-				.background(GeometryReader { geometry in
-					Color.clear
-						.preference(key: ScrollOffsetPreferenceKey.self, value: geometry.frame(in: .named("scroll")).origin)
-						.onAppear{
-							defaultv = geometry.frame(in: .named("scroll")).origin
+					.transition(AnyTransition.scale)
+					.background(GeometryReader { geometry in
+						Color.clear
+							.preference(key: ScrollOffsetPreferenceKey.self, value: geometry.frame(in: .named("scroll")).origin)
+							.onAppear{
+								defaultv = geometry.frame(in: .named("scroll")).origin
+							}
+					})
+					.onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
+						withAnimation(.linear(duration: 0.1)){
+							show = value.y < defaultv.y - 30.0
 						}
-				})
-				.onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
-					withAnimation(.linear(duration: 0.1)){
-						show = value.y < defaultv.y - 30.0
 					}
 				}
 			}
+			.animation(.easeInOut, value: dhikrs )
 			.coordinateSpace(name: "scroll")
 			.contentMargins(.top, 80, for: .scrollContent)
 			.contentMargins(.bottom, 90, for: .scrollContent)
-			.onAppear {
-				if dhikrs.isEmpty {
-					//let dhikr2 = Dhikr(id: UUID(), name: "Allahu Akbar",  nameAr: "الله أَكْبَر", count: 99)
-					//context.insert(dhikr2)
-				} else {
-					//context.delete(dhikrs.first!)
-				}
-			}
 			ToolbarBck(title: "Dhikr", show: $show)
 			VStack{
 				Spacer()
@@ -217,50 +240,50 @@ struct DhikrAddView: View {
 							VStack {
 								Capsule().fill(Color.secondary).frame(width: 35, height: 5).padding(.top, 12)
 								ScrollView {
-								 ForEach(Dhikr.preDefined, id: \.self) { dhikr in
-									 VStack {
-										 ZStack(alignment: .topLeading) {
-											 RoundedRectangle(cornerRadius: 20, style: .continuous)
-												 .fill(Color("cardView.sub"))
-												 .shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
-											 RoundedRectangle(cornerRadius: 16, style: .continuous)
-												 .fill(Color("cardView"))
-												 .shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
-												 .padding(5)
-											 VStack{
-												 Text(dhikr.nameAr)
-													 .font(.title)
-													 .padding(.top, 12)
-												 Text(dhikr.name)
-													 .font(.headline)
-													 .fontWeight(.bold)
-													 .foregroundColor(Color("textColor"))
-													 .frame(maxWidth: .infinity, alignment: .leading)
-													 .padding(.top, 1)
-											 }
-											 .padding(22)
-										 }
-										 .onTapGesture {
-											 selectedDhikr = dhikr
-											 preDefined.toggle()
-										 }
-									 }
-									 .padding(.horizontal)
-									 .padding(.bottom, 6)
-								 }
-								 .background(GeometryReader { geometry in
-									 Color.clear
-										 .preference(key: ScrollOffsetPreferenceKey.self, value: geometry.frame(in: .named("scroll")).origin)
-										 .onAppear{
-											 defaultv = geometry.frame(in: .named("scroll")).origin
-										 }
-								 })
-								 .onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
-									 withAnimation(.linear(duration: 0.1)){
-										 show = value.y < defaultv.y - 30.0
-									 }
-								 }
-							 }
+									ForEach(Dhikr.preDefined, id: \.self) { dhikr in
+										VStack {
+											ZStack(alignment: .topLeading) {
+												RoundedRectangle(cornerRadius: 20, style: .continuous)
+													.fill(Color("cardView.sub"))
+													.shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
+												RoundedRectangle(cornerRadius: 16, style: .continuous)
+													.fill(Color("cardView"))
+													.shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
+													.padding(5)
+												VStack{
+													Text(dhikr.nameAr)
+														.font(.title)
+														.padding(.top, 12)
+													Text(dhikr.name)
+														.font(.headline)
+														.fontWeight(.bold)
+														.foregroundColor(Color("textColor"))
+														.frame(maxWidth: .infinity, alignment: .leading)
+														.padding(.top, 1)
+												}
+												.padding(22)
+											}
+											.onTapGesture {
+												selectedDhikr = dhikr
+												preDefined.toggle()
+											}
+										}
+										.padding(.horizontal)
+										.padding(.bottom, 6)
+									}
+									.background(GeometryReader { geometry in
+										Color.clear
+											.preference(key: ScrollOffsetPreferenceKey.self, value: geometry.frame(in: .named("scroll")).origin)
+											.onAppear{
+												defaultv = geometry.frame(in: .named("scroll")).origin
+											}
+									})
+									.onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
+										withAnimation(.linear(duration: 0.1)){
+											show = value.y < defaultv.y - 30.0
+										}
+									}
+								}
 								Spacer()
 							}
 						}
@@ -325,6 +348,7 @@ struct DhikrAddView: View {
 				Button(action: {
 					let dhikr2 = Dhikr(id: UUID(), name: translation, nameAr: original, count: Int(amount)!)
 					context.insert(dhikr2)
+					dismiss()
 					
 				}, label: {
 					ZStack(alignment: .center) {
@@ -382,12 +406,11 @@ struct FormSection<Content: View>: View {
 }
 
 #Preview {
-	DhikrAddView()
+	DhikrView()
 		.modelContainer(for: [Dhikr.self])
 }
 /*
  #Preview {
- DhikrView()
  .modelContainer(for: [Dhikr.self])
  }
  

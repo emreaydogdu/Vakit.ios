@@ -147,50 +147,6 @@ struct DhikrView: View {
 	}
 }
 
-struct DhikrCountView: View {
-	
-	@Environment(\.modelContext) var context
-	@Bindable var dhikr: Dhikr
-	
-	var body: some View {
-		ZStack(alignment: .top) {
-			PatternBG(pattern: false)
-			Capsule().fill(Color.secondary).frame(width: 35, height: 5).padding(.top, 12)
-			VStack {
-				Text("\(dhikr.count.description)x")
-					.frame(maxWidth: .infinity, alignment: .leading)
-					.padding(.leading, 30)
-					.font(.system(size: 100))
-					.fontWeight(.bold)
-					.padding(.top, 50)
-				Spacer()
-				ZStack {
-					RoundedRectangle(cornerRadius: 200, style: .continuous)
-						.fill(Color("cardView"))
-						.shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
-						.frame(width: 360, height: 360)
-					Circle()
-						.trim(from: 0, to: 1.0)
-						.rotation(.degrees(-90))
-						.stroke(Color("color1"), style: StrokeStyle(lineWidth: 50, lineCap: .round))
-						.frame(width: 300, height: 300)
-					Circle()
-						.trim(from: 0, to: 0.55)
-						.rotation(.degrees(-90))
-						.stroke(Color("color2"), style: StrokeStyle(lineWidth: 38, lineCap: .round))
-						.frame(width: 300, height: 300)
-					Text("Press")
-						.font(.largeTitle)
-				}
-				.onTapGesture {
-					dhikr.count += 1
-				}
-			}
-			.frame(maxWidth: .infinity)
-		}
-	}
-}
-
 struct DhikrAddView: View {
 	
 	@Environment(\.modelContext) var context
@@ -359,7 +315,7 @@ struct DhikrAddView: View {
 				Spacer()
 				Button(action: {
 					if (translation != "" && original != "" && amount != ""){
-						context.insert(Dhikr(id: UUID(), name: translation, nameAr: original, count: Int(amount)!))
+						context.insert(Dhikr(id: UUID(), name: translation, nameAr: original, count: 0, amount: Int(amount)!))
 						dismiss()
 					}
 				}, label: {
@@ -416,6 +372,91 @@ struct FormSection<Content: View>: View {
 				.padding(.horizontal, 38))
 		{
 			content()
+		}
+	}
+}
+
+struct DhikrCountView: View {
+	
+	@Bindable var dhikr: Dhikr
+	@State var disable = true
+	
+	var body: some View {
+		ZStack(alignment: .top) {
+			PatternBG(pattern: false)
+			Capsule().fill(Color.secondary).frame(width: 35, height: 5).padding(.top, 12)
+			VStack {
+				ZStack() {
+					RoundedRectangle(cornerRadius: 13, style: .continuous)
+						.fill(Color("cardView"))
+						.padding(5)
+					VStack {
+						Text("\(dhikr.nameAr)")
+							.font(.headline)
+							.foregroundColor(Color("cardView.title"))
+							.frame(maxWidth: .infinity, alignment: .leading)
+							.environment(\.layoutDirection, .rightToLeft)
+						Text("\(dhikr.name)")
+							.font(.headline)
+							.foregroundColor(Color("cardView.title"))
+							.frame(maxWidth: .infinity, alignment: .leading)
+							.padding(.top, 5)
+					}
+					.padding(22)
+				}
+				.fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+				.padding(.top, 50)
+				.padding(.horizontal)
+				Text("\(dhikr.count.description)x")
+					.frame(maxWidth: .infinity, alignment: .leading)
+					.padding(.leading, 30)
+					.font(.system(size: 100))
+					.fontWeight(.bold)
+				Spacer()
+				ZStack {
+					RoundedRectangle(cornerRadius: 200, style: .continuous)
+						.fill(Color("cardView.sub"))
+						.shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
+						.frame(width: 360, height: 360)
+					Circle()
+						.trim(from: 0, to: 1.0)
+						.rotation(.degrees(-90))
+						.stroke(Color("cardView"), style: StrokeStyle(lineWidth: 50, lineCap: .round))
+						.frame(width: 300, height: 300)
+					Circle()
+						.trim(from: 0, to: CGFloat(dhikr.count)/CGFloat(dhikr.amount))
+						.rotation(.degrees(-90))
+						.stroke(Color(hex: "#C1D2E7"), style: StrokeStyle(lineWidth: 40, lineCap: .round))
+						.frame(width: 300, height: 300)
+					Text("Press")
+						.font(.largeTitle)
+				}
+				.allowsHitTesting(disable)
+				.onTapGesture {
+					if (dhikr.count < dhikr.amount - 1){
+						UIImpactFeedbackGenerator(style: .soft).impactOccurred()
+						withAnimation{
+							dhikr.count += 1
+						}
+					}
+					else{
+						disable.toggle()
+						withAnimation{
+							UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+							DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+								UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+							}
+							dhikr.count += 1
+						} completion: {
+							withAnimation{
+								dhikr.count = 0
+								disable.toggle()
+							}
+						}
+					}
+				}
+			}
+			.frame(maxWidth: .infinity)
 		}
 	}
 }

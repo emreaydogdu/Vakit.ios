@@ -1,6 +1,7 @@
 import SwiftUI
 import SwiftData
 import SwipeActions
+import Combine
 
 struct DhikrView: View {
 	
@@ -202,6 +203,7 @@ struct DhikrAddView: View {
 	@State private var show = false
 	@State private var defaultv: CGPoint = .zero
 	@State private var selectedDhikr: Dhikr?
+	@FocusState private var focusItem: Bool
 	
 	var body: some View {
 		ZStack{
@@ -306,6 +308,7 @@ struct DhikrAddView: View {
 									.font(.headline)
 									.foregroundColor(Color("cardView.title"))
 									.frame(maxWidth: .infinity, maxHeight: 60, alignment: .leading)
+									.focused($focusItem)
 									.padding(.vertical, 10)
 							}.padding(.horizontal, 22)
 						}
@@ -319,6 +322,7 @@ struct DhikrAddView: View {
 								TextField("Translation", text: $translation)
 									.font(.headline)
 									.foregroundColor(Color("cardView.title"))
+									.focused($focusItem)
 									.padding(.vertical, 10)
 							}.padding(.horizontal, 22)
 						}
@@ -338,6 +342,14 @@ struct DhikrAddView: View {
 									.font(.headline)
 									.foregroundColor(Color("cardView.title"))
 									.padding(.vertical, 10)
+									.keyboardType(.numberPad)
+									.focused($focusItem)
+									.onReceive(Just(amount)) { newValue in
+										let filtered = newValue.filter { "0123456789".contains($0) }
+										if filtered != newValue {
+											self.amount = filtered
+										}
+									}
 							}.padding(.horizontal, 22)
 						}
 						.padding(.horizontal)
@@ -346,10 +358,10 @@ struct DhikrAddView: View {
 				
 				Spacer()
 				Button(action: {
-					let dhikr2 = Dhikr(id: UUID(), name: translation, nameAr: original, count: Int(amount)!)
-					context.insert(dhikr2)
-					dismiss()
-					
+					if (translation != "" && original != "" && amount != ""){
+						context.insert(Dhikr(id: UUID(), name: translation, nameAr: original, count: Int(amount)!))
+						dismiss()
+					}
 				}, label: {
 					ZStack(alignment: .center) {
 						RoundedRectangle(cornerRadius: 16, style: .continuous)
@@ -376,6 +388,9 @@ struct DhikrAddView: View {
 				.padding(.bottom, 6)
 			}
 			.padding(.top, 20)
+		}
+		.onTapGesture{
+			focusItem = false
 		}
 	}
 }

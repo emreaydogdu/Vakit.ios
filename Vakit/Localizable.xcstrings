@@ -159,6 +159,9 @@
         }
       }
     },
+    "Are you sure?" : {
+
+    },
     "Auto" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -247,6 +250,9 @@
           }
         }
       }
+    },
+    "Delete" : {
+
     },
     "Dhikr" : {
       "localizations" : {

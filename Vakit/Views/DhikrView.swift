@@ -8,8 +8,10 @@ struct DhikrView: View {
 	@Environment(\.modelContext) var context
 	@Query var dhikrs: [Dhikr]
 	@State var selectedDhikr: Dhikr?
+	@State var deletedDhikr: Dhikr?
 	@State private var add = false
 	@State private var show = false
+	@State private var isPresentingConfirm = false
 	@State private var defaultv: CGPoint = .zero
 	
 	var body: some View {
@@ -17,7 +19,7 @@ struct DhikrView: View {
 			PatternBG(pattern: false)
 			ScrollView {
 				SwipeViewGroup {
-					ForEach(Array((dhikrs.reversed() + Dhikr.preDefined).enumerated()), id: \.element) { (i, dhikr) in
+					ForEach(dhikrs.reversed() + Dhikr.preDefined, id: \.id) { dhikr in
 						SwipeView {
 							VStack {
 								ZStack(alignment: .topLeading) {
@@ -64,25 +66,29 @@ struct DhikrView: View {
 									DhikrCountView(dhikr: dhikr)
 								}
 							}
-							//.padding(.horizontal)
 							.padding(.bottom, 6)
 						} trailingActions: { _ in
 							ZStack{
-								
 								RoundedRectangle(cornerRadius: 16, style: .continuous)
 									.fill(Color.red)
 									.padding(10)
 								
-								Image("ic_share")
+								Image("ic_trash")
 									.resizable()
 									.imageScale(.small)
 									.frame(width: 28, height: 28)
-									.foregroundColor(Color("cardView.title"))
+									.foregroundColor(Color.white)
 									.padding()
+									.onTapGesture{
+										deletedDhikr = dhikr
+										isPresentingConfirm.toggle()
+									}
 							}
-							.onTapGesture{
-								withAnimation(.spring()){
-									context.delete(dhikr)
+							.confirmationDialog("Are you sure?",  isPresented: $isPresentingConfirm, titleVisibility: .visible) {
+								Button("Delete", role: .destructive) {
+									withAnimation(.spring()){
+										context.delete(deletedDhikr!)
+									}
 								}
 							}
 						}
@@ -246,9 +252,9 @@ struct DhikrAddView: View {
 							}
 						}
 					}
-					.onChange(of: selectedDhikr){ dhikr in
-						original = dhikr!.nameAr
-						translation = dhikr!.name
+					.onChange(of: selectedDhikr) {
+						original = selectedDhikr!.nameAr
+						translation = selectedDhikr!.name
 					}
 				}
 				

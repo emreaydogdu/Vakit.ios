@@ -321,7 +321,7 @@ struct DhikrAddView: View {
 				Spacer()
 				Button(action: {
 					if (translation != "" && original != "" && amount != ""){
-						context.insert(Dhikr(id: UUID(), name: translation, nameAr: original, count: 0, amount: Int(amount)!))
+						context.insert(Dhikr(id: UUID(), name: translation, nameAr: original, count: 0, amount: Int(amount)!, predef: false))
 						dismiss()
 					}
 				}, label: {
@@ -481,3 +481,14 @@ struct DhikrCountView: View {
  DhikrCountView(dhikr: dhikr)
  }
  */
+
+extension View {
+	@ViewBuilder
+	func `if`<Content: View>(_ conditional: Bool, content: (Self) -> Content) -> some View {
+		if conditional {
+			content(self)
+		} else {
+			self
+		}
+	}
+}

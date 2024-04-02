@@ -60,3 +60,41 @@ struct CardViewDouble<Content: View> : View {
 #Preview{
 	PatternBG(pattern: true)
 }
+
+struct SubmitButton: View {
+	
+	var title: String
+	var icon: String
+	var action: () -> Void
+
+	var body: some View {
+		VStack{
+			Spacer()
+			Button(action: { action() }, label: {
+				ZStack(alignment: .center) {
+					RoundedRectangle(cornerRadius: 16, style: .continuous)
+						.fill(Color(hex: "#C1D2E7"))
+						.shadow(color: .black.opacity(0.15), radius: 24, x: 0, y: 8)
+						.frame(maxWidth: .infinity, maxHeight: 60, alignment: .leading)
+						.padding(5)
+					HStack {
+						Text(title)
+							.font(.headline)
+							.fontWeight(.bold)
+							.foregroundColor(Color(hex: "#141414"))
+						Spacer()
+						Image(icon)
+							.resizable()
+							.imageScale(.small)
+							.frame(width: 30, height: 30)
+							.foregroundColor(Color(hex: "#141414"))
+					}.padding(.horizontal, 22)
+				}
+			})
+			.foregroundColor(Color("cardView.title"))
+			.padding(.horizontal)
+			.padding(.bottom, 6)
+		}
+	}
+	
+}

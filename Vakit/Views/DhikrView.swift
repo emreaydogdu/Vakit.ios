@@ -48,12 +48,8 @@ struct DhikrView: View {
 									.frame(maxWidth: .infinity, alignment: .leading)
 							}
 						}
-						.onTapGesture {
-							selectedDhikr = dhikr
-						}
-						.sheet(item: $selectedDhikr) { dhikr in
-							DhikrCountView(dhikr: dhikr)
-						}
+						.onTapGesture { selectedDhikr = dhikr }
+						.sheet(item: $selectedDhikr) { dhikr in DhikrCountView(dhikr: dhikr) }
 						.if(!dhikr.predef){ content in
 							SwipeView {
 								content
@@ -88,6 +84,7 @@ struct DhikrView: View {
 						}
 					}
 					.transition(AnyTransition.scale)
+					.sheet(isPresented: $add) { DhikrAddView() }
 					.background(GeometryReader { geometry in
 						Color.clear
 							.preference(key: ScrollOffsetPreferenceKey.self, value: geometry.frame(in: .named("scroll")).origin)
@@ -107,36 +104,7 @@ struct DhikrView: View {
 			.contentMargins(.top, 80, for: .scrollContent)
 			.contentMargins(.bottom, 90, for: .scrollContent)
 			ToolbarBck(title: "Dhikr", show: $show)
-			VStack{
-				Spacer()
-				Button(action: {add.toggle()}, label: {
-					ZStack(alignment: .center) {
-						RoundedRectangle(cornerRadius: 16, style: .continuous)
-							.fill(Color(hex: "#C1D2E7"))
-							.shadow(color: .black.opacity(0.15), radius: 24, x: 0, y: 8)
-							.frame(maxWidth: .infinity, maxHeight: 60, alignment: .leading)
-							.padding(5)
-						HStack {
-							Text("Create a new Dhikr")
-								.font(.headline)
-								.fontWeight(.bold)
-								.foregroundColor(Color(hex: "#141414"))
-							Spacer()
-							Image("ic_add")
-								.resizable()
-								.imageScale(.small)
-								.frame(width: 30, height: 30)
-								.foregroundColor(Color(hex: "#141414"))
-						}.padding(.horizontal, 22)
-					}
-				})
-				.foregroundColor(Color("cardView.title"))
-				.sheet(isPresented: $add) {
-					DhikrAddView()
-				}
-				.padding(.horizontal)
-				.padding(.bottom, 6)
-			}
+			SubmitButton(title: "Create a new Dhikr", icon: "ic_add"){ add.toggle() }
 		}
 		.navigationBarBackButtonHidden(true)
 	}

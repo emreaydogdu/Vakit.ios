@@ -93,6 +93,16 @@
         }
       }
     },
+    "%lld / %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld / %2$lld"
+          }
+        }
+      }
+    },
     "°" : {
       "localizations" : {
         "de" : {
@@ -188,9 +198,6 @@
           }
         }
       }
-    },
-    "Create" : {
-
     },
     "Create, enable and use across your team" : {
 

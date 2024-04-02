@@ -13,6 +13,7 @@ struct DhikrView: View {
 	@State private var isPresentingConfirm = false
 	@State private var show = false
 	@State var scrollOffset = CGFloat.zero
+	@State var progressValue: Float = 0.01
 	
 	var body: some View {
 		ZStack(alignment: .top){
@@ -36,16 +37,22 @@ struct DhikrView: View {
 								Text(dhikr.nameAr)
 									.font(.title)
 									.padding(.top, 12)
-								Text(dhikr.name)
-									.font(.headline)
-									.fontWeight(.bold)
-									.foregroundColor(Color("textColor"))
-									.frame(maxWidth: .infinity, alignment: .leading)
-									.padding(.top, 1)
-								Text("\(dhikr.count)")
-									.font(.body)
-									.foregroundColor(Color("subTextColor"))
-									.frame(maxWidth: .infinity, alignment: .leading)
+								HStack{
+									Text(dhikr.name)
+										.font(.headline)
+										.fontWeight(.bold)
+										.foregroundColor(Color("textColor"))
+										.frame(maxWidth: .infinity, alignment: .leading)
+										.padding(.top, 1)
+									Spacer()
+									Text("\(dhikr.count) / \(dhikr.amount)")
+										.font(.body)
+										.foregroundColor(Color("subTextColor"))
+										.frame(maxWidth: .infinity, alignment: .trailing)
+								}
+								ProgressView(value: CGFloat(dhikr.count), total: CGFloat(dhikr.amount))
+									.progressViewStyle(BarProgressStyle())
+									.padding(.vertical, 8)
 							}
 						}
 						.onTapGesture { selectedDhikr = dhikr }
@@ -95,6 +102,30 @@ struct DhikrView: View {
 			SubmitButton(title: "Create a new Dhikr", icon: "ic_add"){ add.toggle() }
 		}
 		.navigationBarBackButtonHidden(true)
+	}
+}
+
+struct BarProgressStyle: ProgressViewStyle {
+	
+	var height: Double = 20.0
+	var labelFontStyle: Font = .body
+	
+	func makeBody(configuration: Configuration) -> some View {
+		
+		let progress = configuration.fractionCompleted ?? 0.0
+		
+		GeometryReader { geometry in
+			ZStack(alignment: .leading) {
+				Rectangle()
+					.frame(width: geometry.size.width, height: height)
+					.foregroundColor(Color(uiColor: .systemGray5))
+				
+				RoundedRectangle(cornerRadius: 10.0)
+					.frame(width: geometry.size.width * progress, height: height)
+					.foregroundColor(Color(hex: "#C1D2E7"))
+					.animation(.linear)
+			}.cornerRadius(45.0)
+		}
 	}
 }
 
@@ -392,15 +423,9 @@ struct DhikrCountView: View {
 #Preview {
 	DhikrView()
 		.modelContainer(for: [Dhikr.self])
+	/*
+	 
+	 let dhikr = Dhikr(id: UUID(), name: "After Salah", count: 99)
+	 DhikrCountView(dhikr: dhikr)
+	 */
 }
-/*
- #Preview {
- .modelContainer(for: [Dhikr.self])
- }
- 
- #Preview {
- let dhikr = Dhikr(id: UUID(), name: "After Salah", count: 99)
- DhikrCountView(dhikr: dhikr)
- }
- */
-

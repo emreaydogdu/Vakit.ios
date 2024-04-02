@@ -264,35 +264,12 @@ struct DhikrAddView: View {
 				}
 				
 				Spacer()
-				Button(action: {
+				SubmitButton(title: "Create", icon: "ic_add") {
 					if (translation != "" && original != "" && amount != ""){
 						context.insert(Dhikr(id: UUID(), name: translation, nameAr: original, count: 0, amount: Int(amount)!, predef: false))
 						dismiss()
 					}
-				}, label: {
-					ZStack(alignment: .center) {
-						RoundedRectangle(cornerRadius: 16, style: .continuous)
-							.fill(Color(hex: "#C1D2E7"))
-							.shadow(color: .black.opacity(0.15), radius: 24, x: 0, y: 8)
-							.frame(maxWidth: .infinity, maxHeight: 60, alignment: .leading)
-							.padding(5)
-						HStack {
-							Text("Create")
-								.font(.headline)
-								.fontWeight(.bold)
-								.foregroundColor(Color(hex: "#141414"))
-							Spacer()
-							Image("ic_add")
-								.resizable()
-								.imageScale(.small)
-								.frame(width: 30, height: 30)
-								.foregroundColor(Color(hex: "#141414"))
-						}.padding(.horizontal, 22)
-					}
-				})
-				.foregroundColor(Color("cardView.title"))
-				.padding(.horizontal)
-				.padding(.bottom, 6)
+				}
 			}
 			.padding(.top, 20)
 		}

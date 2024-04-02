@@ -10,14 +10,14 @@ struct DhikrView: View {
 	@State var selectedDhikr: Dhikr?
 	@State var deletedDhikr: Dhikr?
 	@State private var add = false
-	@State private var show = false
 	@State private var isPresentingConfirm = false
-	@State private var defaultv: CGPoint = .zero
+	@State private var show = false
+	@State var scrollOffset = CGFloat.zero
 	
 	var body: some View {
 		ZStack(alignment: .top){
 			PatternBG(pattern: false)
-			ScrollView {
+			OScrollView(scrollOffset: $scrollOffset) { proxy in
 				SwipeViewGroup {
 					ForEach(dhikrs.reversed() + Dhikr.preDefined, id: \.id) { dhikr in
 						CardViewDouble{
@@ -50,6 +50,7 @@ struct DhikrView: View {
 						}
 						.onTapGesture { selectedDhikr = dhikr }
 						.sheet(item: $selectedDhikr) { dhikr in DhikrCountView(dhikr: dhikr) }
+						.sheet(isPresented: $add) { DhikrAddView() }
 						.if(!dhikr.predef){ content in
 							SwipeView {
 								content
@@ -84,25 +85,12 @@ struct DhikrView: View {
 						}
 					}
 					.transition(AnyTransition.scale)
-					.sheet(isPresented: $add) { DhikrAddView() }
-					.background(GeometryReader { geometry in
-						Color.clear
-							.preference(key: ScrollOffsetPreferenceKey.self, value: geometry.frame(in: .named("scroll")).origin)
-							.onAppear{
-								defaultv = geometry.frame(in: .named("scroll")).origin
-							}
-					})
-					.onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
-						withAnimation(.linear(duration: 0.1)){
-							show = value.y < defaultv.y - 30.0
-						}
-					}
 				}
 			}
 			.animation(.easeInOut, value: dhikrs )
-			.coordinateSpace(name: "scroll")
 			.contentMargins(.top, 80, for: .scrollContent)
 			.contentMargins(.bottom, 90, for: .scrollContent)
+			.onChange(of: scrollOffset) { show = scrollOffset.isLess(than: -60) ? false : true }
 			ToolbarBck(title: "Dhikr", show: $show)
 			SubmitButton(title: "Create a new Dhikr", icon: "ic_add"){ add.toggle() }
 		}

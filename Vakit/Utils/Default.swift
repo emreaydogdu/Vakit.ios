@@ -29,13 +29,9 @@ struct BlurBG : UIViewRepresentable {
 	func updateUIView(_ uiView: UIVisualEffectView, context: Context) {}
 }
 
-#Preview{
-	PatternBG(pattern: true)
-}
-
 struct CardViewDouble<Content: View> : View {
 	
-	var content: () -> Content    
+	var content: () -> Content
 	init(@ViewBuilder content: @escaping () -> Content) {
 		self.content = content
 	}
@@ -55,10 +51,6 @@ struct CardViewDouble<Content: View> : View {
 		.padding(.horizontal)
 		.padding(.bottom, 8)
 	}
-}
-
-#Preview{
-	PatternBG(pattern: true)
 }
 
 struct SubmitButton: View {
@@ -97,4 +89,41 @@ struct SubmitButton: View {
 		}
 	}
 	
+}
+
+// Simple preference that observes a CGFloat.
+struct ScrollViewOffsetPreferenceKey: PreferenceKey {
+	static var defaultValue = CGFloat.zero
+	
+	static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+		value += nextValue()
+	}
+}
+
+struct OScrollView<Content>: View where Content : View {
+
+	@Namespace var scrollSpace
+	@Binding var scrollOffset: CGFloat
+	let content: (ScrollViewProxy) -> Content
+	
+	init(scrollOffset: Binding<CGFloat>, @ViewBuilder content: @escaping (ScrollViewProxy) -> Content) {
+		_scrollOffset = scrollOffset
+		self.content = content
+	}
+	
+	var body: some View {
+		ScrollView {
+			ScrollViewReader { proxy in
+				content(proxy)
+					.background(GeometryReader { proxy in
+						let offset = -proxy.frame(in: .named(scrollSpace)).minY
+						Color.clear.preference(key: ScrollViewOffsetPreferenceKey.self, value: offset)
+					})
+			}
+		}
+		.coordinateSpace(name: scrollSpace)
+		.onPreferenceChange(ScrollViewOffsetPreferenceKey.self) { value in
+			scrollOffset = value
+		}
+	}
 }

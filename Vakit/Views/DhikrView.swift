@@ -20,87 +20,72 @@ struct DhikrView: View {
 			ScrollView {
 				SwipeViewGroup {
 					ForEach(dhikrs.reversed() + Dhikr.preDefined, id: \.id) { dhikr in
-						VStack {
-							ZStack(alignment: .topLeading) {
-								RoundedRectangle(cornerRadius: 20, style: .continuous)
-									.fill(Color("cardView.sub"))
-									.shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
-								RoundedRectangle(cornerRadius: 16, style: .continuous)
-									.fill(Color("cardView"))
-									.shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
-									.padding(5)
-								HStack{
-									Spacer()
-									VStack{
-										Image("ic_share")
-											.resizable()
-											.imageScale(.small)
-											.frame(width: 28, height: 28)
-											.foregroundColor(Color("cardView.title"))
-											.padding()
-										Spacer()
-									}
-								}
+						CardViewDouble{
+							HStack{
+								Spacer()
 								VStack{
-									Text(dhikr.nameAr)
-										.font(.title)
-										.padding(.top, 12)
-									Text(dhikr.name)
-										.font(.headline)
-										.fontWeight(.bold)
-										.foregroundColor(Color("textColor"))
-										.frame(maxWidth: .infinity, alignment: .leading)
-										.padding(.top, 1)
-									Text("\(dhikr.count)")
-										.font(.body)
-										.foregroundColor(Color("subTextColor"))
-										.frame(maxWidth: .infinity, alignment: .leading)
+									Image("ic_share")
+										.resizable()
+										.imageScale(.small)
+										.frame(width: 28, height: 28)
+										.foregroundColor(Color("cardView.title"))
+									Spacer()
 								}
-								.padding(22)
 							}
-							.onTapGesture {
-								selectedDhikr = dhikr
-							}
-							.sheet(item: $selectedDhikr) { dhikr in
-								DhikrCountView(dhikr: dhikr)
+							VStack{
+								Text(dhikr.nameAr)
+									.font(.title)
+									.padding(.top, 12)
+								Text(dhikr.name)
+									.font(.headline)
+									.fontWeight(.bold)
+									.foregroundColor(Color("textColor"))
+									.frame(maxWidth: .infinity, alignment: .leading)
+									.padding(.top, 1)
+								Text("\(dhikr.count)")
+									.font(.body)
+									.foregroundColor(Color("subTextColor"))
+									.frame(maxWidth: .infinity, alignment: .leading)
 							}
 						}
-						.padding(.bottom, 6)
+						.onTapGesture {
+							selectedDhikr = dhikr
+						}
+						.sheet(item: $selectedDhikr) { dhikr in
+							DhikrCountView(dhikr: dhikr)
+						}
 						.if(!dhikr.predef){ content in
 							SwipeView {
 								content
 							} trailingActions: { _ in
-									ZStack{
-										RoundedRectangle(cornerRadius: 16, style: .continuous)
-											.fill(Color.red)
-											.padding(10)
-										
-										Image("ic_trash")
-											.resizable()
-											.imageScale(.small)
-											.frame(width: 28, height: 28)
-											.foregroundColor(Color.white)
-											.padding()
-											.onTapGesture{
-												deletedDhikr = dhikr
-												isPresentingConfirm.toggle()
-											}
-									}
-									.confirmationDialog("Are you sure?",  isPresented: $isPresentingConfirm, titleVisibility: .visible) {
-										Button("Delete", role: .destructive) {
-											withAnimation(.spring()){
-												context.delete(deletedDhikr!)
-											}
+								ZStack{
+									RoundedRectangle(cornerRadius: 16, style: .continuous)
+										.fill(Color.red)
+										.padding(10)
+									Image("ic_trash")
+										.resizable()
+										.imageScale(.small)
+										.frame(width: 28, height: 28)
+										.foregroundColor(Color.white)
+										.padding()
+										.onTapGesture{
+											deletedDhikr = dhikr
+											isPresentingConfirm.toggle()
+										}
+								}
+								.confirmationDialog("Are you sure?",  isPresented: $isPresentingConfirm, titleVisibility: .visible) {
+									Button("Delete", role: .destructive) {
+										withAnimation(.spring()){
+											context.delete(deletedDhikr!)
 										}
 									}
 								}
-								.swipeMinimumDistance(10)
-								.swipeReadyToExpandPadding(50)
-								.swipeActionCornerRadius(16)
-								.swipeActionsMaskCornerRadius(16)
+							}
+							.swipeMinimumDistance(10)
+							.swipeReadyToExpandPadding(50)
+							.swipeActionCornerRadius(16)
+							.swipeActionsMaskCornerRadius(16)
 						}
-						
-						.padding(.horizontal)
 					}
 					.transition(AnyTransition.scale)
 					.background(GeometryReader { geometry in

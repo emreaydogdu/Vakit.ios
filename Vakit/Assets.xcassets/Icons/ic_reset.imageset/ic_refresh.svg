@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>2.0@1x</title>
+    <g id="2.0" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round">
+        <g id="Group-7" transform="translate(2.000000, 2.000000)" stroke="#000000" stroke-width="4">
+            <path d="M22,44 C34.1502645,44 44,34.1502645 44,22 C44,19.6906136 43.6441669,17.4643365 42.9843371,15.3730049 C40.1726356,6.46131343 31.8408781,0 22,0 C9.8497355,0 0,9.8497355 0,22 C0,34.1502645 9.8497355,44 22,44 Z" id="Oval" opacity="0.699497768" stroke-dasharray="0,14"></path>
+            <path d="M21.9057695,44.5736228 C34.056034,44.5736228 43.9057695,34.7238873 43.9057695,22.5736228 C43.9057695,20.2642364 43.5499364,18.0379592 42.8901066,15.9466277 C41.2398687,10.7161966 37.6881228,6.32985366 33.0457883,3.59851817" id="Oval-Copy-8" transform="translate(32.905769, 24.086070) rotate(3.000000) translate(-32.905769, -24.086070) "></path>
+            <line x1="34.0782796" y1="3.68745732" x2="34.0782796" y2="10.6874573" id="Line-9"></line>
+            <line x1="37.5782796" y1="0.0443460381" x2="37.5782796" y2="7.04434604" id="Line-9-Copy" transform="translate(37.578280, 3.544346) rotate(-90.000000) translate(-37.578280, -3.544346) "></line>
+        </g>
+    </g>
+</svg>

@@ -56,6 +56,7 @@
       }
     },
     "%@x" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -93,6 +94,26 @@
         }
       }
     },
+    "%lld / %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld / %2$lld"
+          }
+        }
+      }
+    },
+    "%lld/%lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld/%2$lld"
+          }
+        }
+      }
+    },
     "°" : {
       "localizations" : {
         "de" : {
@@ -108,6 +129,9 @@
           }
         }
       }
+    },
+    "99" : {
+
     },
     "About" : {
       "comment" : ".",
@@ -156,6 +180,9 @@
         }
       }
     },
+    "Are you sure?" : {
+
+    },
     "Auto" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -172,6 +199,9 @@
           }
         }
       }
+    },
+    "Continue" : {
+
     },
     "Correct" : {
       "localizations" : {
@@ -239,6 +269,9 @@
         }
       }
     },
+    "Delete" : {
+
+    },
     "Dhikr" : {
       "localizations" : {
         "de" : {
@@ -256,6 +289,7 @@
       }
     },
     "Dhikr routine after every salah" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -298,6 +332,9 @@
         }
       }
     },
+    "Five Stars" : {
+
+    },
     "Generally" : {
       "localizations" : {
         "de" : {
@@ -313,9 +350,6 @@
           }
         }
       }
-    },
-    "Hello" : {
-
     },
     "Holy Days" : {
       "localizations" : {
@@ -903,7 +937,7 @@
     "No prayers" : {
 
     },
-    "Press" : {
+    "Original" : {
 
     },
     "Restore purchase" : {
@@ -913,6 +947,9 @@
 
     },
     "right" : {
+
+    },
+    "Select Dhikr" : {
 
     },
     "Settings" : {
@@ -964,6 +1001,9 @@
       }
     },
     "to your" : {
+
+    },
+    "Translation" : {
 
     },
     "Try" : {

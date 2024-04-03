@@ -56,6 +56,7 @@
       }
     },
     "%@x" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -99,6 +100,16 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "%1$lld / %2$lld"
+          }
+        }
+      }
+    },
+    "%lld/%lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld/%2$lld"
           }
         }
       }
@@ -924,9 +935,6 @@
 
     },
     "Original" : {
-
-    },
-    "Press" : {
 
     },
     "Restore purchase" : {

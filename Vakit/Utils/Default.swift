@@ -127,3 +127,9 @@ struct OScrollView<Content>: View where Content : View {
 		}
 	}
 }
+
+func vibrate(style: UIImpactFeedbackGenerator.FeedbackStyle, pref: Bool){
+	if(pref){
+		UIImpactFeedbackGenerator(style: style).impactOccurred()
+	}
+}

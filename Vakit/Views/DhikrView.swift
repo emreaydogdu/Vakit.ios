@@ -13,7 +13,6 @@ struct DhikrView: View {
 	@State private var isPresentingConfirm = false
 	@State private var show = false
 	@State var scrollOffset = CGFloat.zero
-	@State var progressValue: Float = 0.01
 	
 	var body: some View {
 		ZStack(alignment: .top){
@@ -123,7 +122,6 @@ struct BarProgressStyle: ProgressViewStyle {
 				RoundedRectangle(cornerRadius: 10.0)
 					.frame(width: geometry.size.width * progress, height: height)
 					.foregroundColor(Color(hex: "#C1D2E7"))
-					.animation(.linear)
 			}.cornerRadius(45.0)
 		}
 	}
@@ -339,6 +337,8 @@ struct DhikrCountView: View {
 	
 	@Bindable var dhikr: Dhikr
 	@State var disable = true
+	@AppStorage("vibration_dhikr")
+	private var vibration = true
 	
 	var body: some View {
 		ZStack(alignment: .top) {
@@ -366,12 +366,44 @@ struct DhikrCountView: View {
 				.fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
 				.padding(.top, 50)
 				.padding(.horizontal)
-				Text("\(dhikr.count.description)x")
-					.frame(maxWidth: .infinity, alignment: .leading)
-					.padding(.leading, 30)
-					.font(.system(size: 100))
-					.fontWeight(.bold)
 				Spacer()
+				HStack{
+					Button(action: {
+						withAnimation {
+							dhikr.count = 0
+						}
+					}, label: {
+						ZStack {
+						 RoundedRectangle(cornerRadius: 200, style: .continuous)
+							 .fill(Color("cardView"))
+							 .shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
+							 .frame(width: 52, height: 52)
+						 Image("ic_reset")
+							 .resizable()
+							 .imageScale(.small)
+							 .frame(width: 24, height: 24)
+							 .foregroundColor(Color("color"))
+					 }
+					})
+					Spacer()
+					Button(action: {
+						vibration.toggle()
+					}, label: {
+						ZStack {
+						 RoundedRectangle(cornerRadius: 200, style: .continuous)
+							 .fill(Color("cardView"))
+							 .shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
+							 .frame(width: 52, height: 52)
+						 Image("ic_vibrate")
+							 .resizable()
+							 .imageScale(.small)
+							 .frame(width: 24, height: 24)
+							 .foregroundColor(Color("color"))
+					 }
+					})
+				}
+				.padding(.horizontal, 22)
+				.offset(y: 40)
 				ZStack {
 					RoundedRectangle(cornerRadius: 200, style: .continuous)
 						.fill(Color("cardView.sub"))
@@ -387,23 +419,24 @@ struct DhikrCountView: View {
 						.rotation(.degrees(-90))
 						.stroke(Color(hex: "#C1D2E7"), style: StrokeStyle(lineWidth: 40, lineCap: .round))
 						.frame(width: 300, height: 300)
-					Text("Press")
+					Text("\(dhikr.count)/\(dhikr.amount)").monospaced()
 						.font(.largeTitle)
+						.fontWeight(.bold)
 				}
 				.allowsHitTesting(disable)
 				.onTapGesture {
 					if (dhikr.count < dhikr.amount - 1){
-						UIImpactFeedbackGenerator(style: .soft).impactOccurred()
+						vibrate(style: .rigid, pref: vibration)
 						withAnimation{
 							dhikr.count += 1
 						}
 					}
 					else{
 						disable.toggle()
-						withAnimation{
-							UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+						withAnimation {
+							vibrate(style: .heavy, pref: vibration)
 							DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-								UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+								vibrate(style: .heavy, pref: vibration)
 							}
 							dhikr.count += 1
 						} completion: {

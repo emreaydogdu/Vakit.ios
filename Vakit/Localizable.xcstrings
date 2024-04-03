@@ -200,6 +200,9 @@
         }
       }
     },
+    "Continue" : {
+
+    },
     "Correct" : {
       "localizations" : {
         "tr" : {
@@ -329,6 +332,9 @@
         }
       }
     },
+    "Five Stars" : {
+
+    },
     "Generally" : {
       "localizations" : {
         "de" : {
@@ -344,9 +350,6 @@
           }
         }
       }
-    },
-    "Hello" : {
-
     },
     "Holy Days" : {
       "localizations" : {

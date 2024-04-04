@@ -23,6 +23,9 @@
         }
       }
     },
+    "(%lld)" : {
+
+    },
     "%@" : {
       "localizations" : {
         "de" : {
@@ -180,6 +183,9 @@
         }
       }
     },
+    "Apple Maps" : {
+
+    },
     "Are you sure?" : {
 
     },
@@ -200,7 +206,10 @@
         }
       }
     },
-    "Continue" : {
+    "chapter" : {
+
+    },
+    "Choose your Application" : {
 
     },
     "Correct" : {
@@ -332,9 +341,6 @@
         }
       }
     },
-    "Five Stars" : {
-
-    },
     "Generally" : {
       "localizations" : {
         "de" : {
@@ -350,6 +356,12 @@
           }
         }
       }
+    },
+    "Google Maps" : {
+
+    },
+    "Hello" : {
+
     },
     "Holy Days" : {
       "localizations" : {

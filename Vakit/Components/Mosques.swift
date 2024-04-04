@@ -4,9 +4,13 @@ struct Mosque: Codable {
 	var status: String
 	var results: [Result]
 	
-	struct Result: Codable {
+	struct Result: Codable, Identifiable {
+		let id = UUID()
 		var place_id: String
 		var name: String
+		var vicinity: String
+		var rating: Double
+		var user_ratings_total: Int
 		var geometry: Geometry
 		
 		struct Geometry: Codable {

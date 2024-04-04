@@ -98,15 +98,15 @@
 				<key>location-parameters</key>
 				<dict>
 					<key>EndingColumnNumber</key>
-					<string>7</string>
+					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>28</string>
+					<string>100</string>
 					<key>StartingColumnNumber</key>
-					<string>7</string>
+					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>28</string>
+					<string>99</string>
 					<key>Timestamp</key>
-					<string>733963057.8841521</string>
+					<string>733964730.929824</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -122,17 +122,20 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string></string>
+				<string>							}
+</string>
 				<key>leading</key>
-				<string>								.background(Color.accentColor)
-								.clipShape(Circle())
-						}</string>
+				<string>								default:
+									print("Failed")
+</string>
 				<key>trailing</key>
-				<string>
-						.onTapGesture {
-							selectedMosque = location
+				<string>						}
+						.actionSheet(isPresented: $isPresentingConfirm) {
+						  ActionSheet(
 </string>
 			</dict>
+			<key>title</key>
+			<string>Toast maps app not installed  or open in browser</string>
 			<key>type</key>
 			<string>bookmark</string>
 		</dict>

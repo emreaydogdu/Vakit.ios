@@ -3,12 +3,13 @@ import MapKit
 
 struct MapView: View {
 	
-	@State private var show = true
+	@State private var show = false
 	@State private var mosques = [Mosque.Result]()
 	@State private var position: MapCameraPosition = .userLocation(fallback: .automatic)
 	@State private var selectedMosque: Mosque.Result?
 	@State private var sheetContentHeight = CGFloat(0)
 	@State private var isPresentingConfirm = false
+	@State private var splash = true
 	
 	var body: some View {
 		ZStack(alignment: .top){
@@ -89,29 +90,29 @@ struct MapView: View {
 						Spacer()
 						SubmitButton(title: "Navigate", icon: "ic_share") {
 							switch checkMaps() {
-								case 0:
-									isPresentingConfirm.toggle()
-								case 1:
-									openMaps(lat: mosque.geometry.location.lat, lng: mosque.geometry.location.lng, maps: 0)
-								case 2:
-									openMaps(lat: mosque.geometry.location.lat, lng: mosque.geometry.location.lng, maps: 1)
-								default:
-									print("Failed")
+							case 0:
+								isPresentingConfirm.toggle()
+							case 1:
+								openMaps(lat: mosque.geometry.location.lat, lng: mosque.geometry.location.lng, maps: 0)
+							case 2:
+								openMaps(lat: mosque.geometry.location.lat, lng: mosque.geometry.location.lng, maps: 1)
+							default:
+								print("Failed")
 							}
 						}
 						.actionSheet(isPresented: $isPresentingConfirm) {
-						  ActionSheet(
-							title: Text("Choose your Application"),
-							buttons: [ 
-								.cancel(),
-								.default(Text("Apple Maps"), action: {
-									openMaps(lat: mosque.geometry.location.lat, lng: mosque.geometry.location.lng, maps: 0)
-								}),
-								.default(Text("Google Maps"), action: {
-									openMaps(lat: mosque.geometry.location.lat, lng: mosque.geometry.location.lng, maps: 1)
-								})
-							]
-						  )
+							ActionSheet(
+								title: Text("Choose your Application"),
+								buttons: [
+									.cancel(),
+									.default(Text("Apple Maps"), action: {
+										openMaps(lat: mosque.geometry.location.lat, lng: mosque.geometry.location.lng, maps: 0)
+									}),
+									.default(Text("Google Maps"), action: {
+										openMaps(lat: mosque.geometry.location.lat, lng: mosque.geometry.location.lng, maps: 1)
+									})
+								]
+							)
 						}
 					}
 					.padding(.vertical)
@@ -131,12 +132,44 @@ struct MapView: View {
 			.contentMargins(.top, 60, for: .automatic)
 			.mapStyle(.standard(pointsOfInterest: []))
 			.task{
-				mosques = await Mosques().getMosques()
+				//mosques = await Mosques().getMosques()
+			}
+			.onChange(of: mosques.count, perform: { value in
+				print(mosques.count)
+			})
+			
+			if(splash){
+				GeometryReader{ proxy in
+					ZStack(alignment: .top){
+						Color("backgroundColor")
+						VStack {
+							Image("splash_mosque")
+								.resizable()
+								.aspectRatio(contentMode: .fit)
+								.padding(.top, 150)
+								.padding(.horizontal)
+							Text("Find the nearest mosques in your area")
+								.font(.title)
+								.fontWeight(.bold)
+							Text("Please provide location service access")
+								.font(.title2)
+						}
+						.padding(.horizontal)
+						SubmitButton(title: "Start searching", icon: "ic_share"){
+							splash.toggle()
+							Task{
+								mosques = await Mosques().getMosques()
+								print(mosques)
+							}
+						}
+						.padding(.bottom, 100)
+					}
+				}.ignoresSafeArea()
 			}
 			ToolbarStd(title: "Nearby Mosques", show: $show)
 		}
 	}
-
+	
 	func openMaps(lat: Double, lng: Double, maps: Int){
 		let appleUrl  = URL(string: "maps://?saddr=&daddr=\(lat),\(lng)")!
 		let googleUrl = URL(string: "comgooglemaps://?saddr=&daddr=\(lat),\(lng)")!
@@ -144,7 +177,7 @@ struct MapView: View {
 			UIApplication.shared.open((maps == 0) ? appleUrl : googleUrl, options: [:], completionHandler: nil)
 		}
 	}
-
+	
 	func checkMaps() -> Int {
 		let appleUrl  = URL(string: "maps://")!
 		let googleUrl = URL(string: "comgooglemaps://")!
@@ -157,7 +190,7 @@ struct MapView: View {
 		}
 		return -1
 	}
-
+	
 }
 
 #Preview {

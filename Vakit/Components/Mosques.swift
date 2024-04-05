@@ -31,7 +31,6 @@ class Mosques: ObservableObject {
 	@MainActor
 	func loadMosques() async {
 		@State var locationDataManager = LocationManager()
-		print("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(locationDataManager.getLat()),\(locationDataManager.getLng())&radius=15000&type=mosque&key=AIzaSyBypg2GZCS-SwdWfj-C29O5whnnh7UydyA")
 		guard let url2 = URL(string: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(locationDataManager.getLat()),\(locationDataManager.getLng())&radius=15000&type=mosque&key=AIzaSyBypg2GZCS-SwdWfj-C29O5whnnh7UydyA") else {
 			print("Invalid URL")
 			return

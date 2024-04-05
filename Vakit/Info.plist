@@ -8,5 +8,12 @@
 		<string>Montserrat-Bold.ttf</string>
 		<string>Montserrat-Medium.ttf</string>
 	</array>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIColorName</key>
+		<string>backgroundColor</string>
+		<key>UIImageRespectsSafeAreaInsets</key>
+		<false/>
+	</dict>
 </dict>
 </plist>

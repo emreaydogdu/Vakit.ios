@@ -17,6 +17,7 @@
 		863AC0AD2B49FE220021BD10 /* HolyDates.csv in Resources */ = {isa = PBXBuildFile; fileRef = 863AC0AC2B49FE220021BD10 /* HolyDates.csv */; };
 		863AC0AF2B4A0FAB0021BD10 /* HolyDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863AC0AE2B4A0FAB0021BD10 /* HolyDate.swift */; };
 		86414EB72B40B9B600225946 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86414EB62B40B9B600225946 /* Extentions.swift */; };
+		865124862BC06479008FCFE0 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865124852BC06479008FCFE0 /* SplashScreen.swift */; };
 		867400EE2B543A7C00346972 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8639D8872B45E26900055204 /* Roboto-Bold.ttf */; };
 		867400EF2B543AA100346972 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8639D8852B45E26900055204 /* Roboto-Light.ttf */; };
 		867400F02B543AA600346972 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8639D8862B45E26900055204 /* Roboto-Medium.ttf */; };
@@ -90,6 +91,7 @@
 		863AC0AC2B49FE220021BD10 /* HolyDates.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = HolyDates.csv; sourceTree = "<group>"; };
 		863AC0AE2B4A0FAB0021BD10 /* HolyDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolyDate.swift; sourceTree = "<group>"; };
 		86414EB62B40B9B600225946 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
+		865124852BC06479008FCFE0 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		867400F12B543F8D00346972 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		867400F22B543F8D00346972 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		867400F32B543F8D00346972 /* Montserrat-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Black.ttf"; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 				86CE9E312B31FD0D00617A48 /* TestView.swift */,
 				8675D0DE2B39D4FF00355925 /* SettingsView.swift */,
 				86B31B402BACDC9F00449FD0 /* NamesListView.swift */,
+				865124852BC06479008FCFE0 /* SplashScreen.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -500,6 +503,7 @@
 				D44DF6952A8129440051E5E1 /* LocationNotFoundView.swift in Sources */,
 				863AC0AB2B49FDD90021BD10 /* HolyDateView.swift in Sources */,
 				D44DF6982A812C050051E5E1 /* AthanView.swift in Sources */,
+				865124862BC06479008FCFE0 /* SplashScreen.swift in Sources */,
 				86AC07DF2B2DDB4D0057E19B /* LocationProvider.swift in Sources */,
 				861A26C82B48C0D2001C6F8C /* Default.swift in Sources */,
 				8675D0DD2B39B49C00355925 /* DhikrView.swift in Sources */,
@@ -685,7 +689,6 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "In order to have instant access to the most accurate prayer times via the Vakit app, you need to allow location access.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -719,7 +722,6 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "In order to have instant access to the most accurate prayer times via the Vakit app, you need to allow location access.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (

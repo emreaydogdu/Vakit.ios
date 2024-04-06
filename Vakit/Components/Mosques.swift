@@ -4,9 +4,13 @@ struct Mosque: Codable {
 	var status: String
 	var results: [Result]
 	
-	struct Result: Codable {
+	struct Result: Codable, Identifiable {
+		let id = UUID()
 		var place_id: String
 		var name: String
+		var vicinity: String
+		var rating: Double
+		var user_ratings_total: Int
 		var geometry: Geometry
 		
 		struct Geometry: Codable {
@@ -27,7 +31,6 @@ class Mosques: ObservableObject {
 	@MainActor
 	func loadMosques() async {
 		@State var locationDataManager = LocationManager()
-		
 		guard let url2 = URL(string: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(locationDataManager.getLat()),\(locationDataManager.getLng())&radius=15000&type=mosque&key=AIzaSyBypg2GZCS-SwdWfj-C29O5whnnh7UydyA") else {
 			print("Invalid URL")
 			return

@@ -33,6 +33,7 @@
 		8675D0DB2B388E6900355925 /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8675D0DA2B388E6900355925 /* MoreView.swift */; };
 		8675D0DD2B39B49C00355925 /* DhikrView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8675D0DC2B39B49C00355925 /* DhikrView.swift */; };
 		8675D0DF2B39D4FF00355925 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8675D0DE2B39D4FF00355925 /* SettingsView.swift */; };
+		867FC73E2BBE235E00DC7380 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867FC73D2BBE235E00DC7380 /* RatingView.swift */; };
 		869DE13F2B3B15A60061724F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 869DE13E2B3B15A60061724F /* Localizable.xcstrings */; };
 		869E8EC12BA5E58400A964B9 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869E8EC02BA5E58400A964B9 /* Counter.swift */; };
 		86AC07DF2B2DDB4D0057E19B /* LocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AC07DE2B2DDB4D0057E19B /* LocationProvider.swift */; };
@@ -104,6 +105,7 @@
 		8675D0DA2B388E6900355925 /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		8675D0DC2B39B49C00355925 /* DhikrView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DhikrView.swift; sourceTree = "<group>"; };
 		8675D0DE2B39D4FF00355925 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		867FC73D2BBE235E00DC7380 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		869DE13E2B3B15A60061724F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		869E8EC02BA5E58400A964B9 /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		86AC07DE2B2DDB4D0057E19B /* LocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProvider.swift; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				86CE9E352B32382A00617A48 /* Mosques.swift */,
+				867FC73D2BBE235E00DC7380 /* RatingView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -491,6 +494,7 @@
 				86079F362BA73BAC00364ECF /* QuranApi.swift in Sources */,
 				86E12A332BA5E0FC00A531EC /* DailyDuaView.swift in Sources */,
 				D44DF6932A8127B50051E5E1 /* AthanTimeTable.swift in Sources */,
+				867FC73E2BBE235E00DC7380 /* RatingView.swift in Sources */,
 				86CE9E362B32382A00617A48 /* Mosques.swift in Sources */,
 				86B31B412BACDC9F00449FD0 /* NamesListView.swift in Sources */,
 				8675D0DB2B388E6900355925 /* MoreView.swift in Sources */,

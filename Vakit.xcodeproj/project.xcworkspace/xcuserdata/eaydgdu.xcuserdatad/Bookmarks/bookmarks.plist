@@ -92,6 +92,53 @@
 			<key>type</key>
 			<string>bookmark</string>
 		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>101</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>100</string>
+					<key>Timestamp</key>
+					<string>734026286.45109</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>Vakit/Views/MapView.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>							}
+</string>
+				<key>leading</key>
+				<string>							default:
+								print("Failed")
+</string>
+				<key>trailing</key>
+				<string>						}
+						.actionSheet(isPresented: $isPresentingConfirm) {
+							ActionSheet(
+</string>
+			</dict>
+			<key>title</key>
+			<string>Toast maps app not installed  or open in browser</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
 	</array>
 </dict>
 </plist>

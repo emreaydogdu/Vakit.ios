@@ -23,6 +23,9 @@
         }
       }
     },
+    "(%lld)" : {
+
+    },
     "%@" : {
       "localizations" : {
         "de" : {
@@ -180,6 +183,9 @@
         }
       }
     },
+    "Apple Maps" : {
+
+    },
     "Are you sure?" : {
 
     },
@@ -199,6 +205,12 @@
           }
         }
       }
+    },
+    "chapter" : {
+
+    },
+    "Choose your Application" : {
+
     },
     "Correct" : {
       "localizations" : {
@@ -329,6 +341,9 @@
         }
       }
     },
+    "Find the nearest mosques in your area" : {
+
+    },
     "Generally" : {
       "localizations" : {
         "de" : {
@@ -344,6 +359,9 @@
           }
         }
       }
+    },
+    "Google Maps" : {
+
     },
     "Hello" : {
 
@@ -935,6 +953,9 @@
 
     },
     "Original" : {
+
+    },
+    "Please provide location service access" : {
 
     },
     "Restore purchase" : {

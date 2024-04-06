@@ -32,6 +32,7 @@ struct MainView: View {
 			}
 			.accentColor(Color("color"))
 		}
+		.overlay(SplashScreen())
 	}
 }
 

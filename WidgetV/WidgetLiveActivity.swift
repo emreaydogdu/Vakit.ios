@@ -9,7 +9,7 @@ import ActivityKit
 import WidgetKit
 import SwiftUI
 
-struct WidgetVAttributes: ActivityAttributes {
+struct WidgetAttributes: ActivityAttributes {
     public struct ContentState: Codable, Hashable {
         // Dynamic stateful properties about your activity go here!
         var emoji: String
@@ -19,9 +19,9 @@ struct WidgetVAttributes: ActivityAttributes {
     var name: String
 }
 
-struct WidgetVLiveActivity: Widget {
+struct WidgetLiveActivity: Widget {
     var body: some WidgetConfiguration {
-        ActivityConfiguration(for: WidgetVAttributes.self) { context in
+        ActivityConfiguration(for: WidgetAttributes.self) { context in
             // Lock screen/banner UI goes here
             VStack {
                 Text("Hello \(context.state.emoji)")
@@ -56,25 +56,25 @@ struct WidgetVLiveActivity: Widget {
     }
 }
 
-extension WidgetVAttributes {
-    fileprivate static var preview: WidgetVAttributes {
-        WidgetVAttributes(name: "World")
+extension WidgetAttributes {
+    fileprivate static var preview: WidgetAttributes {
+        WidgetAttributes(name: "World")
     }
 }
 
-extension WidgetVAttributes.ContentState {
-    fileprivate static var smiley: WidgetVAttributes.ContentState {
-        WidgetVAttributes.ContentState(emoji: "😀")
+extension WidgetAttributes.ContentState {
+    fileprivate static var smiley: WidgetAttributes.ContentState {
+        WidgetAttributes.ContentState(emoji: "😀")
      }
      
-     fileprivate static var starEyes: WidgetVAttributes.ContentState {
-         WidgetVAttributes.ContentState(emoji: "🤩")
+     fileprivate static var starEyes: WidgetAttributes.ContentState {
+         WidgetAttributes.ContentState(emoji: "🤩")
      }
 }
 
-#Preview("Notification", as: .content, using: WidgetVAttributes.preview) {
-   WidgetVLiveActivity()
+#Preview("Notification", as: .content, using: WidgetAttributes.preview) {
+   WidgetLiveActivity()
 } contentStates: {
-    WidgetVAttributes.ContentState.smiley
-    WidgetVAttributes.ContentState.starEyes
+    WidgetAttributes.ContentState.smiley
+    WidgetAttributes.ContentState.starEyes
 }

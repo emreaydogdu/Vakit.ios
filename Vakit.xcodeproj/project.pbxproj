@@ -20,12 +20,14 @@
 		865124862BC06479008FCFE0 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865124852BC06479008FCFE0 /* SplashScreen.swift */; };
 		865124A92BC1A8BD008FCFE0 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 865124A82BC1A8BD008FCFE0 /* WidgetKit.framework */; };
 		865124AB2BC1A8BD008FCFE0 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 865124AA2BC1A8BD008FCFE0 /* SwiftUI.framework */; };
-		865124AE2BC1A8BD008FCFE0 /* WidgetVBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865124AD2BC1A8BD008FCFE0 /* WidgetVBundle.swift */; };
-		865124B02BC1A8BD008FCFE0 /* WidgetVLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865124AF2BC1A8BD008FCFE0 /* WidgetVLiveActivity.swift */; };
-		865124B22BC1A8BD008FCFE0 /* WidgetV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865124B12BC1A8BD008FCFE0 /* WidgetV.swift */; };
+		865124AE2BC1A8BD008FCFE0 /* WidgetVakitBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865124AD2BC1A8BD008FCFE0 /* WidgetVakitBundle.swift */; };
+		865124B02BC1A8BD008FCFE0 /* WidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865124AF2BC1A8BD008FCFE0 /* WidgetLiveActivity.swift */; };
+		865124B22BC1A8BD008FCFE0 /* WidgetSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865124B12BC1A8BD008FCFE0 /* WidgetSmall.swift */; };
 		865124B42BC1A8BD008FCFE0 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865124B32BC1A8BD008FCFE0 /* AppIntent.swift */; };
 		865124B62BC1A8BE008FCFE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 865124B52BC1A8BE008FCFE0 /* Assets.xcassets */; };
 		865124BA2BC1A8BE008FCFE0 /* WidgetVExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 865124A72BC1A8BD008FCFE0 /* WidgetVExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		865124C12BC2271D008FCFE0 /* WidgetLarge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865124BF2BC2263D008FCFE0 /* WidgetLarge.swift */; };
+		865124C32BC2290A008FCFE0 /* WidgetMedium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865124C22BC2290A008FCFE0 /* WidgetMedium.swift */; };
 		867400EE2B543A7C00346972 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8639D8872B45E26900055204 /* Roboto-Bold.ttf */; };
 		867400EF2B543AA100346972 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8639D8852B45E26900055204 /* Roboto-Light.ttf */; };
 		867400F02B543AA600346972 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8639D8862B45E26900055204 /* Roboto-Medium.ttf */; };
@@ -125,12 +127,14 @@
 		865124A72BC1A8BD008FCFE0 /* WidgetVExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetVExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		865124A82BC1A8BD008FCFE0 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		865124AA2BC1A8BD008FCFE0 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		865124AD2BC1A8BD008FCFE0 /* WidgetVBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetVBundle.swift; sourceTree = "<group>"; };
-		865124AF2BC1A8BD008FCFE0 /* WidgetVLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetVLiveActivity.swift; sourceTree = "<group>"; };
-		865124B12BC1A8BD008FCFE0 /* WidgetV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetV.swift; sourceTree = "<group>"; };
+		865124AD2BC1A8BD008FCFE0 /* WidgetVakitBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetVakitBundle.swift; sourceTree = "<group>"; };
+		865124AF2BC1A8BD008FCFE0 /* WidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetLiveActivity.swift; sourceTree = "<group>"; };
+		865124B12BC1A8BD008FCFE0 /* WidgetSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSmall.swift; sourceTree = "<group>"; };
 		865124B32BC1A8BD008FCFE0 /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
 		865124B52BC1A8BE008FCFE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		865124B72BC1A8BE008FCFE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		865124BF2BC2263D008FCFE0 /* WidgetLarge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetLarge.swift; sourceTree = "<group>"; };
+		865124C22BC2290A008FCFE0 /* WidgetMedium.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetMedium.swift; sourceTree = "<group>"; };
 		867400F12B543F8D00346972 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		867400F22B543F8D00346972 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		867400F32B543F8D00346972 /* Montserrat-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Black.ttf"; sourceTree = "<group>"; };
@@ -250,9 +254,11 @@
 		865124AC2BC1A8BD008FCFE0 /* WidgetV */ = {
 			isa = PBXGroup;
 			children = (
-				865124AD2BC1A8BD008FCFE0 /* WidgetVBundle.swift */,
-				865124AF2BC1A8BD008FCFE0 /* WidgetVLiveActivity.swift */,
-				865124B12BC1A8BD008FCFE0 /* WidgetV.swift */,
+				865124AD2BC1A8BD008FCFE0 /* WidgetVakitBundle.swift */,
+				865124AF2BC1A8BD008FCFE0 /* WidgetLiveActivity.swift */,
+				865124B12BC1A8BD008FCFE0 /* WidgetSmall.swift */,
+				865124C22BC2290A008FCFE0 /* WidgetMedium.swift */,
+				865124BF2BC2263D008FCFE0 /* WidgetLarge.swift */,
 				865124B32BC1A8BD008FCFE0 /* AppIntent.swift */,
 				865124B52BC1A8BE008FCFE0 /* Assets.xcassets */,
 				865124B72BC1A8BE008FCFE0 /* Info.plist */,
@@ -579,10 +585,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				865124AE2BC1A8BD008FCFE0 /* WidgetVBundle.swift in Sources */,
+				865124C32BC2290A008FCFE0 /* WidgetMedium.swift in Sources */,
+				865124AE2BC1A8BD008FCFE0 /* WidgetVakitBundle.swift in Sources */,
+				865124C12BC2271D008FCFE0 /* WidgetLarge.swift in Sources */,
 				865124B42BC1A8BD008FCFE0 /* AppIntent.swift in Sources */,
-				865124B22BC1A8BD008FCFE0 /* WidgetV.swift in Sources */,
-				865124B02BC1A8BD008FCFE0 /* WidgetVLiveActivity.swift in Sources */,
+				865124B22BC1A8BD008FCFE0 /* WidgetSmall.swift in Sources */,
+				865124B02BC1A8BD008FCFE0 /* WidgetLiveActivity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

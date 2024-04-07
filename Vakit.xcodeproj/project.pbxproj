@@ -28,6 +28,10 @@
 		865124BA2BC1A8BE008FCFE0 /* WidgetVExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 865124A72BC1A8BD008FCFE0 /* WidgetVExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		865124C12BC2271D008FCFE0 /* WidgetLarge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865124BF2BC2263D008FCFE0 /* WidgetLarge.swift */; };
 		865124C32BC2290A008FCFE0 /* WidgetMedium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865124C22BC2290A008FCFE0 /* WidgetMedium.swift */; };
+		865124C72BC23FFB008FCFE0 /* Adhan in Frameworks */ = {isa = PBXBuildFile; productRef = 865124C62BC23FFB008FCFE0 /* Adhan */; };
+		865124CA2BC2F0FB008FCFE0 /* PrayerTimesClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44DF69D2A8146A40051E5E1 /* PrayerTimesClass.swift */; };
+		865124CD2BC2FFD1008FCFE0 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86414EB62B40B9B600225946 /* Extentions.swift */; };
+		865124CF2BC3092E008FCFE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D44DF6562A811F910051E5E1 /* Assets.xcassets */; };
 		867400EE2B543A7C00346972 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8639D8872B45E26900055204 /* Roboto-Bold.ttf */; };
 		867400EF2B543AA100346972 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8639D8852B45E26900055204 /* Roboto-Light.ttf */; };
 		867400F02B543AA600346972 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8639D8862B45E26900055204 /* Roboto-Medium.ttf */; };
@@ -182,6 +186,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				865124C72BC23FFB008FCFE0 /* Adhan in Frameworks */,
 				865124AB2BC1A8BD008FCFE0 /* SwiftUI.framework in Frameworks */,
 				865124A92BC1A8BD008FCFE0 /* WidgetKit.framework in Frameworks */,
 			);
@@ -413,6 +418,9 @@
 			dependencies = (
 			);
 			name = WidgetVExtension;
+			packageProductDependencies = (
+				865124C62BC23FFB008FCFE0 /* Adhan */,
+			);
 			productName = WidgetVExtension;
 			productReference = 865124A72BC1A8BD008FCFE0 /* WidgetVExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -539,6 +547,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				865124CF2BC3092E008FCFE0 /* Assets.xcassets in Resources */,
 				865124B62BC1A8BE008FCFE0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -587,7 +596,9 @@
 			files = (
 				865124C32BC2290A008FCFE0 /* WidgetMedium.swift in Sources */,
 				865124AE2BC1A8BD008FCFE0 /* WidgetVakitBundle.swift in Sources */,
+				865124CA2BC2F0FB008FCFE0 /* PrayerTimesClass.swift in Sources */,
 				865124C12BC2271D008FCFE0 /* WidgetLarge.swift in Sources */,
+				865124CD2BC2FFD1008FCFE0 /* Extentions.swift in Sources */,
 				865124B42BC1A8BD008FCFE0 /* AppIntent.swift in Sources */,
 				865124B22BC1A8BD008FCFE0 /* WidgetSmall.swift in Sources */,
 				865124B02BC1A8BD008FCFE0 /* WidgetLiveActivity.swift in Sources */,
@@ -886,6 +897,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.eaydgdu.vakit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "APP DEBUG";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -920,6 +932,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.eaydgdu.vakit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "APP RELEASE";
+				"SWIFT_ACTIVE_COMPILATION_CONDITIONS[arch=*]" = APP;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1093,6 +1107,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 86079F2F2BA7255500364ECF /* XCRemoteSwiftPackageReference "swift-request" */;
 			productName = Request;
+		};
+		865124C62BC23FFB008FCFE0 /* Adhan */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D44DF67C2A81201A0051E5E1 /* XCRemoteSwiftPackageReference "adhan-swift" */;
+			productName = Adhan;
 		};
 		86AC07E32B2DEB680057E19B /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;

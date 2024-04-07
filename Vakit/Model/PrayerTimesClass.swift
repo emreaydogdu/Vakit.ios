@@ -90,12 +90,11 @@ class PrayerTimesClass: NSObject, ObservableObject, CLLocationManagerDelegate {
         let defaults = UserDefaults.standard
         defaults.set(notificationCenter, forKey: "notificationSettings")
     }
-    
+
     override init() {
-        
+
         super.init()
-        
-        
+
         let defaults = UserDefaults.standard
         if let savedSettings = defaults.object(forKey: "notificationSettings") as? [String: Bool] {
             notificationSettings = savedSettings

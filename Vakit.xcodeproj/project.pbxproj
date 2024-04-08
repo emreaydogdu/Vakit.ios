@@ -49,6 +49,7 @@
 		8675D0DD2B39B49C00355925 /* DhikrView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8675D0DC2B39B49C00355925 /* DhikrView.swift */; };
 		8675D0DF2B39D4FF00355925 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8675D0DE2B39D4FF00355925 /* SettingsView.swift */; };
 		867FC73E2BBE235E00DC7380 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867FC73D2BBE235E00DC7380 /* RatingView.swift */; };
+		869ADF0C2BC4763C008E07F9 /* WidgetMedium2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869ADF0A2BC4759B008E07F9 /* WidgetMedium2.swift */; };
 		869DE13F2B3B15A60061724F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 869DE13E2B3B15A60061724F /* Localizable.xcstrings */; };
 		869E8EC12BA5E58400A964B9 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869E8EC02BA5E58400A964B9 /* Counter.swift */; };
 		86AC07DF2B2DDB4D0057E19B /* LocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86AC07DE2B2DDB4D0057E19B /* LocationProvider.swift */; };
@@ -155,6 +156,7 @@
 		8675D0DC2B39B49C00355925 /* DhikrView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DhikrView.swift; sourceTree = "<group>"; };
 		8675D0DE2B39D4FF00355925 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		867FC73D2BBE235E00DC7380 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		869ADF0A2BC4759B008E07F9 /* WidgetMedium2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetMedium2.swift; sourceTree = "<group>"; };
 		869DE13E2B3B15A60061724F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		869E8EC02BA5E58400A964B9 /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		86AC07DE2B2DDB4D0057E19B /* LocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProvider.swift; sourceTree = "<group>"; };
@@ -263,10 +265,11 @@
 			isa = PBXGroup;
 			children = (
 				865124AD2BC1A8BD008FCFE0 /* WidgetVakitBundle.swift */,
-				865124AF2BC1A8BD008FCFE0 /* WidgetLiveActivity.swift */,
 				865124B12BC1A8BD008FCFE0 /* WidgetSmall.swift */,
 				865124C22BC2290A008FCFE0 /* WidgetMedium.swift */,
+				869ADF0A2BC4759B008E07F9 /* WidgetMedium2.swift */,
 				865124BF2BC2263D008FCFE0 /* WidgetLarge.swift */,
+				865124AF2BC1A8BD008FCFE0 /* WidgetLiveActivity.swift */,
 				865124B32BC1A8BD008FCFE0 /* AppIntent.swift */,
 				865124B52BC1A8BE008FCFE0 /* Assets.xcassets */,
 				865124B72BC1A8BE008FCFE0 /* Info.plist */,
@@ -602,6 +605,7 @@
 			files = (
 				865124C32BC2290A008FCFE0 /* WidgetMedium.swift in Sources */,
 				865124AE2BC1A8BD008FCFE0 /* WidgetVakitBundle.swift in Sources */,
+				869ADF0C2BC4763C008E07F9 /* WidgetMedium2.swift in Sources */,
 				865124CA2BC2F0FB008FCFE0 /* PrayerTimesClass.swift in Sources */,
 				865124C12BC2271D008FCFE0 /* WidgetLarge.swift in Sources */,
 				865124CD2BC2FFD1008FCFE0 /* Extentions.swift in Sources */,

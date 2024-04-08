@@ -5,7 +5,7 @@ import UserNotifications
 
 extension Date {
 	static var yesterday: Date { return Date().dayBefore }
-	static var tomorrow:  Date { return Date().dayAfter }
+	static var tomorrow:  Date { return Date().dayAfter  }
 	var dayBefore: Date {
 		return Calendar.current.date(byAdding: .day, value: -1, to: noon)!
 	}
@@ -20,6 +20,12 @@ extension Date {
 	}
 	var isLastDayOfMonth: Bool {
 		return dayAfter.month != month
+	}    
+	
+	var zeroSeconds: Date {
+		let calendar = Calendar.current
+		let dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: Date())
+		return calendar.date(from: dateComponents)!
 	}
 }
 
@@ -115,7 +121,6 @@ class PrayerTimesClass: NSObject, ObservableObject, CLLocationManagerDelegate {
 	}
 	
 	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-		print("location search")
 		guard let location = locations.last else { return }
 		
 		let coordinates = Coordinates(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
@@ -179,5 +184,35 @@ class PrayerTimesClass: NSObject, ObservableObject, CLLocationManagerDelegate {
 		
 		return formatter.string(from: prayerTime)
 	}
-
+	
+	func getTimes(prayerClass: PrayerTimesClass) -> (String, String, String, String, String, String, Prayer, Date){
+		var (fajr, sunrise, dhuhr, asr, maghrib, isha, time) = ("00:00", "00:00", "00:00", "00:00", "00:00", "00:00", Date())
+		var prayer = Prayer.fajr
+		
+		if let prayer1 = prayers {
+			if let nextPrayer = prayer1.nextPrayer() {
+				prayer = nextPrayer
+				time = prayer1.time(for: prayer)
+				fajr = formattedPrayerTime(prayer1.fajr)
+				sunrise = formattedPrayerTime(prayer1.sunrise)
+				dhuhr = formattedPrayerTime(prayer1.dhuhr)
+				asr = formattedPrayerTime(prayer1.asr)
+				maghrib = formattedPrayerTime(prayer1.maghrib)
+				isha = formattedPrayerTime(prayer1.isha)
+			}
+			else if let prayer2 = prayers2 {
+				if let nextPrayer2 = prayer2.nextPrayer(){
+					prayer = nextPrayer2
+					time = prayer2.time(for: prayer)
+					fajr = formattedPrayerTime(prayer2.fajr)
+					sunrise = formattedPrayerTime(prayer2.sunrise)
+					dhuhr = formattedPrayerTime(prayer2.dhuhr)
+					asr = formattedPrayerTime(prayer2.asr)
+					maghrib = formattedPrayerTime(prayer2.maghrib)
+					isha = formattedPrayerTime(prayer2.isha)
+				}
+			}
+		}
+		return (fajr, sunrise, dhuhr, asr, maghrib, isha, prayer, time)
+	}
 }

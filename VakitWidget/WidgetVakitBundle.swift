@@ -6,7 +6,8 @@ struct WidgetVakitBundle: WidgetBundle {
     var body: some Widget {
         WidgetSmall()
         WidgetMedium()
-        WidgetLarge()
-        WidgetLiveActivity()
+        WidgetMedium2()
+        //WidgetLarge()
+        //WidgetLiveActivity()
     }
 }

@@ -206,10 +206,16 @@
         }
       }
     },
+    "Bottom %@" : {
+
+    },
     "chapter" : {
 
     },
     "Choose your Application" : {
+
+    },
+    "Configuration" : {
 
     },
     "Correct" : {
@@ -341,6 +347,15 @@
         }
       }
     },
+    "Error" : {
+
+    },
+    "Error:" : {
+
+    },
+    "Favorite Emoji" : {
+
+    },
     "Find the nearest mosques in your area" : {
 
     },
@@ -364,6 +379,9 @@
 
     },
     "Hello" : {
+
+    },
+    "Hello %@" : {
 
     },
     "Holy Days" : {
@@ -707,6 +725,9 @@
         }
       }
     },
+    "L" : {
+
+    },
     "Language" : {
       "localizations" : {
         "de" : {
@@ -877,6 +898,9 @@
         }
       }
     },
+    "Leading" : {
+
+    },
     "left" : {
 
     },
@@ -992,6 +1016,9 @@
     "Show more" : {
 
     },
+    "T %@" : {
+
+    },
     "Theme" : {
       "localizations" : {
         "de" : {
@@ -1008,6 +1035,9 @@
         }
       }
     },
+    "This is an example widget." : {
+
+    },
     "To access the most accurate prayer times instantly through the Salah app, you need to allow location access." : {
       "localizations" : {
         "tr" : {
@@ -1019,6 +1049,9 @@
       }
     },
     "to your" : {
+
+    },
+    "Trailing" : {
 
     },
     "Translation" : {
@@ -1048,6 +1081,9 @@
           }
         }
       }
+    },
+    "ttDhuhr" : {
+
     },
     "ttDhur" : {
       "localizations" : {

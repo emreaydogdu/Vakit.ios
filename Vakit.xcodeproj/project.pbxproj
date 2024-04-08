@@ -32,6 +32,7 @@
 		865124CA2BC2F0FB008FCFE0 /* PrayerTimesClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44DF69D2A8146A40051E5E1 /* PrayerTimesClass.swift */; };
 		865124CD2BC2FFD1008FCFE0 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86414EB62B40B9B600225946 /* Extentions.swift */; };
 		865124CF2BC3092E008FCFE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D44DF6562A811F910051E5E1 /* Assets.xcassets */; };
+		865124D22BC34F67008FCFE0 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 869DE13E2B3B15A60061724F /* Localizable.xcstrings */; };
 		867400EE2B543A7C00346972 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8639D8872B45E26900055204 /* Roboto-Bold.ttf */; };
 		867400EF2B543AA100346972 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8639D8852B45E26900055204 /* Roboto-Light.ttf */; };
 		867400F02B543AA600346972 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8639D8862B45E26900055204 /* Roboto-Medium.ttf */; };
@@ -139,6 +140,8 @@
 		865124B72BC1A8BE008FCFE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		865124BF2BC2263D008FCFE0 /* WidgetLarge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetLarge.swift; sourceTree = "<group>"; };
 		865124C22BC2290A008FCFE0 /* WidgetMedium.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetMedium.swift; sourceTree = "<group>"; };
+		865124D02BC30BEE008FCFE0 /* Vakit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Vakit.entitlements; sourceTree = "<group>"; };
+		865124D12BC30BFA008FCFE0 /* WidgetVExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetVExtension.entitlements; sourceTree = "<group>"; };
 		867400F12B543F8D00346972 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		867400F22B543F8D00346972 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		867400F32B543F8D00346972 /* Montserrat-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Black.ttf"; sourceTree = "<group>"; };
@@ -295,6 +298,7 @@
 		D44DF6462A811F900051E5E1 = {
 			isa = PBXGroup;
 			children = (
+				865124D12BC30BFA008FCFE0 /* WidgetVExtension.entitlements */,
 				D44DF6512A811F900051E5E1 /* Vakit */,
 				D44DF6622A811F910051E5E1 /* VakitTests */,
 				D44DF66C2A811F910051E5E1 /* VakitUITests */,
@@ -318,6 +322,7 @@
 		D44DF6512A811F900051E5E1 /* Vakit */ = {
 			isa = PBXGroup;
 			children = (
+				865124D02BC30BEE008FCFE0 /* Vakit.entitlements */,
 				D44DF6962A812BF50051E5E1 /* Views */,
 				D44DF6822A8120B00051E5E1 /* Components */,
 				D44DF67F2A8120520051E5E1 /* Model */,
@@ -549,6 +554,7 @@
 			files = (
 				865124CF2BC3092E008FCFE0 /* Assets.xcassets in Resources */,
 				865124B62BC1A8BE008FCFE0 /* Assets.xcassets in Resources */,
+				865124D22BC34F67008FCFE0 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -687,6 +693,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = WidgetVExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -696,6 +703,7 @@
 				INFOPLIST_FILE = WidgetV/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WidgetV;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSLocationUsageDescription = 1;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -719,6 +727,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = WidgetVExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -728,6 +737,7 @@
 				INFOPLIST_FILE = WidgetV/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WidgetV;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSLocationUsageDescription = 1;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -875,6 +885,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Vakit/Vakit.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -910,6 +921,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Vakit/Vakit.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

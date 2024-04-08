@@ -74,7 +74,9 @@ struct AthanView: View {
 				.coordinateSpace(name: "scroll")
 				.fullScreenCover(isPresented: $isPresented, content: { LocationNotFoundView() })
 				.onAppear{
-					prayerClass.startUpdatingLocation()
+					prayerClass.startUpdatingLocation {
+						print("hello")
+					}
 				}
 				.onDisappear{
 					prayerClass.stopUpdatingLocation()

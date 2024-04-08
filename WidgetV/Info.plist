@@ -7,5 +7,9 @@
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.widgetkit-extension</string>
 	</dict>
+	<key>NSWidgetWantsLocation</key>
+	<true/>
+	<key>NSLocationUsageDescription</key>
+	<string>Put some text here</string>
 </dict>
 </plist>

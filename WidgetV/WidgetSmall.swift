@@ -153,7 +153,7 @@ struct SmallWidgetEntryView : View {
 	func getNext3(prayer: Prayer) -> (LocalizedStringKey, LocalizedStringKey, LocalizedStringKey){
 		switch prayer {
 		case .fajr, .sunrise, .dhuhr:
-			return (LocalizedStringKey("ttFajr"), LocalizedStringKey("ttSunrise"), LocalizedStringKey("ttDhuhr"))
+			return (LocalizedStringKey("ttFajr"), LocalizedStringKey("ttSunrise"), LocalizedStringKey("ttDhur"))
 		case .asr, .maghrib, .isha:
 			return (LocalizedStringKey("ttAsr"), LocalizedStringKey("ttMaghrib"), LocalizedStringKey("ttIsha"))
 		}
@@ -211,7 +211,6 @@ struct SmallProvider: TimelineProvider {
 			completion(timeline)
 		}
 	}
-	
 }
 
 #Preview(as: .systemSmall) {

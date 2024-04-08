@@ -145,11 +145,13 @@ extension UINavigationController: UIGestureRecognizerDelegate {
 }
 
 // Padding SafeArea Top
+#if APP
 extension UIApplication {
 	static var safeAreaInsets: UIEdgeInsets  {
 		return UIApplication.shared.connectedScenes.compactMap{ ($0 as? UIWindowScene)?.keyWindow }.first!.safeAreaInsets
 	}
 }
+#endif
 
 public extension LocalizedStringKey {
 

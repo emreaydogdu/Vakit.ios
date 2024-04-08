@@ -206,10 +206,16 @@
         }
       }
     },
+    "Bottom %@" : {
+
+    },
     "chapter" : {
 
     },
     "Choose your Application" : {
+
+    },
+    "Configuration" : {
 
     },
     "Correct" : {
@@ -341,6 +347,9 @@
         }
       }
     },
+    "Favorite Emoji" : {
+
+    },
     "Find the nearest mosques in your area" : {
 
     },
@@ -364,6 +373,9 @@
 
     },
     "Hello" : {
+
+    },
+    "Hello %@" : {
 
     },
     "Holy Days" : {
@@ -707,6 +719,9 @@
         }
       }
     },
+    "L" : {
+
+    },
     "Language" : {
       "localizations" : {
         "de" : {
@@ -877,6 +892,9 @@
         }
       }
     },
+    "Leading" : {
+
+    },
     "left" : {
 
     },
@@ -992,6 +1010,9 @@
     "Show more" : {
 
     },
+    "T %@" : {
+
+    },
     "Theme" : {
       "localizations" : {
         "de" : {
@@ -1008,6 +1029,9 @@
         }
       }
     },
+    "This is an example widget." : {
+
+    },
     "To access the most accurate prayer times instantly through the Salah app, you need to allow location access." : {
       "localizations" : {
         "tr" : {
@@ -1019,6 +1043,9 @@
       }
     },
     "to your" : {
+
+    },
+    "Trailing" : {
 
     },
     "Translation" : {
@@ -1160,6 +1187,9 @@
       }
     },
     "Upgrade to Unlock All Content" : {
+
+    },
+    "Vaktin Cikmasina" : {
 
     },
     "We only need your location information while you are using the app. This enables us to provide prayer times specific to your location and is not shared with any other parties." : {

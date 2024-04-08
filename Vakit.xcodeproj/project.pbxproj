@@ -259,7 +259,7 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		865124AC2BC1A8BD008FCFE0 /* WidgetV */ = {
+		865124AC2BC1A8BD008FCFE0 /* VakitWidget */ = {
 			isa = PBXGroup;
 			children = (
 				865124AD2BC1A8BD008FCFE0 /* WidgetVakitBundle.swift */,
@@ -271,7 +271,7 @@
 				865124B52BC1A8BE008FCFE0 /* Assets.xcassets */,
 				865124B72BC1A8BE008FCFE0 /* Info.plist */,
 			);
-			path = WidgetV;
+			path = VakitWidget;
 			sourceTree = "<group>";
 		};
 		869DE13D2B3B155F0061724F /* Resources */ = {
@@ -302,7 +302,7 @@
 				D44DF6512A811F900051E5E1 /* Vakit */,
 				D44DF6622A811F910051E5E1 /* VakitTests */,
 				D44DF66C2A811F910051E5E1 /* VakitUITests */,
-				865124AC2BC1A8BD008FCFE0 /* WidgetV */,
+				865124AC2BC1A8BD008FCFE0 /* VakitWidget */,
 				D44DF6502A811F900051E5E1 /* Products */,
 				86B4917C2BB4DADB00C81873 /* Frameworks */,
 			);
@@ -700,8 +700,8 @@
 				DEVELOPMENT_TEAM = 3HQB937GUU;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WidgetV/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = WidgetV;
+				INFOPLIST_FILE = VakitWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = VakitWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSLocationUsageDescription = 1;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
@@ -712,7 +712,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.eaydgdu.vakit.WidgetV;
+				PRODUCT_BUNDLE_IDENTIFIER = com.eaydgdu.vakit.WidgetVakit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
@@ -734,8 +734,8 @@
 				DEVELOPMENT_TEAM = 3HQB937GUU;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WidgetV/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = WidgetV;
+				INFOPLIST_FILE = VakitWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = VakitWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSLocationUsageDescription = 1;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
@@ -746,7 +746,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.eaydgdu.vakit.WidgetV;
+				PRODUCT_BUNDLE_IDENTIFIER = com.eaydgdu.vakit.WidgetVakit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;

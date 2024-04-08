@@ -1,10 +1,3 @@
-//
-//  WidgetVLiveActivity.swift
-//  WidgetV
-//
-//  Created by Emre Aydogdu on 06.04.24.
-//
-
 import ActivityKit
 import WidgetKit
 import SwiftUI

@@ -264,6 +264,7 @@
 		865124AC2BC1A8BD008FCFE0 /* VakitWidget */ = {
 			isa = PBXGroup;
 			children = (
+				865124D12BC30BFA008FCFE0 /* WidgetVExtension.entitlements */,
 				865124AD2BC1A8BD008FCFE0 /* WidgetVakitBundle.swift */,
 				865124B12BC1A8BD008FCFE0 /* WidgetSmall.swift */,
 				865124C22BC2290A008FCFE0 /* WidgetMedium.swift */,
@@ -301,7 +302,6 @@
 		D44DF6462A811F900051E5E1 = {
 			isa = PBXGroup;
 			children = (
-				865124D12BC30BFA008FCFE0 /* WidgetVExtension.entitlements */,
 				D44DF6512A811F900051E5E1 /* Vakit */,
 				D44DF6622A811F910051E5E1 /* VakitTests */,
 				D44DF66C2A811F910051E5E1 /* VakitUITests */,
@@ -697,7 +697,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = WidgetVExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = VakitWidget/WidgetVExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -731,7 +731,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = WidgetVExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = VakitWidget/WidgetVExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

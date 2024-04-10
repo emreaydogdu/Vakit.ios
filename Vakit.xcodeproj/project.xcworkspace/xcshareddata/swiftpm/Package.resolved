@@ -1,0 +1,42 @@
+{
+  "originHash" : "ae2a04e6560bffe61d92a32779d3de83f8e2abb15e8c98e0ef13f0bd50dce96d",
+  "pins" : [
+    {
+      "identity" : "adhan-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/batoulapps/adhan-swift",
+      "state" : {
+        "revision" : "6dc8309951fdaa0cd124c52b9a8de7e0da1ff2ce",
+        "version" : "1.4.0"
+      }
+    },
+    {
+      "identity" : "lottie-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/airbnb/lottie-ios",
+      "state" : {
+        "revision" : "ab15129d567eda5da0631fcba23de60144a612f4",
+        "version" : "4.4.2"
+      }
+    },
+    {
+      "identity" : "swift-request",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/carson-katri/swift-request",
+      "state" : {
+        "revision" : "6266d884d7ded618cceb0e0920431be4d6f4c4aa",
+        "version" : "1.4.0"
+      }
+    },
+    {
+      "identity" : "swipeactions",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/aheze/SwipeActions",
+      "state" : {
+        "revision" : "41e6f6dce02d8cfa164f8c5461a41340850ca3ab",
+        "version" : "1.1.0"
+      }
+    }
+  ],
+  "version" : 3
+}

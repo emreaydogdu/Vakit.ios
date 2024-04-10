@@ -206,7 +206,7 @@
         }
       }
     },
-    "Bottom %@" : {
+    "Bottom" : {
 
     },
     "chapter" : {
@@ -372,10 +372,10 @@
     "Google Maps" : {
 
     },
-    "Hello" : {
+    "Günes" : {
 
     },
-    "Hello %@" : {
+    "Hello" : {
 
     },
     "Holy Days" : {
@@ -700,6 +700,9 @@
         }
       }
     },
+    "Ikindi" : {
+
+    },
     "KazaViewFooter" : {
 
     },
@@ -718,9 +721,6 @@
           }
         }
       }
-    },
-    "L" : {
-
     },
     "Language" : {
       "localizations" : {
@@ -985,6 +985,9 @@
     "right" : {
 
     },
+    "Schedule a notification" : {
+
+    },
     "Select Dhikr" : {
 
     },
@@ -1008,9 +1011,6 @@
 
     },
     "Show more" : {
-
-    },
-    "T %@" : {
 
     },
     "Theme" : {

@@ -8,6 +8,6 @@ struct WidgetVakitBundle: WidgetBundle {
         WidgetMedium()
         WidgetMedium2()
         //WidgetLarge()
-        //WidgetLiveActivity()
+        WidgetLiveActivity()
     }
 }

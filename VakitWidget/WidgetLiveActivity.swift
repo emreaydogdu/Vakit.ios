@@ -52,6 +52,9 @@ struct WidgetLiveActivity: Widget {
                 DynamicIslandExpandedRegion(.trailing) {
                     Text("Trailing")
                 }
+				DynamicIslandExpandedRegion(.center) {
+                    Text("Center")
+                }
                 DynamicIslandExpandedRegion(.bottom) {
                     Text("Bottom")
                 }

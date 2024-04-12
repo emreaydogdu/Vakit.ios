@@ -28,7 +28,7 @@ struct WidgetLiveActivity: Widget {
 					 .fontWeight(.bold)
 					 .frame(maxWidth: .infinity, alignment: .leading)
 					Spacer()
-					Text("Günes")
+					Text("Yatsi")
 						.font(.title2)
 					 .fontWeight(.bold)
 					 .frame(maxWidth: .infinity, alignment: .trailing)

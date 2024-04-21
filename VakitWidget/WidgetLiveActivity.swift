@@ -2,6 +2,28 @@ import ActivityKit
 import WidgetKit
 import SwiftUI
 
+ private struct BarProgressStyle: ProgressViewStyle {
+	var height: Double = 16.0
+	var labelFontStyle: Font = .body
+
+	func makeBody(configuration: Configuration) -> some View {
+
+		let progress = configuration.fractionCompleted ?? 0.0
+
+		GeometryReader { geometry in
+			ZStack(alignment: .leading) {
+				Rectangle()
+					.frame(width: geometry.size.width, height: height)
+					.foregroundColor(Color(hex: "#39393D"))
+
+				RoundedRectangle(cornerRadius: 10.0)
+					.frame(width: geometry.size.width * progress, height: height)
+					.foregroundColor(Color(hex: "#8E8E93"))
+			}.cornerRadius(45.0)
+		}
+	}
+}
+
 struct LiveActivityAttr: ActivityAttributes {
 	// Fixed non-changing properties about your activity go here!
 	var title: String
@@ -16,33 +38,75 @@ struct WidgetLiveActivity: Widget {
 	let kind: String = "LiveActivity"
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: LiveActivityAttr.self) { context in
-            // Lock screen/banner UI goes here
             VStack {
-				Text("\(context.state.startTime.addingTimeInterval(60*60*5), style: .relative)")
-					.font(.largeTitle)
-					.fontWeight(.heavy)
+				Text("BERLIN")
+					.font(.subheadline)
+					.fontWeight(.bold)
 					.frame(maxWidth: .infinity, alignment: .leading)
+					.opacity(0.7)
 				HStack{
+					Image("ic_sun1")
+						.resizable()
+						.frame(maxWidth: 20, maxHeight: 20, alignment: .leading)
 					Text("Ikindi")
-					 .font(.title2)
+						.font(.headline)
 					 .fontWeight(.bold)
-					 .frame(maxWidth: .infinity, alignment: .leading)
+					Text("04:34")
+						.font(.headline)
+						.fontWeight(.bold)
+						.foregroundColor(Color.color3)
 					Spacer()
+					Text("···")
+						.font(.headline)
+						.fontWeight(.bold)
+						.opacity(0.5)
+					Spacer()
+					Text("05:16")
+						.font(.headline)
+						.fontWeight(.bold)
+						.foregroundColor(Color.color3)
 					Text("Yatsi")
-						.font(.title2)
+						.font(.headline)
 					 .fontWeight(.bold)
-					 .frame(maxWidth: .infinity, alignment: .trailing)
+					Image("ic_sun2")
+						.resizable()
+						.frame(maxWidth: 20, maxHeight: 20, alignment: .leading)
 				}
-				.padding(.vertical)
-				ProgressView(value: 0.5)
-					.frame(height: 8.0)
-					.scaleEffect(x: 1, y: 2, anchor: .center)
-					.clipShape(RoundedRectangle(cornerRadius: 6))
-					.tint(.white)
-				
+				HStack{
+					Text("Current")
+						.font(.caption2)
+						.foregroundColor(Color.color3)
+						.frame(maxWidth: .infinity, alignment: .leading)
+					Spacer()
+					Text("Next")
+						.font(.caption2)
+						.foregroundColor(Color.color3)
+						.frame(maxWidth: .infinity, alignment: .trailing)
+				}
+				.padding(.bottom, 5 )
+				ProgressView(value: 50, total: 100)
+					.progressViewStyle(BarProgressStyle())
+					.padding(.bottom, 8)
+				HStack{
+					Text("Vaktin cikmasina")
+						.font(.footnote)
+						.fontWeight(.semibold)
+						.frame(maxWidth: .infinity, alignment: .leading)
+					Spacer()
+					//Text("\(context.state.startTime.addingTimeInterval(60*60*5), style: .relative)")
+					Text("1h  15min")
+						.font(.footnote)
+						.fontWeight(.bold)
+						.frame(maxWidth: .infinity, alignment: .trailing)
+					Text("left")
+						.font(.footnote)
+						.fontWeight(.bold)
+						.opacity(0.7)
+				}
+
 			}
 			.padding()
-            .activityBackgroundTint(Color.black)
+			//.activityBackgroundTint(Color(hex: "#1C1C1E"))
             .activitySystemActionForegroundColor(Color.white)
         } dynamicIsland: { context in
             DynamicIsland {
@@ -90,7 +154,7 @@ struct WidgetLiveActivity: Widget {
             .widgetURL(URL(string: "http://www.apple.com"))
             .keylineTint(Color.cyan)
         }
-    }
+	}
 }
 
 #Preview("Notification", as: .content, using: LiveActivityAttr(title: "World")) {

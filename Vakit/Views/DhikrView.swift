@@ -126,7 +126,7 @@ struct DhikrView: View {
 	}
 }
 
-struct BarProgressStyle: ProgressViewStyle {
+private struct BarProgressStyle: ProgressViewStyle {
 	
 	var height: Double = 20.0
 	var labelFontStyle: Font = .body

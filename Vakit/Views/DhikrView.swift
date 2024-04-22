@@ -359,7 +359,7 @@ struct FormSection<Content: View>: View {
 				.frame(maxWidth: .infinity, alignment: .leading)
 				.padding(.leading, 38)
 				.padding(.top, 20),
-			footer: Text("\(footer)")
+			footer: Text(.init("\(footer)"))
 				.font(.subheadline)
 				.foregroundColor(Color("cardView.subtitle"))
 				.frame(maxWidth: .infinity, alignment: .leading)

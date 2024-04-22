@@ -20,8 +20,7 @@ extension Date {
 	}
 	var isLastDayOfMonth: Bool {
 		return dayAfter.month != month
-	}    
-	
+	}
 	var zeroSeconds: Date {
 		let calendar = Calendar.current
 		let dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: Date())
@@ -126,8 +125,8 @@ class PrayerTimesClass: NSObject, ObservableObject, CLLocationManagerDelegate {
 		let coordinates = Coordinates(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
 		//let coordinates = Coordinates(latitude: 41.015137, longitude: 28.979530)
 		
-		let params = CalculationMethod.muslimWorldLeague.params
-		
+		let params = CalculationMethod.turkey.params
+
 		let components = Calendar.current.dateComponents([.year, .month, .day], from: location.timestamp)
 		let futureDate = Calendar.current.dateComponents([.year, .month, .day], from: Date.tomorrow)
 		let prayerTimes = PrayerTimes(coordinates: coordinates, date: components, calculationParameters: params)

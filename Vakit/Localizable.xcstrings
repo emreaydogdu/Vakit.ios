@@ -209,6 +209,9 @@
     "Bottom %@" : {
 
     },
+    "Calculationmethod" : {
+
+    },
     "chapter" : {
 
     },
@@ -337,6 +340,12 @@
         }
       }
     },
+    "Diyanet" : {
+
+    },
+    "Egyptian General Authority of Survey" : {
+
+    },
     "Enable Location Access from Settings" : {
       "localizations" : {
         "tr" : {
@@ -372,7 +381,7 @@
     "Google Maps" : {
 
     },
-    "Hello" : {
+    "Hanafi" : {
 
     },
     "Hello %@" : {
@@ -700,6 +709,9 @@
         }
       }
     },
+    "Institute of Geophysics, University of Tehran" : {
+
+    },
     "KazaViewFooter" : {
 
     },
@@ -718,6 +730,9 @@
           }
         }
       }
+    },
+    "Kuwait" : {
+
     },
     "L" : {
 
@@ -925,6 +940,12 @@
         }
       }
     },
+    "Method developed by Khalid Shaukat" : {
+
+    },
+    "middle of the night" : {
+
+    },
     "Missed prayers" : {
       "localizations" : {
         "de" : {
@@ -940,6 +961,9 @@
           }
         }
       }
+    },
+    "Muslim World League" : {
+
     },
     "Next" : {
       "localizations" : {
@@ -970,10 +994,22 @@
     "No prayers" : {
 
     },
+    "North America, ISNA method" : {
+
+    },
     "Original" : {
 
     },
     "Please provide location service access" : {
+
+    },
+    "Prayer times" : {
+
+    },
+    "Press" : {
+
+    },
+    "Qatar" : {
 
     },
     "Restore purchase" : {
@@ -983,6 +1019,9 @@
 
     },
     "right" : {
+
+    },
+    "Rule" : {
 
     },
     "Select Dhikr" : {
@@ -1003,6 +1042,12 @@
           }
         }
       }
+    },
+    "seventh of the night" : {
+
+    },
+    "Shafi" : {
+
     },
     "Show less" : {
 
@@ -1185,6 +1230,18 @@
           }
         }
       }
+    },
+    "twilight angle" : {
+
+    },
+    "UAE method" : {
+
+    },
+    "Umm al-Qura University, Makkah" : {
+
+    },
+    "University of Islamic Sciences, Karachi" : {
+
     },
     "Upgrade to Unlock All Content" : {
 

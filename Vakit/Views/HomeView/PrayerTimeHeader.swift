@@ -2,8 +2,8 @@ import SwiftUI
 
 struct PrayerTimeHeader: View {
 	
-	let prayerName: String
-	let nextPrayerName: String
+	let prayerName: LocalizedStringKey
+	let nextPrayerName: LocalizedStringKey
 	let prayerTime: Date
 	let location: String
 	let currentDate = Date()
@@ -47,7 +47,7 @@ struct PrayerTimeHeader: View {
 								.font(.subheadline)
 								.frame(maxWidth: .infinity, alignment: .leading)
 							
-							Text("\(prayerName)")
+							Text(prayerName)
 								.font(.headline)
 								.fontWeight(.bold)
 								.foregroundColor(.black)
@@ -58,7 +58,7 @@ struct PrayerTimeHeader: View {
 								.font(.subheadline)
 								.frame(maxWidth: .infinity, alignment: .leading)
 							
-							Text("\(nextPrayerName)")
+							Text(nextPrayerName)
 								.font(.headline)
 								.fontWeight(.bold)
 								.foregroundColor(.black)

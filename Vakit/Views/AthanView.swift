@@ -2,8 +2,9 @@ import SwiftUI
 import Adhan
 
 struct AthanView: View {
-	
-	@ObservedObject var prayerClass: PrayerTimesClass
+
+	let prayer = PrayerTimesClass().decodePrayer(key: "prayerTimes1")
+	let prayer2 = PrayerTimesClass().decodePrayer(key: "prayerTimes2")
 	@State private var isPresented = false
 	@State private var isShowSettings = false
 	
@@ -15,51 +16,41 @@ struct AthanView: View {
 			ZStack (alignment: .top) {
 				PatternBG(pattern: true)
 				ScrollView(showsIndicators: false) {
-					if prayerClass.error != nil {
-						VStack{}
-							.onAppear{
-								//isPresented.toggle()
+					if prayer != nil {
+						if prayer!.nextPrayer() != nil {
+							PrayerTimeHeader(prayerName: LocalizedStringKey("\(prayer!.currentPrayer()!)"), nextPrayerName: LocalizedStringKey("\(prayer!.nextPrayer()!)"), prayerTime: Date(), location: "1")
+								.frame(maxWidth: .infinity, alignment: .center)
+								.padding(.top, 100)
+						} else if prayer2!.nextPrayer() != nil {
+							PrayerTimeHeader(prayerName: LocalizedStringKey("ttIsha"), nextPrayerName: LocalizedStringKey("ttFajr"), prayerTime: prayer2!.nextPrayerDate()!, location: "2")
+								.frame(maxWidth: .infinity, alignment: .center)
+								.padding(.top, 100)
+						} else {
+							PrayerTimeHeader(prayerName: LocalizedStringKey("ttIsha"), nextPrayerName: LocalizedStringKey("ttFajr"), prayerTime: Date(), location: "__")
+								.frame(maxWidth: .infinity, alignment: .center)
+								.padding(.top, 100)
+						}
+						AthanTimeTable(prayer: prayer)
+							.padding()
+							.listRowSeparator(.hidden)
+							.onAppear {
+								isPresented = false
 							}
-					} else {
-						if let prayers = prayerClass.prayers {
-							//let currentPrayer = prayers.currentPrayer()
-							if let nextPrayer = prayers.nextPrayer(){
-								PrayerTimeHeader(prayerName: "\(nextPrayer)", nextPrayerName: "\(nextPrayer)", prayerTime: prayers.time(for: nextPrayer), location: prayerClass.city ?? "__")
-									.frame(maxWidth: .infinity, alignment: .center)
-									.padding(.top, 100)
-							} else if let prayers2 = prayerClass.prayers2 {
-								if let nextPrayer2 = prayers2.nextPrayer(){
-									PrayerTimeHeader(prayerName: "Yatsi", nextPrayerName: "Imsak", prayerTime: prayers2.time(for: nextPrayer2), location: prayerClass.city ?? "__")
-										.frame(maxWidth: .infinity, alignment: .center)
-										.padding(.top, 100)
-								} else {			
-									PrayerTimeHeader(prayerName: "Yatsi", nextPrayerName: "Imsak", prayerTime: Date(), location: prayerClass.city ?? "__")
-										.frame(maxWidth: .infinity, alignment: .center)
-										.padding(.top, 100)
-								}
-							}
-							AthanTimeTable(prayerClass: prayerClass)
-								.padding()
-								.listRowSeparator(.hidden)
-								.onAppear {
-									isPresented = false
-								}
-								.background(GeometryReader { geometry in
-									Color.clear
-										.preference(key: ScrollOffsetPreferenceKey.self, value: geometry.frame(in: .named("scroll")).origin)
-										.onAppear{
-											defaultv = geometry.frame(in: .named("scroll")).origin
-										}
-								})
-								.onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
-									withAnimation(.linear(duration: 0.2)){
-										show = value.y < defaultv.y - 20.0
+							.background(GeometryReader { geometry in
+								Color.clear
+									.preference(key: ScrollOffsetPreferenceKey.self, value: geometry.frame(in: .named("scroll")).origin)
+									.onAppear{
+										defaultv = geometry.frame(in: .named("scroll")).origin
 									}
+							})
+							.onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
+								withAnimation(.linear(duration: 0.2)){
+									show = value.y < defaultv.y - 20.0
 								}
-						}
-						else {
-							Text("No prayers")
-						}
+							}
+					}
+					else {
+						Text("No prayers")
 					}
 					DailyNamesView()
 						.padding(.horizontal)
@@ -74,12 +65,16 @@ struct AthanView: View {
 				.coordinateSpace(name: "scroll")
 				.fullScreenCover(isPresented: $isPresented, content: { LocationNotFoundView() })
 				.onAppear{
+					/*
 					prayerClass.startUpdatingLocation {
 						print("hello")
 					}
+					 */
 				}
 				.onDisappear{
+					/*
 					prayerClass.stopUpdatingLocation()
+					 */
 				}
 				TopView(show: $show)
 			}
@@ -126,5 +121,5 @@ private struct TopView : View {
 }
 
 #Preview {
-	AthanView(prayerClass: PrayerTimesClass())
+	AthanView()
 }

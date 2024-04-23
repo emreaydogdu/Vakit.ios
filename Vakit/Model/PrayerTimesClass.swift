@@ -41,8 +41,74 @@ struct PrayerTime: Codable {
 			str = self.isha
 		}
 		return PrayerTimesClass().formattedPrayerTime(str)
+	}    
+
+	func currentPrayerDate(at time: Date = Date()) -> Date? {
+		if self.isha!.timeIntervalSince(time) <= 0 {
+			return self.isha
+		} else if maghrib!.timeIntervalSince(time) <= 0 {
+			return self.maghrib
+		} else if asr!.timeIntervalSince(time) <= 0 {
+			return self.asr
+		} else if dhuhr!.timeIntervalSince(time) <= 0 {
+			return self.dhuhr
+		} else if sunrise!.timeIntervalSince(time) <= 0 {
+			return self.sunrise
+		} else if fajr!.timeIntervalSince(time) <= 0 {
+			return self.fajr
+		}
+		return nil
+	}
+	public func nextPrayerDate(at time: Date = Date()) -> Date? {
+		if isha!.timeIntervalSince(time) <= 0 {
+			return nil
+		} else if self.maghrib!.timeIntervalSince(time) <= 0 {
+			return self.isha
+		} else if self.asr!.timeIntervalSince(time) <= 0 {
+			return self.maghrib
+		} else if self.dhuhr!.timeIntervalSince(time) <= 0 {
+			return self.asr
+		} else if self.sunrise!.timeIntervalSince(time) <= 0 {
+			return self.dhuhr
+		} else if self.fajr!.timeIntervalSince(time) <= 0 {
+			return self.sunrise
+		}
+		return self.fajr
 	}
 
+	func currentPrayer(at time: Date = Date()) -> String? {
+		if self.isha!.timeIntervalSince(time) <= 0 {
+			return "ttIsha"
+		} else if maghrib!.timeIntervalSince(time) <= 0 {
+			return "ttMaghrib"
+		} else if asr!.timeIntervalSince(time) <= 0 {
+			return "ttAsr"
+		} else if dhuhr!.timeIntervalSince(time) <= 0 {
+			return "ttDhur"
+		} else if sunrise!.timeIntervalSince(time) <= 0 {
+			return "ttSunrise"
+		} else if fajr!.timeIntervalSince(time) <= 0 {
+			return "ttFajr"
+		}
+		return "__"
+	}
+
+	public func nextPrayer(at time: Date = Date()) -> String? {
+		if isha!.timeIntervalSince(time) <= 0 {
+			return nil
+		} else if maghrib!.timeIntervalSince(time) <= 0 {
+			return "ttIsha"
+		} else if asr!.timeIntervalSince(time) <= 0 {
+			return "ttMaghrib"
+		} else if dhuhr!.timeIntervalSince(time) <= 0 {
+			return "ttAsr"
+		} else if sunrise!.timeIntervalSince(time) <= 0 {
+			return "ttDhur"
+		} else if fajr!.timeIntervalSince(time) <= 0 {
+			return "ttSunrise"
+		}
+		return "ttFajr"
+	}
 }
 
 extension Date {
@@ -223,9 +289,8 @@ class PrayerTimesClass: NSObject, ObservableObject, CLLocationManagerDelegate {
 			self.schedulePrayerTimeNotifications()
 
 			do {
-				let prayer = PrayerTime(prayer: prayerTimes)
-				let data = try JSONEncoder().encode(prayer)
-				UserDefaults.standard.set(data, forKey: "prayerTimes1")
+				UserDefaults.standard.set(try JSONEncoder().encode(PrayerTime(prayer: prayerTimes)), forKey: "prayerTimes1")
+				UserDefaults.standard.set(try JSONEncoder().encode(PrayerTime(prayer: prayerTimes2)), forKey: "prayerTimes2")
 			} catch {
 				print("Unable to Encode Note (\(error))")
 			}

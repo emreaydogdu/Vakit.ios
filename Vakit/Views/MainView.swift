@@ -12,7 +12,7 @@ struct MainView: View {
 					}
 					.tag(0)
 
-				AthanView(prayerClass: PrayerTimesClass())
+				AthanView()
 					.tabItem {
 						Image("ic_home")
 					}

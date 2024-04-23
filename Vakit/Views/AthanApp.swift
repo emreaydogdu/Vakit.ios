@@ -25,6 +25,11 @@ struct AthanApp: App {
 	var body: some Scene {
 		WindowGroup {
 			MainView()
+				.onAppear {
+					PrayerTimesClass().startUpdatingLocation {
+						print("loaded")
+					}
+				}
 				.preferredColorScheme(themeMode == "Dark" ? .dark : themeMode == "Light" ? .light : nil)
 		}
 		.modelContainer(for: [Dhikr.self])

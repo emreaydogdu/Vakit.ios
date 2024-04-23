@@ -3,6 +3,48 @@ import CoreLocation
 import SwiftUI
 import UserNotifications
 
+struct PrayerTime: Codable {
+	let id = UUID()
+	let date: DateComponents?
+	let fajr: Date?
+	let sunrise: Date?
+	let dhuhr: Date?
+	let asr: Date?
+	let maghrib: Date?
+	let isha: Date?
+
+	init(prayer: PrayerTimes?) {
+		self.date = prayer?.date
+		self.fajr = prayer?.fajr
+		self.sunrise = prayer?.sunrise
+		self.dhuhr = prayer?.dhuhr
+		self.asr = prayer?.asr
+		self.maghrib = prayer?.maghrib
+		self.isha = prayer?.isha
+	}
+	
+	func getStr(prayer: Prayer) -> String
+	{
+		var str: Date?
+		switch prayer {
+		case .fajr:
+			str = self.fajr
+		case .sunrise:
+			str = self.sunrise
+		case .dhuhr:
+			str = self.dhuhr
+		case .asr:
+			str = self.asr
+		case .maghrib:
+			str = self.maghrib
+		case .isha:
+			str = self.isha
+		}
+		return PrayerTimesClass().formattedPrayerTime(str)
+	}
+
+}
+
 extension Date {
 	static var yesterday: Date { return Date().dayBefore }
 	static var tomorrow:  Date { return Date().dayAfter  }
@@ -126,7 +168,7 @@ class PrayerTimesClass: NSObject, ObservableObject, CLLocationManagerDelegate {
 		
 		var params: CalculationParameters
 		let coordinates = Coordinates(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-		//let coordinates = Coordinates(latitude: 41.015137, longitude: 28.979530)
+		//let coordinates = Coordinates(latitude: 39.9300, longitude: 32.8500)
 		let highLatRule = HighLatitudeRule.recommended(for: coordinates)
 
 		switch tCalculation {
@@ -155,9 +197,9 @@ class PrayerTimesClass: NSObject, ObservableObject, CLLocationManagerDelegate {
 			case 11:
 				params = CalculationMethod.northAmerica.params
 			default:
-				params = CalculationMethod.turkey.params
+			params = CalculationMethod.turkey.params
 		}
-		switch tCalculation {
+		switch tMadhab {
 			case 0:
 				params.madhab = .shafi
 			case 1:
@@ -167,6 +209,7 @@ class PrayerTimesClass: NSObject, ObservableObject, CLLocationManagerDelegate {
 		}
 		params.highLatitudeRule = highLatRule
 
+		params.adjustments = PrayerAdjustments(fajr: UserDefaults.standard.integer(forKey: "time_shift_fajr"), sunrise: UserDefaults.standard.integer(forKey: "time_shift_sunrise"), dhuhr: UserDefaults.standard.integer(forKey: "time_shift_dhur"), asr: UserDefaults.standard.integer(forKey: "time_shift_asr"), maghrib: UserDefaults.standard.integer(forKey: "time_shift_maghrib"), isha: UserDefaults.standard.integer(forKey: "time_shift_isha"))
 		let components = Calendar.current.dateComponents([.year, .month, .day], from: location.timestamp)
 		let futureDate = Calendar.current.dateComponents([.year, .month, .day], from: Date.tomorrow)
 		let prayerTimes = PrayerTimes(coordinates: coordinates, date: components, calculationParameters: params)
@@ -178,6 +221,14 @@ class PrayerTimesClass: NSObject, ObservableObject, CLLocationManagerDelegate {
 			self.error = nil
 
 			self.schedulePrayerTimeNotifications()
+
+			do {
+				let prayer = PrayerTime(prayer: prayerTimes)
+				let data = try JSONEncoder().encode(prayer)
+				UserDefaults.standard.set(data, forKey: "prayerTimes1")
+			} catch {
+				print("Unable to Encode Note (\(error))")
+			}
 		}
 		gecoder.reverseGeocodeLocation(location) { placemarks, error in
 			if let error = error {
@@ -253,5 +304,18 @@ class PrayerTimesClass: NSObject, ObservableObject, CLLocationManagerDelegate {
 			}
 		}
 		return (fajr, sunrise, dhuhr, asr, maghrib, isha, prayer, time)
+	}
+
+	func decodePrayer(key: String) -> PrayerTime?
+	{
+		if let data = UserDefaults.standard.data(forKey: key) {
+			do {
+				let prayer = try JSONDecoder().decode(PrayerTime.self, from: data)
+				return prayer
+			} catch {
+				print("Unable to Decode Note (\(error))")
+			}
+		}
+		return nil
 	}
 }

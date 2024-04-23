@@ -21,7 +21,7 @@ struct AthanApp: App {
 			dailyCount = Int.random(in: 1..<500)
 		}
 	}
-	
+
 	var body: some Scene {
 		WindowGroup {
 			MainView()

@@ -120,23 +120,63 @@ class PrayerTimesClass: NSObject, ObservableObject, CLLocationManagerDelegate {
 	}
 	
 	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+		let tCalculation  = UserDefaults.standard.integer(forKey: "time_calculation")
+		let tMadhab  = UserDefaults.standard.integer(forKey: "time_madhab")
 		guard let location = locations.last else { return }
 		
+		var params: CalculationParameters
 		let coordinates = Coordinates(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
 		//let coordinates = Coordinates(latitude: 41.015137, longitude: 28.979530)
-		
-		let params = CalculationMethod.turkey.params
+		let highLatRule = HighLatitudeRule.recommended(for: coordinates)
+
+		switch tCalculation {
+			case 0:
+				params = CalculationMethod.turkey.params
+			case 1:
+				params = CalculationMethod.muslimWorldLeague.params
+			case 2:
+				params = CalculationMethod.egyptian.params
+			case 3:
+				params = CalculationMethod.karachi.params
+			case 4:
+				params = CalculationMethod.ummAlQura.params
+			case 5:
+				params = CalculationMethod.dubai.params
+			case 6:
+				params = CalculationMethod.qatar.params
+			case 7:
+				params = CalculationMethod.kuwait.params
+			case 8:
+				params = CalculationMethod.moonsightingCommittee.params
+			case 9:
+				params = CalculationMethod.singapore.params
+			case 10:
+				params = CalculationMethod.tehran.params
+			case 11:
+				params = CalculationMethod.northAmerica.params
+			default:
+				params = CalculationMethod.turkey.params
+		}
+		switch tCalculation {
+			case 0:
+				params.madhab = .shafi
+			case 1:
+				params.madhab = .hanafi
+			default:
+				params.madhab = .shafi
+		}
+		params.highLatitudeRule = highLatRule
 
 		let components = Calendar.current.dateComponents([.year, .month, .day], from: location.timestamp)
 		let futureDate = Calendar.current.dateComponents([.year, .month, .day], from: Date.tomorrow)
 		let prayerTimes = PrayerTimes(coordinates: coordinates, date: components, calculationParameters: params)
 		let prayerTimes2 = PrayerTimes(coordinates: coordinates, date: futureDate, calculationParameters: params)
-		
+
 		DispatchQueue.main.async {
 			self.prayers = prayerTimes
 			self.prayers2 = prayerTimes2
 			self.error = nil
-			
+
 			self.schedulePrayerTimeNotifications()
 		}
 		gecoder.reverseGeocodeLocation(location) { placemarks, error in

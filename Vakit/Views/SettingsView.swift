@@ -158,99 +158,129 @@ struct LanguageSettingsView: View {
 struct CalculationSettingsView: View {
 
 	@State private var tCalculation  = UserDefaults.standard.integer(forKey: "time_calculation")
-	@AppStorage("time_mahbab")
-	private var tMahbab = "0"
-	@AppStorage("time_highlatitude")
-	private var tLatitude = "0"
+	@State private var tMahbab = UserDefaults.standard.integer(forKey: "time_madhab")
+	@AppStorage("time_shift_fajr")		private var fajr = 0
+	@AppStorage("time_shift_sunrise")	private var sunrise = 0
+	@AppStorage("time_shift_dhur")		private var dhur 	= 0
+	@AppStorage("time_shift_asr")		private var asr 	= 0
+	@AppStorage("time_shift_maghrib")	private var maghrib = 0
+	@AppStorage("time_shift_isha")		private var isha 	= 0
 
 	var body: some View {
 		ZStack {
 			PatternBG(pattern: false)
-			VStack{
-				Capsule().fill(Color.secondary).frame(width: 35, height: 5).padding(.top)
-				FormSection(header: "Calculation for different regions", footer: "An approximation of the Diyanet method used in Turkey. This approximation is less accurate outside the region of Turkey.") {
-					ZStack(alignment: .center) {
-						RoundedRectangle(cornerRadius: 13, style: .continuous)
-							.fill(Color("cardView"))
-							.frame(maxWidth: .infinity, maxHeight: 60, alignment: .leading)
-							.padding(5)
-						HStack {
-							Text("\(tCalculation)")
-								.font(.headline)
-								.fontWeight(.bold)
-								.foregroundColor(Color("cardView.title"))
-							Spacer()
-							Picker("", selection: $tCalculation) {
-								Text("Diyanet").tag(0)
-								Text("Muslim World League").tag(1)
-								Text("Egyptian General Authority of Survey").tag(2)
-								Text("University of Islamic Sciences, Karachi").tag(3)
-								Text("Umm al-Qura University, Makkah").tag(4)
-								Text("UAE method").tag(5)
-								Text("Qatar").tag(6)
-								Text("Kuwait").tag(7)
-								Text("Method developed by Khalid Shaukat").tag(8)
-								Text("Institute of Geophysics, University of Tehran").tag(9)
-								Text("North America, ISNA method").tag(10)
+			ScrollView {
+				VStack {
+					Capsule().fill(Color.secondary).frame(width: 35, height: 5).padding(.top)
+					FormSection(header: "Calculation for different regions", footer: "An approximation of the Diyanet method used in Turkey. This approximation is less accurate outside the region of Turkey.") {
+						ZStack(alignment: .center) {
+							RoundedRectangle(cornerRadius: 13, style: .continuous)
+								.fill(Color("cardView"))
+								.frame(maxWidth: .infinity, maxHeight: 60, alignment: .leading)
+								.padding(5)
+							HStack {
+								Text("Method")
+									.font(.headline)
+									.fontWeight(.bold)
+									.foregroundColor(Color("cardView.title"))
+								Spacer()
+								Picker("", selection: $tCalculation) {
+									Text("Diyanet").tag(0)
+									Text("Muslim World League").tag(1)
+									Text("Egyptian General Authority of Survey").tag(2)
+									Text("University of Islamic Sciences, Karachi").tag(3)
+									Text("Umm al-Qura University, Makkah").tag(4)
+									Text("UAE method").tag(5)
+									Text("Qatar").tag(6)
+									Text("Kuwait").tag(7)
+									Text("Method developed by Khalid Shaukat").tag(8)
+									Text("Singapore, Malaysia, and Indonesia").tag(9)
+									Text("Institute of Geophysics, University of Tehran").tag(10)
+									Text("North America, ISNA method").tag(11)
+								}
+								.onChange(of: tCalculation, { oldValue, newValue in
+									UserDefaults.standard.set(tCalculation, forKey: "time_calculation")
+								})
+								.accentColor(.gray)
+								.pickerStyle(.menu)
 							}
-							.onChange(of: tCalculation, { oldValue, newValue in
-								UserDefaults.standard.set(tCalculation, forKey: "time_calculation")
-							})
-							.accentColor(.gray)
-							.pickerStyle(.menu)
-						}.padding(.horizontal, 22)
+							.padding(.horizontal, 22)
+							.padding(.vertical, 12)
+						}
+						.padding(.horizontal)
 					}
-					.padding(.horizontal)
-				}
 
-				FormSection(header: "Madhab", footer: "Rule for calculating the time for Asr.\n**Shafi:** Earlier Asr time (Shafi, Maliki, Hanbali, Jafari)\n**Hanafi:** Later Asr time.") {
-					ZStack(alignment: .center) {
-						RoundedRectangle(cornerRadius: 13, style: .continuous)
-							.fill(Color("cardView"))
-							.frame(maxWidth: .infinity, maxHeight: 60, alignment: .leading)
-							.padding(5)
-						HStack {
-							Text("Rule")
-								.font(.headline)
-								.fontWeight(.bold)
-								.foregroundColor(Color("cardView.title"))
-							Spacer()
-							Picker("", selection: $tMahbab) {
-								Text("Shafi").tag("0")
-								Text("Hanafi").tag("1")
+					FormSection(header: "Madhab", footer: "Rule for calculating the time for Asr.\n**Shafi:** Earlier Asr time (Shafi, Maliki, Hanbali, Jafari)\n**Hanafi:** Later Asr time.") {
+						ZStack(alignment: .center) {
+							RoundedRectangle(cornerRadius: 13, style: .continuous)
+								.fill(Color("cardView"))
+								.frame(maxWidth: .infinity, maxHeight: 60, alignment: .leading)
+								.padding(5)
+							HStack {
+								Text("Rule")
+									.font(.headline)
+									.fontWeight(.bold)
+									.foregroundColor(Color("cardView.title"))
+								Spacer()
+								Picker("", selection: $tMahbab) {
+									Text("Shafi").tag(0)
+									Text("Hanafi").tag(1)
+								}
+								.onChange(of: tMahbab, { oldValue, newValue in
+									UserDefaults.standard.set(tMahbab, forKey: "time_madhab")
+								})
+								.accentColor(.gray)
+								.pickerStyle(.menu)
 							}
-							.accentColor(.gray)
-							.pickerStyle(.menu)
-						}.padding(.horizontal, 22)
+							.padding(.horizontal, 22)
+							.padding(.vertical, 12)
+						}
+						.padding(.horizontal)
 					}
-					.padding(.horizontal)
-				}
 
-				FormSection(header: "High latitude rule", footer: "Rule for approximating Fajr and Isha at high latitudes.") {
-					ZStack(alignment: .center) {
-						RoundedRectangle(cornerRadius: 13, style: .continuous)
-							.fill(Color("cardView"))
-							.frame(maxWidth: .infinity, maxHeight: 60, alignment: .leading)
-							.padding(5)
-						HStack {
-							Text("Rule")
-								.font(.headline)
-								.fontWeight(.bold)
-								.foregroundColor(Color("cardView.title"))
-							Spacer()
-							Picker("", selection: $tLatitude) {
-								Text("middle of the night").tag("0")
-								Text("seventh of the night").tag("1")
-								Text("twilight angle").tag("2")
-							}
-							.accentColor(.gray)
-							.pickerStyle(.menu)
-						}.padding(.horizontal, 22)
+					FormSection(header: "Time correction", footer: "") {
+						ZStack(alignment: .center) {
+							RoundedRectangle(cornerRadius: 13, style: .continuous)
+								.fill(Color("cardView"))
+								.frame(maxWidth: .infinity, alignment: .leading)
+								.padding(5)
+							VStack {
+								TimeShiftView(count: $fajr, 	name: "ttFajr")
+								TimeShiftView(count: $sunrise, 	name: "ttSunrise")
+								TimeShiftView(count: $dhur, 	name: "ttDhur")
+								TimeShiftView(count: $asr, 		name: "ttAsr")
+								TimeShiftView(count: $maghrib,	name: "ttMaghrib")
+								TimeShiftView(count: $isha, 	name: "ttIsha")
+							}.padding(.vertical)
+						}
+						.padding(.horizontal)
 					}
-					.padding(.horizontal)
 				}
-				Spacer()
 			}
+		}
+	}
+
+	struct TimeShiftView : View {
+
+		@Binding
+		var count : Int
+		var name  : LocalizedStringKey
+
+		var body: some View {
+			HStack {
+				Text(name)
+					.fontWeight(.bold)
+					.font(.headline)
+					.foregroundColor(Color("cardView.title"))
+				Spacer()
+				Text("\(count)")
+					.fontWeight(.bold)
+					.font(.title3)
+					.padding(.trailing, 20)
+				Stepper("", value: $count)
+					.labelsHidden()
+					.padding(.vertical, 8)
+			}.padding(.horizontal, 22)
 		}
 	}
 }

@@ -5,7 +5,17 @@ struct PatternBG : View {
 	
 	let pattern: Bool
 	var body: some View {
-		Color("backgroundColor")
+		// #8D9DAA #D6C8BC
+		// #7F809A #D6C8BC
+		// #838FA3 #BBB39F
+		// #838FA3 #9CA086
+		// #838FA3 #9F9287
+		// #838FA3 #C4A68A
+		// #7F809A #C4A68A
+		// #7F809A #7E7267
+		// #8D9DAA #AA9A8D
+		// #7F809A #9A997F
+		LinearGradient(gradient: Gradient(colors: [Color(hex: "#797982"), Color(hex: "#D6C8BC")]), startPoint: .top, endPoint: .bottom)
 			.ignoresSafeArea()
 		if(pattern){
 			Image("pattern")
@@ -112,7 +122,7 @@ struct OScrollView<Content>: View where Content : View {
 	}
 	
 	var body: some View {
-		ScrollView {
+		ScrollView(showsIndicators: false){
 			ScrollViewReader { proxy in
 				content(proxy)
 					.background(GeometryReader { proxy in

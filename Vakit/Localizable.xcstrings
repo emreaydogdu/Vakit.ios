@@ -23,6 +23,9 @@
         }
       }
     },
+    "···" : {
+
+    },
     "(%lld)" : {
 
     },
@@ -133,6 +136,21 @@
         }
       }
     },
+    "00꞉" : {
+
+    },
+    "04:" : {
+
+    },
+    "04:34" : {
+
+    },
+    "05:16" : {
+
+    },
+    "45" : {
+
+    },
     "99" : {
 
     },
@@ -155,6 +173,9 @@
       }
     },
     "ahead" : {
+
+    },
+    "Allocating total points" : {
 
     },
     "Allow Location Access" : {
@@ -709,10 +730,13 @@
         }
       }
     },
-    "Imsak" : {
+    "Ikindi" : {
 
     },
     "Institute of Geophysics, University of Tehran" : {
+
+    },
+    "ISTANBUL" : {
 
     },
     "KazaViewFooter" : {
@@ -1000,6 +1024,9 @@
     "North America, ISNA method" : {
 
     },
+    "Notifications" : {
+
+    },
     "Original" : {
 
     },
@@ -1244,6 +1271,9 @@
 
     },
     "Upgrade to Unlock All Content" : {
+
+    },
+    "Vaktin cikmasina" : {
 
     },
     "Vaktin Cikmasina" : {

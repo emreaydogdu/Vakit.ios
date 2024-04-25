@@ -7,47 +7,32 @@ struct AthanView: View {
 	let prayer2 = PrayerTimesClass().decodePrayer(key: "prayerTimes2")
 	@State private var isPresented = false
 	@State private var isShowSettings = false
-	
+	@State var scrollOffset = CGFloat.zero
 	@State var show = false
-	@State private var defaultv: CGPoint = .zero
 	
 	var body: some View {
 		NavigationView {
 			ZStack (alignment: .top) {
 				PatternBG(pattern: true)
-				ScrollView(showsIndicators: false) {
+				OScrollView(scrollOffset: $scrollOffset) { _ in
 					if prayer != nil {
 						if prayer!.nextPrayer() != nil {
-							PrayerTimeHeader(prayerName: LocalizedStringKey("\(prayer!.currentPrayer()!)"), nextPrayerName: LocalizedStringKey("\(prayer!.nextPrayer()!)"), prayerTime: Date(), location: "1")
+							PrayerTimeHeader(prayerName: "\(prayer!.currentPrayer()!)", nextPrayerName: "\(prayer!.nextPrayer()!)", prayerTime: prayer!.nextPrayerDate()!, location: prayer!.city)
 								.frame(maxWidth: .infinity, alignment: .center)
-								.padding(.top, 100)
+								.padding(.top, 80)
+								.listRowSeparator(.hidden)
 						} else if prayer2!.nextPrayer() != nil {
-							PrayerTimeHeader(prayerName: LocalizedStringKey("ttIsha"), nextPrayerName: LocalizedStringKey("ttFajr"), prayerTime: prayer2!.nextPrayerDate()!, location: "2")
+							PrayerTimeHeader(prayerName: "ttIsha", nextPrayerName: "ttFajr", prayerTime: prayer2!.nextPrayerDate()!, location: prayer2!.city)
 								.frame(maxWidth: .infinity, alignment: .center)
-								.padding(.top, 100)
+								.padding(.top, 80)
 						} else {
-							PrayerTimeHeader(prayerName: LocalizedStringKey("ttIsha"), nextPrayerName: LocalizedStringKey("ttFajr"), prayerTime: Date(), location: "__")
+							PrayerTimeHeader(prayerName: "ttIsha", nextPrayerName: "ttFajr", prayerTime: Date(), location: "__")
 								.frame(maxWidth: .infinity, alignment: .center)
-								.padding(.top, 100)
-						}
-						AthanTimeTable(prayer: prayer)
-							.padding()
-							.listRowSeparator(.hidden)
-							.onAppear {
-								isPresented = false
-							}
-							.background(GeometryReader { geometry in
-								Color.clear
-									.preference(key: ScrollOffsetPreferenceKey.self, value: geometry.frame(in: .named("scroll")).origin)
-									.onAppear{
-										defaultv = geometry.frame(in: .named("scroll")).origin
-									}
-							})
-							.onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
-								withAnimation(.linear(duration: 0.2)){
-									show = value.y < defaultv.y - 20.0
+								.padding(.top, 80)
+								.onAppear {
+									isPresented = false
 								}
-							}
+						}
 					}
 					else {
 						Text("No prayers")
@@ -62,7 +47,7 @@ struct AthanView: View {
 						.padding(.horizontal)
 						.padding(.bottom, 50)
 				}
-				.coordinateSpace(name: "scroll")
+				.onChange(of: scrollOffset) { show = scrollOffset.isLess(than: 30) ? false : true }
 				.fullScreenCover(isPresented: $isPresented, content: { LocationNotFoundView() })
 				.onAppear{
 					/*

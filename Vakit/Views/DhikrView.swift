@@ -19,7 +19,7 @@ struct DhikrView: View {
 	var body: some View {
 		ZStack(alignment: .top){
 			PatternBG(pattern: false)
-			OScrollView(scrollOffset: $scrollOffset) { proxy in
+			OScrollView(scrollOffset: $scrollOffset) { _ in
 				SwipeViewGroup {
 					ForEach(dhikrs.reversed() + Dhikr.preDefined, id: \.id) { dhikr in
 						CardViewDouble{
@@ -129,6 +129,7 @@ struct DhikrView: View {
 struct BarProgressStyle: ProgressViewStyle {
 	
 	var height: Double = 20.0
+	var radius: Double = 10.0
 	var labelFontStyle: Font = .body
 	
 	func makeBody(configuration: Configuration) -> some View {
@@ -141,10 +142,10 @@ struct BarProgressStyle: ProgressViewStyle {
 					.frame(width: geometry.size.width, height: height)
 					.foregroundColor(Color(uiColor: .systemGray5))
 				
-				RoundedRectangle(cornerRadius: 10.0)
+				RoundedRectangle(cornerRadius: radius)
 					.frame(width: geometry.size.width * progress, height: height)
-					.foregroundColor(Color(hex: "#C1D2E7"))
-			}.cornerRadius(45.0)
+					.foregroundColor(Color.black)
+			}.cornerRadius(radius)
 		}
 	}
 }

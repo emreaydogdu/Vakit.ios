@@ -30,7 +30,7 @@ struct SmallWidgetEntryView : View {
 			else {
 				let (fajr, sunrise, dhuhr, asr, maghrib, isha, prayer, _) = entry.prayerClass.getTimes(prayerClass: entry.prayerClass)
 				VStack{
-					Text(entry.prayerClass.city?.uppercased() ?? "ISTANBUL")
+					Text("ISTANBUL")
 						.font(.system(size: 14, weight: .bold, design: .default))
 						.foregroundColor(Color.text)
 						.frame(maxWidth: .infinity, alignment: .leading)

@@ -11,12 +11,11 @@ struct MoreView: View {
 				PatternBG(pattern: false)
 				GeometryReader { geometry in
 					ZStack(alignment: .top){
-						PatternBG(pattern: false)
 						ScrollView {
 							ZStack {
 								RoundedRectangle(cornerRadius: 20, style: .continuous)
-									.fill(Color("cardView.sub"))
-									.shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
+									.fill(.ultraThinMaterial)
+									//.shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
 								VStack(spacing: 0){
 									ZStack{
 										RoundedRectangle(cornerRadius: 16, style: .continuous)

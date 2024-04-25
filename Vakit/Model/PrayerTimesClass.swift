@@ -5,6 +5,7 @@ import UserNotifications
 
 struct PrayerTime: Codable {
 	let id = UUID()
+	let city: String
 	let date: DateComponents?
 	let fajr: Date?
 	let sunrise: Date?
@@ -13,8 +14,9 @@ struct PrayerTime: Codable {
 	let maghrib: Date?
 	let isha: Date?
 
-	init(prayer: PrayerTimes?) {
+	init(prayer: PrayerTimes?, city: String) {
 		self.date = prayer?.date
+		self.city = city
 		self.fajr = prayer?.fajr
 		self.sunrise = prayer?.sunrise
 		self.dhuhr = prayer?.dhuhr
@@ -90,7 +92,7 @@ struct PrayerTime: Codable {
 		} else if fajr!.timeIntervalSince(time) <= 0 {
 			return "ttFajr"
 		}
-		return "__"
+		return "ttIsha"
 	}
 
 	public func nextPrayer(at time: Date = Date()) -> String? {
@@ -144,7 +146,6 @@ class PrayerTimesClass: NSObject, ObservableObject, CLLocationManagerDelegate {
 	
 	@Published var prayers: PrayerTimes?
 	@Published var prayers2: PrayerTimes?
-	@Published var city: String?
 	@Published var error: Error?
 	
 	var notificationSettings: [String: Bool] = [
@@ -288,12 +289,6 @@ class PrayerTimesClass: NSObject, ObservableObject, CLLocationManagerDelegate {
 
 			self.schedulePrayerTimeNotifications()
 
-			do {
-				UserDefaults.standard.set(try JSONEncoder().encode(PrayerTime(prayer: prayerTimes)), forKey: "prayerTimes1")
-				UserDefaults.standard.set(try JSONEncoder().encode(PrayerTime(prayer: prayerTimes2)), forKey: "prayerTimes2")
-			} catch {
-				print("Unable to Encode Note (\(error))")
-			}
 		}
 		gecoder.reverseGeocodeLocation(location) { placemarks, error in
 			if let error = error {
@@ -303,7 +298,13 @@ class PrayerTimesClass: NSObject, ObservableObject, CLLocationManagerDelegate {
 			}else if let placemarks = placemarks? .first {
 				DispatchQueue.main.async {
 					
-					self.city = placemarks.locality ?? placemarks.administrativeArea ?? placemarks.country ?? "Unknown location"
+					let city = placemarks.locality ?? placemarks.administrativeArea ?? placemarks.country ?? "Unknown location"
+					do {
+						UserDefaults.standard.set(try JSONEncoder().encode(PrayerTime(prayer: prayerTimes, city: city)), forKey: "prayerTimes1")
+						UserDefaults.standard.set(try JSONEncoder().encode(PrayerTime(prayer: prayerTimes2, city: city)), forKey: "prayerTimes2")
+					} catch {
+						print("Unable to Encode Note (\(error))")
+					}
 					self.group.leave()
 				}
 			}

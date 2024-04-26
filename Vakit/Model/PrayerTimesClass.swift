@@ -4,7 +4,7 @@ import SwiftUI
 import UserNotifications
 
 struct PrayerTime: Codable {
-	let id = UUID()
+	var id = UUID()
 	let city: String
 	let date: DateComponents?
 	let fajr: Date?
@@ -15,8 +15,8 @@ struct PrayerTime: Codable {
 	let isha: Date?
 
 	init(prayer: PrayerTimes?, city: String) {
-		self.date = prayer?.date
 		self.city = city
+		self.date = prayer?.date
 		self.fajr = prayer?.fajr
 		self.sunrise = prayer?.sunrise
 		self.dhuhr = prayer?.dhuhr
@@ -24,7 +24,18 @@ struct PrayerTime: Codable {
 		self.maghrib = prayer?.maghrib
 		self.isha = prayer?.isha
 	}
-	
+
+	init(city: String) {
+		self.city = city
+		self.date = nil
+		self.fajr = Date().tFajr
+		self.sunrise = Date().tSunrise
+		self.dhuhr = Date().tDhur
+		self.asr = Date().tAsr
+		self.maghrib = Date().tMaghrib
+		self.isha = Date().tIsha
+	}
+
 	func getStr(prayer: Prayer) -> String
 	{
 		var str: Date?
@@ -136,6 +147,13 @@ extension Date {
 		let dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: Date())
 		return calendar.date(from: dateComponents)!
 	}
+
+	var tFajr:    Date { return Calendar.current.date(bySettingHour:  3, minute: 30, second: 0, of: self)! }
+	var tSunrise: Date { return Calendar.current.date(bySettingHour:  5, minute: 30, second: 0, of: self)! }
+	var tDhur: 	  Date { return Calendar.current.date(bySettingHour: 13, minute: 30, second: 0, of: self)! }
+	var tAsr: 	  Date { return Calendar.current.date(bySettingHour: 17, minute: 30, second: 0, of: self)! }
+	var tMaghrib: Date { return Calendar.current.date(bySettingHour: 20, minute: 30, second: 0, of: self)! }
+	var tIsha:	  Date { return Calendar.current.date(bySettingHour: 22, minute: 30, second: 0, of: self)! }
 }
 
 class PrayerTimesClass: NSObject, ObservableObject, CLLocationManagerDelegate {

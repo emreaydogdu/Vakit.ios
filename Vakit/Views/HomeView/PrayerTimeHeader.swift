@@ -2,83 +2,17 @@ import SwiftUI
 
 struct PrayerTimeHeader: View {
 	
-	let prayer = PrayerTimesClass().decodePrayer(key: "prayerTimes1")
-	let prayer2 = PrayerTimesClass().decodePrayer(key: "prayerTimes2")
-	let prayerName: String
-	let nextPrayerName: String
-	let prayerTime: Date
-	let location: String
-	let currentDate = Date()
-	let gregorianCalendar = Calendar(identifier: .gregorian)
-	let hijriCalender = Calendar(identifier: .islamicUmmAlQura)
-	
+	let prayer: PrayerTime?
+	let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+	@State private var hour = 0
+	@State private var mins = 0
+	@State private var secs = 0
+
 	var body: some View {
 		ZStack {
 			RoundedRectangle(cornerRadius: 20, style: .continuous)
 				.fill(.ultraThinMaterial)
 				//.shadow(color: .black.opacity(0.01), radius: 50, x: 0, y: 8)
-			/*
-			HStack(alignment: .bottom){
-				VStack(alignment: .center, spacing: 20){
-					HStack{
-						Text("\(location)")
-							.bold()
-						Image(systemName: "location.circle.fill")
-							.foregroundColor(.white)
-							.frame(alignment: .leading)
-					}
-					.padding(3)
-					.padding(.horizontal, 6)
-					.foregroundColor(.white)
-					.background(.black)
-					.clipShape(.capsule)
-					.frame(maxWidth: .infinity, alignment: .leading)
-					
-					Text("\(prayerTime, style: .timer)")
-						.font(.custom("Montserrat-Bold ", size: 44.0))
-						.frame(maxWidth: .infinity, alignment: .leading)
-					
-					ProgressView(value: 0.5)
-						.frame(height: 8.0)
-						.scaleEffect(x: 1, y: 2, anchor: .center)
-						.clipShape(RoundedRectangle(cornerRadius: 6))
-						.tint(.black)
-					
-					HStack(alignment: .bottom){
-						VStack {
-							Text("Current")
-								.font(.subheadline)
-								.frame(maxWidth: .infinity, alignment: .leading)
-							
-							Text(LocalizedStringKey(prayerName))
-								.font(.headline)
-								.fontWeight(.bold)
-								.foregroundColor(.black)
-								.frame(maxWidth: .infinity, alignment: .leading)
-						}
-						VStack {
-							Text("Next")
-								.font(.subheadline)
-								.frame(maxWidth: .infinity, alignment: .leading)
-							
-							Text(LocalizedStringKey(nextPrayerName))
-								.font(.headline)
-								.fontWeight(.bold)
-								.foregroundColor(.black)
-								.frame(maxWidth: .infinity, alignment: .leading)
-						}
-					}
-				}
-				.padding(.vertical)
-				.padding(.leading)
-				Spacer()
-				Image("tst")
-					.resizable()
-					.frame(width: 150,height: 180)
-					.clipShape(UnevenRoundedRectangle(cornerRadii: .init(topLeading: 0.0, bottomLeading: 0.0, bottomTrailing: 25.0, topTrailing: 0.0), style: .continuous))
-			}
-			.frame(maxWidth: .infinity)
-			 */
 			VStack(spacing: 0){
 				ZStack {
 					RoundedRectangle(cornerRadius: 16, style: .continuous)
@@ -108,7 +42,7 @@ struct PrayerTimeHeader: View {
 					}
 					.padding(25)
 					VStack {
-						Text("\(location)")
+						Text("\(prayer!.city)")
 							.font(.headline)
 							.fontWeight(.bold)
 							.foregroundColor(Color("textColor"))
@@ -121,22 +55,30 @@ struct PrayerTimeHeader: View {
 							Spacer()
 						}
 						.padding(.top)
+
 						HStack{
-							Text("00꞉")
+							Text(String(format: "%02d:", hour))
 								.font(.largeTitle)
 								.fontWeight(.semibold)
 								.monospacedDigit()
-								.foregroundColor(Color(uiColor: .systemGray3))
-							+ Text("04:")
+								.foregroundColor(hour == 0 ? Color(uiColor: .systemGray3) : Color.black)
+							+ Text(String(format:"%02d:", mins))
 								.font(.largeTitle)
 								.fontWeight(.semibold)
 								.monospacedDigit()
-							+ Text("45")
+								.foregroundColor(mins == 0 ? Color(uiColor: .systemGray3) : Color.black)
+							+ Text(String(format:"%02d", secs))
 								.font(.largeTitle)
 								.fontWeight(.semibold)
 								.monospacedDigit()
 							Spacer()
 						}
+						.onReceive(timer, perform: { _ in
+							let difference = Calendar.current.dateComponents([.day, .hour, .minute, .second], from: Date(), to: prayer!.nextPrayerDate()!)
+							self.hour = difference.hour!
+							self.mins = difference.minute!
+							self.secs = difference.second!
+						})
 						HStack{
 							Text("Current")
 								.font(.caption2)
@@ -150,24 +92,25 @@ struct PrayerTimeHeader: View {
 						}
 						.padding(.top)
 						HStack{
-							Text("Ikindi")
+							Text(LocalizedStringKey(prayer!.currentPrayer()!))
 								.font(.headline)
 								.fontWeight(.bold)
-							Text("04:34")
+							Text("\(prayer!.currentPrayerDate()!.formatted(date: .omitted, time: .shortened))")
 								.font(.headline)
 								.fontWeight(.bold)
 								.foregroundColor(Color(hex: "#797982"))
 							Spacer()
-							Text("···")
+							//Text("···")
+							Text("")
 								.font(.headline)
 								.fontWeight(.bold)
 								.opacity(0.5)
 							Spacer()
-							Text("05:16")
+							Text("\(prayer!.nextPrayerDate()!.formatted(date: .omitted, time: .shortened))")
 								.font(.headline)
 								.fontWeight(.bold)
 								.foregroundColor(Color(hex: "#797982"))
-							Text("Yatsi")
+							Text(LocalizedStringKey(prayer!.nextPrayer()!))
 								.font(.headline)
 								.fontWeight(.bold)
 						}
@@ -222,5 +165,5 @@ struct PrayerTimeHeader: View {
 }
 
 #Preview {
-	PrayerTimeHeader(prayerName: "Yatsi", nextPrayerName: "Imsak", prayerTime: Date(), location: "Berlin")
+	PrayerTimeHeader(prayer: PrayerTime(city: "Berlin"))
 }

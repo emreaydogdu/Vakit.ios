@@ -17,25 +17,23 @@ struct AthanView: View {
 				OScrollView(scrollOffset: $scrollOffset) { _ in
 					if prayer != nil {
 						if prayer!.nextPrayer() != nil {
-							PrayerTimeHeader(prayerName: "\(prayer!.currentPrayer()!)", nextPrayerName: "\(prayer!.nextPrayer()!)", prayerTime: prayer!.nextPrayerDate()!, location: prayer!.city)
+							PrayerTimeHeader(prayer: prayer)
 								.frame(maxWidth: .infinity, alignment: .center)
 								.padding(.top, 80)
 								.listRowSeparator(.hidden)
 						} else if prayer2!.nextPrayer() != nil {
-							PrayerTimeHeader(prayerName: "ttIsha", nextPrayerName: "ttFajr", prayerTime: prayer2!.nextPrayerDate()!, location: prayer2!.city)
+							PrayerTimeHeader(prayer: prayer2)
 								.frame(maxWidth: .infinity, alignment: .center)
 								.padding(.top, 80)
-						} else {
-							PrayerTimeHeader(prayerName: "ttIsha", nextPrayerName: "ttFajr", prayerTime: Date(), location: "__")
-								.frame(maxWidth: .infinity, alignment: .center)
-								.padding(.top, 80)
-								.onAppear {
-									isPresented = false
-								}
 						}
 					}
 					else {
-						Text("No prayers")
+						PrayerTimeHeader(prayer: PrayerTime(city: "__"))
+							.frame(maxWidth: .infinity, alignment: .center)
+							.padding(.top, 80)
+							.onAppear {
+								isPresented = false
+							}
 					}
 					DailyNamesView()
 						.padding(.horizontal)

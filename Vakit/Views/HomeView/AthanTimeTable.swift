@@ -27,6 +27,6 @@ struct AthanTimeTable: View {
 
 struct AthanTimeTable_Previews: PreviewProvider {
 	static var previews: some View {
-		AthanTimeTable(prayer: nil)
+		AthanTimeTable(prayer: PrayerTime(city: "Berlin"))
 	}
 }

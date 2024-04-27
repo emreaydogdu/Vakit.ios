@@ -54,13 +54,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>26</string>
+					<string>27</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
 					<string>26</string>
 					<key>Timestamp</key>
-					<string>732891842.395898</string>
+					<string>735768498.1993769</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -76,15 +76,16 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string></string>
+				<string>								idx = mod(dailyCount, 4)
+</string>
 				<key>leading</key>
 				<string>							.frame(maxWidth: .infinity, alignment: .leading)
 							.task {
 </string>
 				<key>trailing</key>
-				<string>								idx = mod(dailyCount, 4)
-							}
+				<string>							}
 						Image("ic_share")
+							.resizable()
 </string>
 			</dict>
 			<key>title</key>

@@ -2,64 +2,42 @@ import SwiftUI
 import Adhan
 
 struct AthanView: View {
-	
-	@ObservedObject var prayerClass: PrayerTimesClass
+
+	let prayer = PrayerTimesClass().decodePrayer(key: "prayerTimes1")
+	let prayer2 = PrayerTimesClass().decodePrayer(key: "prayerTimes2")
 	@State private var isPresented = false
 	@State private var isShowSettings = false
-	
+	@State var scrollOffset = CGFloat.zero
 	@State var show = false
-	@State private var defaultv: CGPoint = .zero
 	
 	var body: some View {
 		NavigationView {
 			ZStack (alignment: .top) {
 				PatternBG(pattern: true)
-				ScrollView(showsIndicators: false) {
-					if prayerClass.error != nil {
-						VStack{}
-							.onAppear{
-								//isPresented.toggle()
-							}
-					} else {
-						if let prayers = prayerClass.prayers {
-							//let currentPrayer = prayers.currentPrayer()
-							if let nextPrayer = prayers.nextPrayer(){
-								PrayerTimeHeader(prayerName: "\(nextPrayer)", nextPrayerName: "\(nextPrayer)", prayerTime: prayers.time(for: nextPrayer), location: prayerClass.city ?? "__")
-									.frame(maxWidth: .infinity, alignment: .center)
-									.padding(.top, 100)
-							} else if let prayers2 = prayerClass.prayers2 {
-								if let nextPrayer2 = prayers2.nextPrayer(){
-									PrayerTimeHeader(prayerName: "Yatsi", nextPrayerName: "Imsak", prayerTime: prayers2.time(for: nextPrayer2), location: prayerClass.city ?? "__")
-										.frame(maxWidth: .infinity, alignment: .center)
-										.padding(.top, 100)
-								} else {			
-									PrayerTimeHeader(prayerName: "Yatsi", nextPrayerName: "Imsak", prayerTime: Date(), location: prayerClass.city ?? "__")
-										.frame(maxWidth: .infinity, alignment: .center)
-										.padding(.top, 100)
-								}
-							}
-							AthanTimeTable(prayerClass: prayerClass)
-								.padding()
+				OScrollView(scrollOffset: $scrollOffset) { _ in
+					if prayer != nil {
+						if prayer!.nextPrayer() != nil {
+							PrayerTimeHeader(prayer: prayer)
+								.frame(maxWidth: .infinity, alignment: .center)
+								.padding(.top, 80)
 								.listRowSeparator(.hidden)
-								.onAppear {
-									isPresented = false
-								}
-								.background(GeometryReader { geometry in
-									Color.clear
-										.preference(key: ScrollOffsetPreferenceKey.self, value: geometry.frame(in: .named("scroll")).origin)
-										.onAppear{
-											defaultv = geometry.frame(in: .named("scroll")).origin
-										}
-								})
-								.onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
-									withAnimation(.linear(duration: 0.2)){
-										show = value.y < defaultv.y - 20.0
-									}
-								}
+						} else if prayer2!.nextPrayer() != nil {
+							Text("2")
+							PrayerTimeHeader(prayer: prayer2)
+								.frame(maxWidth: .infinity , alignment: .center)
+								.padding(.top, 80)
 						}
-						else {
-							Text("No prayers")
-						}
+					}
+					else {
+						Text("3")
+						/*
+						PrayerTimeHeader(prayer: PrayerTime(city: "__"))
+							.frame(maxWidth: .infinity, alignment: .center)
+							.padding(.top, 80)
+							.onAppear {
+								isPresented = false
+							}
+						 */
 					}
 					DailyNamesView()
 						.padding(.horizontal)
@@ -71,15 +49,24 @@ struct AthanView: View {
 						.padding(.horizontal)
 						.padding(.bottom, 50)
 				}
-				.coordinateSpace(name: "scroll")
+				.onChange(of: scrollOffset) { show = scrollOffset.isLess(than: 30) ? false : true }
 				.fullScreenCover(isPresented: $isPresented, content: { LocationNotFoundView() })
 				.onAppear{
+
+					print(prayer!.nextPrayer())
+					print(prayer2!.nextPrayer())
+					print(prayer2!.nextPrayerDate()!.formatted(date: .omitted, time: .shortened))
+					print(prayer2!.isha!.timeIntervalSince(Date()))
+					/*
 					prayerClass.startUpdatingLocation {
 						print("hello")
 					}
+					 */
 				}
 				.onDisappear{
+					/*
 					prayerClass.stopUpdatingLocation()
+					 */
 				}
 				TopView(show: $show)
 			}
@@ -126,5 +113,5 @@ private struct TopView : View {
 }
 
 #Preview {
-	AthanView(prayerClass: PrayerTimesClass())
+	AthanView()
 }

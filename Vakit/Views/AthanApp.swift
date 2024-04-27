@@ -21,10 +21,15 @@ struct AthanApp: App {
 			dailyCount = Int.random(in: 1..<500)
 		}
 	}
-	
+
 	var body: some Scene {
 		WindowGroup {
 			MainView()
+				.onAppear {
+					PrayerTimesClass().startUpdatingLocation {
+						print("loaded")
+					}
+				}
 				.preferredColorScheme(themeMode == "Dark" ? .dark : themeMode == "Light" ? .light : nil)
 		}
 		.modelContainer(for: [Dhikr.self])

@@ -133,6 +133,12 @@
         }
       }
     },
+    "2" : {
+
+    },
+    "3" : {
+
+    },
     "99" : {
 
     },
@@ -155,6 +161,9 @@
       }
     },
     "ahead" : {
+
+    },
+    "Allocating total points" : {
 
     },
     "Allow Location Access" : {
@@ -207,6 +216,9 @@
       }
     },
     "Bottom %@" : {
+
+    },
+    "Calculationmethod" : {
 
     },
     "chapter" : {
@@ -337,6 +349,12 @@
         }
       }
     },
+    "Diyanet" : {
+
+    },
+    "Egyptian General Authority of Survey" : {
+
+    },
     "Enable Location Access from Settings" : {
       "localizations" : {
         "tr" : {
@@ -372,7 +390,7 @@
     "Google Maps" : {
 
     },
-    "Hello" : {
+    "Hanafi" : {
 
     },
     "Hello %@" : {
@@ -700,6 +718,12 @@
         }
       }
     },
+    "Institute of Geophysics, University of Tehran" : {
+
+    },
+    "ISTANBUL" : {
+
+    },
     "KazaViewFooter" : {
 
     },
@@ -718,6 +742,9 @@
           }
         }
       }
+    },
+    "Kuwait" : {
+
     },
     "L" : {
 
@@ -925,6 +952,12 @@
         }
       }
     },
+    "Method" : {
+
+    },
+    "Method developed by Khalid Shaukat" : {
+
+    },
     "Missed prayers" : {
       "localizations" : {
         "de" : {
@@ -940,6 +973,9 @@
           }
         }
       }
+    },
+    "Muslim World League" : {
+
     },
     "Next" : {
       "localizations" : {
@@ -967,13 +1003,25 @@
         }
       }
     },
-    "No prayers" : {
+    "North America, ISNA method" : {
+
+    },
+    "Notifications" : {
 
     },
     "Original" : {
 
     },
     "Please provide location service access" : {
+
+    },
+    "Prayer times" : {
+
+    },
+    "Press" : {
+
+    },
+    "Qatar" : {
 
     },
     "Restore purchase" : {
@@ -983,6 +1031,9 @@
 
     },
     "right" : {
+
+    },
+    "Rule" : {
 
     },
     "Select Dhikr" : {
@@ -1004,10 +1055,16 @@
         }
       }
     },
+    "Shafi" : {
+
+    },
     "Show less" : {
 
     },
     "Show more" : {
+
+    },
+    "Singapore, Malaysia, and Indonesia" : {
 
     },
     "T %@" : {
@@ -1186,7 +1243,19 @@
         }
       }
     },
+    "UAE method" : {
+
+    },
+    "Umm al-Qura University, Makkah" : {
+
+    },
+    "University of Islamic Sciences, Karachi" : {
+
+    },
     "Upgrade to Unlock All Content" : {
+
+    },
+    "Vaktin cikmasina" : {
 
     },
     "Vaktin Cikmasina" : {

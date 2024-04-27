@@ -33,6 +33,7 @@
 		865124CD2BC2FFD1008FCFE0 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86414EB62B40B9B600225946 /* Extentions.swift */; };
 		865124CF2BC3092E008FCFE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D44DF6562A811F910051E5E1 /* Assets.xcassets */; };
 		865124D22BC34F67008FCFE0 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 869DE13E2B3B15A60061724F /* Localizable.xcstrings */; };
+		865A93BD2BD555D7008692FE /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 865A93BC2BD555D7008692FE /* SwiftSoup */; };
 		867400EE2B543A7C00346972 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8639D8872B45E26900055204 /* Roboto-Bold.ttf */; };
 		867400EF2B543AA100346972 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8639D8852B45E26900055204 /* Roboto-Light.ttf */; };
 		867400F02B543AA600346972 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8639D8862B45E26900055204 /* Roboto-Medium.ttf */; };
@@ -206,6 +207,7 @@
 				D44DF67E2A81201A0051E5E1 /* Adhan in Frameworks */,
 				86AC07E42B2DEB680057E19B /* Lottie in Frameworks */,
 				86079F312BA7259800364ECF /* Json in Frameworks */,
+				865A93BD2BD555D7008692FE /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,6 +456,7 @@
 				86079F302BA7259800364ECF /* Json */,
 				86079F322BA7259800364ECF /* Request */,
 				86B4917D2BB4DADB00C81873 /* SwipeActions */,
+				865A93BC2BD555D7008692FE /* SwiftSoup */,
 			);
 			productName = Athan;
 			productReference = D44DF64F2A811F900051E5E1 /* Vakit.app */;
@@ -537,6 +540,7 @@
 				86AC07E22B2DEB680057E19B /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				86079F2F2BA7255500364ECF /* XCRemoteSwiftPackageReference "swift-request" */,
 				86B4917B2BB4DA8B00C81873 /* XCRemoteSwiftPackageReference "SwipeActions" */,
+				865A93BB2BD555BA008692FE /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 			);
 			productRefGroup = D44DF6502A811F900051E5E1 /* Products */;
 			projectDirPath = "";
@@ -1087,6 +1091,14 @@
 				minimumVersion = 1.4.0;
 			};
 		};
+		865A93BB2BD555BA008692FE /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.7.2;
+			};
+		};
 		86AC07E22B2DEB680057E19B /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios";
@@ -1128,6 +1140,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D44DF67C2A81201A0051E5E1 /* XCRemoteSwiftPackageReference "adhan-swift" */;
 			productName = Adhan;
+		};
+		865A93BC2BD555D7008692FE /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 865A93BB2BD555BA008692FE /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
 		};
 		86AC07E32B2DEB680057E19B /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;

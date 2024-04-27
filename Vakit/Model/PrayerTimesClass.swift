@@ -166,6 +166,7 @@ class PrayerTimesClass: NSObject, ObservableObject, CLLocationManagerDelegate {
 	@Published var prayers2: PrayerTimes?
 	@Published var error: Error?
 	
+	/*
 	var notificationSettings: [String: Bool] = [
 		"Fajr": true,
 		"Dhuhr": true,
@@ -173,68 +174,72 @@ class PrayerTimesClass: NSObject, ObservableObject, CLLocationManagerDelegate {
 		"Maghrib": true,
 		"Isha": true
 	]
-	
-	private var notificationCenter: UNUserNotificationCenter {
+
+	 private var notificationCenter: UNUserNotificationCenter {
 		UNUserNotificationCenter.current()
-	}
-	
-	func scheduleNotification(for prayerTime: Date, with prayerName: String) {
-		let content = UNMutableNotificationContent()
-		
-		let prayerComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: prayerTime)
-		let trigger = UNCalendarNotificationTrigger(dateMatching: prayerComponents, repeats: false)
-		let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-		
-		notificationCenter.add(request) { error in
-			if let error = error {
-				print("Error scheduling notification: \(error.localizedDescription)")
-			}
-		}
-	}
-	
-	func schedulePrayerTimeNotifications() {
-		guard let prayers = prayers else {
-			print("Cannot schedule notifications because prayer times are not available yet.")
-			return
-		}
-		
-		let prayerTimes = [
-			("Fajr", prayers.fajr),
-			("Dhuhr", prayers.dhuhr),
-			("Asr", prayers.asr),
-			("Maghrib", prayers.maghrib),
-			("Isha", prayers.isha),
-		]
-		
-		notificationCenter.removeAllPendingNotificationRequests()
-		for (prayerName, prayerTime) in prayerTimes {
-			if notificationSettings[prayerName] == true {
-				scheduleNotification(for: prayerTime, with: prayerName)
-			}
-		}
-	}
-	
-	func ubdateNotificationSettings(for prayerName: String, sendNotification: Bool){
-		
-		notificationSettings[prayerName] = sendNotification
-		schedulePrayerTimeNotifications()
-		
-		let defaults = UserDefaults(suiteName: "group.com.eaydgdu.vakit")
-		defaults?.set(notificationCenter, forKey: "notificationSettings")
-	}
+	 }
+
+
+	 func scheduleNotification(for prayerTime: Date, with prayerName: String) {
+	 let content = UNMutableNotificationContent()
+
+	 let prayerComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: prayerTime)
+	 let trigger = UNCalendarNotificationTrigger(dateMatching: prayerComponents, repeats: false)
+	 let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+
+	 notificationCenter.add(request) { error in
+	 if let error = error {
+	 print("Error scheduling notification: \(error.localizedDescription)")
+	 }
+	 }
+	 }
+
+	 func schedulePrayerTimeNotifications() {
+	 guard let prayers = prayers else {
+	 print("Cannot schedule notifications because prayer times are not available yet.")
+	 return
+	 }
+
+	 let prayerTimes = [
+	 ("Fajr", prayers.fajr),
+	 ("Dhuhr", prayers.dhuhr),
+	 ("Asr", prayers.asr),
+	 ("Maghrib", prayers.maghrib),
+	 ("Isha", prayers.isha),
+	 ]
+
+	 notificationCenter.removeAllPendingNotificationRequests()
+	 for (prayerName, prayerTime) in prayerTimes {
+	 if notificationSettings[prayerName] == true {
+	 scheduleNotification(for: prayerTime, with: prayerName)
+	 }
+	 }
+	 }
+	 func ubdateNotificationSettings(for prayerName: String, sendNotification: Bool){
+
+	 notificationSettings[prayerName] = sendNotification
+	 schedulePrayerTimeNotifications()
+
+	 let defaults = UserDefaults(suiteName: "group.com.eaydgdu.vakit")
+	 defaults?.set(notificationCenter, forKey: "notificationSettings")
+	 }
+	*/
+
 	
 	override init() {
 		
 		super.init()
 		
 		let defaults = UserDefaults(suiteName: "group.com.eaydgdu.vakit")
+		/*
 		if let savedSettings = defaults?.object(forKey: "notificationSettings") as? [String: Bool] {
 			notificationSettings = savedSettings
 		}
+		*/
 		locationManager.delegate = self
 		locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
 		locationManager.requestWhenInUseAuthorization()
-		
+		/*
 		notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
 			if let error = error {
 				print("Error requesting authorization for notifications: \(error.localizedDescription)")
@@ -244,6 +249,7 @@ class PrayerTimesClass: NSObject, ObservableObject, CLLocationManagerDelegate {
 				print("User denied permission for notifications.")
 			}
 		}
+		 */
 	}
 	
 	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -305,7 +311,7 @@ class PrayerTimesClass: NSObject, ObservableObject, CLLocationManagerDelegate {
 			self.prayers2 = prayerTimes2
 			self.error = nil
 
-			self.schedulePrayerTimeNotifications()
+			//self.schedulePrayerTimeNotifications()
 
 		}
 		gecoder.reverseGeocodeLocation(location) { placemarks, error in

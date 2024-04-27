@@ -4,7 +4,7 @@ import SwiftUI
 
 struct Medium2Entry: TimelineEntry {
 	let date: Date
-	let prayerClass: PrayerTimesClass
+	let prayer: PrayerTime
 }
 
 struct WidgetMedium2: Widget {
@@ -25,9 +25,8 @@ struct Medium2EntryView : View {
 	
 	var body: some View {
 		GeometryReader(){ proxy in
-			if entry.prayerClass.error != nil { }
-			else {
-				let (fajr, sunrise, dhuhr, asr, maghrib, isha, prayer, time) = entry.prayerClass.getTimes(prayerClass: entry.prayerClass)
+			if entry.prayer != nil {
+				let (fajr, sunrise, dhuhr, asr, maghrib, isha, time) = ("00:00", "00:00", "00:00", "00:00", "00:00", "00:00", Date())
 				HStack(alignment: .top){
 					VStack{
 						Text("ISTANBUL")
@@ -56,80 +55,80 @@ struct Medium2EntryView : View {
 						HStack {
 							Image("ic_sun1")
 								.resizable()
-								.foregroundColor((prayer == .fajr) ? Color.color3 : Color.text)
+								.foregroundColor(entry.prayer.currentPrayer() == "ttFajr" ? Color.color3 : Color.text)
 								.frame(maxWidth: 14, maxHeight: 14, alignment: .leading)
 							Text(LocalizedStringKey("ttFajr"))
-								.foregroundColor((prayer == .fajr) ? Color.color3 : Color.text)
+								.foregroundColor(entry.prayer.currentPrayer() == "ttFajr" ? Color.color3 : Color.text)
 								.font(.system(size: 13, weight: .semibold, design: .default))
 								.frame(maxWidth: .infinity, alignment: .leading)
 							Text(fajr)
-								.foregroundColor((prayer == .fajr) ? Color.color3 : Color.text)
+								.foregroundColor(entry.prayer.currentPrayer() == "ttFajr" ? Color.color3 : Color.text)
 								.font(.system(size: 13, weight: .regular).monospacedDigit())
 						}
 						HStack {
 							Image("ic_sun2")
 								.resizable()
-								.foregroundColor((prayer == .sunrise) ? Color.color3 : Color.text)
+								.foregroundColor(entry.prayer.currentPrayer() == "ttSunrise" ? Color.color3 : Color.text)
 								.frame(maxWidth: 14, maxHeight: 14, alignment: .leading)
 							Text(LocalizedStringKey("ttSunrise"))
-								.foregroundColor((prayer == .sunrise) ? Color.color3 : Color.text)
+								.foregroundColor(entry.prayer.currentPrayer() == "ttSunrise" ? Color.color3 : Color.text)
 								.font(.system(size: 13, weight: .semibold, design: .default))
 								.frame(maxWidth: .infinity, alignment: .leading)
 							Text(sunrise)
-								.foregroundColor((prayer == .sunrise) ? Color.color3 : Color.text)
+								.foregroundColor(entry.prayer.currentPrayer() == "ttSunrise" ? Color.color3 : Color.text)
 								.font(.system(size: 13, weight: .regular).monospacedDigit())
 						}
 						HStack {
 							Image("ic_sun3")
 								.resizable()
-								.foregroundColor((prayer == .dhuhr) ? Color.color3 : Color.text)
+								.foregroundColor(entry.prayer.currentPrayer() == "ttDhur" ? Color.color3 : Color.text)
 								.frame(maxWidth: 14, maxHeight: 14, alignment: .leading)
 							Text(LocalizedStringKey("ttDhur"))
-								.foregroundColor((prayer == .dhuhr) ? Color.color3 : Color.text)
+								.foregroundColor(entry.prayer.currentPrayer() == "ttDhur" ? Color.color3 : Color.text)
 								.font(.system(size: 13, weight: .semibold, design: .default))
 								.frame(maxWidth: .infinity, alignment: .leading)
 							Text(dhuhr)
-								.foregroundColor((prayer == .dhuhr) ? Color.color3 : Color.text)
+								.foregroundColor(entry.prayer.currentPrayer() == "ttDhur" ? Color.color3 : Color.text)
 								.font(.system(size: 13, weight: .regular).monospacedDigit())
 						}
 						HStack {
 							Image("ic_sun4")
 								.resizable()
-								.foregroundColor((prayer == .asr) ? Color.color3 : Color.text)
+								.foregroundColor(entry.prayer.currentPrayer() == "ttAsr" ? Color.color3 : Color.text)
 								.frame(maxWidth: 14, maxHeight: 14, alignment: .leading)
 							Text(LocalizedStringKey("ttAsr"))
-								.foregroundColor((prayer == .asr) ? Color.color3 : Color.text)
+								.foregroundColor(entry.prayer.currentPrayer() == "ttAsr" ? Color.color3 : Color.text)
 								.font(.system(size: 13, weight: .semibold, design: .default))
 								.frame(maxWidth: .infinity, alignment: .leading)
 							Text(asr)
-								.foregroundColor((prayer == .asr) ? Color.color3 : Color.text)
+								.foregroundColor(entry.prayer.currentPrayer() == "ttAsr" ? Color.color3 : Color.text)
 								.font(.system(size: 13, weight: .regular).monospacedDigit())
 						}
 						HStack {
 							Image("ic_sun5")
 								.resizable()
-								.foregroundColor((prayer == .maghrib) ? Color.color3 : Color.text)
+								.foregroundColor(entry.prayer.currentPrayer() == "ttMaghrib" ? Color.color3 : Color.text)
 								.frame(maxWidth: 14, maxHeight: 14, alignment: .leading)
 							Text(LocalizedStringKey("ttMaghrib"))
-								.foregroundColor((prayer == .maghrib) ? Color.color3 : Color.text)
+								.foregroundColor(entry.prayer.currentPrayer() == "ttMaghrib" ? Color.color3 : Color.text)
 								.font(.system(size: 13, weight: .semibold, design: .default))
 								.frame(maxWidth: .infinity, alignment: .leading)
 							Text(maghrib)
-								.foregroundColor((prayer == .maghrib) ? Color.color3 : Color.text)
+								.foregroundColor(entry.prayer.currentPrayer() == "ttMaghrib" ? Color.color3 : Color.text)
 								.font(.system(size: 13, weight: .regular).monospacedDigit())
 						}
 						HStack {
 							Image("ic_sun6")
 								.resizable()
 								.aspectRatio(1, contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
-								.foregroundColor((prayer == .isha) ? Color.color3 : Color.text)
+								.foregroundColor(entry.prayer.currentPrayer() == "ttIsha" ? Color.color3 : Color.text)
 								.frame(maxWidth: 14, maxHeight: 14, alignment: .leading)
 							Text(LocalizedStringKey("ttIsha"))
-								.foregroundColor((prayer == .isha) ? Color.color3 : Color.text)
+								.foregroundColor(entry.prayer.currentPrayer() == "ttIsha" ? Color.color3 : Color.text)
 								.font(.system(size: 13, weight: .semibold, design: .default))
 								.frame(maxWidth: .infinity, alignment: .leading)
 							Text(isha)
-								.foregroundColor((prayer == .isha) ? Color.color3 : Color.text)
+								.foregroundColor(entry.prayer.currentPrayer() == "ttIsha" ? Color.color3 : Color.text)
 								.font(.system(size: 13, weight: .regular).monospacedDigit())
 						}
 					}
@@ -142,34 +141,33 @@ struct Medium2EntryView : View {
 }
 
 struct Medium2Provider: TimelineProvider {
-	@ObservedObject var prayerClass = PrayerTimesClass()
-	
+
 	func placeholder(in context: Context) -> Medium2Entry {
-		Medium2Entry(date: Date(), prayerClass: prayerClass)
+		Medium2Entry(date: Date(), prayer: PrayerTime(city: "ISTANBUL"))
 	}
 	
 	func getSnapshot(in context: Context, completion: @escaping (Medium2Entry) -> Void) {
-		completion(Medium2Entry(date: Date(), prayerClass: prayerClass))
+		completion(Medium2Entry(date: Date(), prayer: PrayerTime(city: "ISTANBUL")))
 	}
 	
 	func getTimeline(in context: Context, completion: @escaping (Timeline<Medium2Entry>) -> Void) {
+		let prayer = PrayerTimesClass().decodePrayer(key: "prayerTimes1")
+		let prayer2 = PrayerTimesClass().decodePrayer(key: "prayerTimes2")
 		var entries: [Medium2Entry] = []
 
-		prayerClass.startUpdatingLocation {
-			let currentDate = Date().zeroSeconds
-			for offset in 0 ..< 20 {
-				let entryDate = Calendar.current.date(byAdding: .minute, value: offset, to: currentDate)!
-				entries.append(Medium2Entry(date: entryDate, prayerClass: prayerClass))
-			}
-			
-			let timeline = Timeline( entries: entries, policy: .atEnd)
-			completion(timeline)
+		let currentDate = Date().zeroSeconds
+		for offset in 0 ..< 20 {
+			let entryDate = Calendar.current.date(byAdding: .minute, value: offset, to: currentDate)!
+			entries.append(Medium2Entry(date: entryDate, prayer: prayer!))
 		}
+
+		let timeline = Timeline( entries: entries, policy: .atEnd)
+		completion(timeline)
 	}
 }
 
 #Preview(as: .systemMedium) {
 	WidgetMedium2()
 } timeline: {
-	Medium2Entry(date: Date(), prayerClass: PrayerTimesClass())
+	Medium2Entry(date: Date(), prayer: PrayerTime(city: "ISTANBUL"))
 }

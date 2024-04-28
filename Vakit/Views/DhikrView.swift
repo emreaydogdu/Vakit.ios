@@ -22,38 +22,40 @@ struct DhikrView: View {
 			OScrollView(scrollOffset: $scrollOffset) { _ in
 				SwipeViewGroup {
 					ForEach(dhikrs.reversed() + Dhikr.preDefined, id: \.id) { dhikr in
-						CardViewDouble{
-							HStack{
-								Spacer()
-								VStack{
-									Image("ic_share")
-										.resizable()
-										.imageScale(.small)
-										.frame(width: 28, height: 28)
-										.foregroundColor(Color("cardView.title"))
-									Spacer()
-								}
-							}
-							VStack{
-								Text(dhikr.nameAr)
-									.font(.title)
-									.padding(.top, 12)
+						CardView(option: false) {
+							ZStack {
 								HStack{
-									Text(dhikr.name)
-										.font(.headline)
-										.fontWeight(.bold)
-										.foregroundColor(Color("textColor"))
-										.frame(maxWidth: .infinity, alignment: .leading)
-										.padding(.top, 1)
 									Spacer()
-									Text("\(dhikr.count) / \(dhikr.amount)")
-										.font(.body)
-										.foregroundColor(Color("subTextColor"))
-										.frame(maxWidth: .infinity, alignment: .trailing)
+									VStack{
+										Image("ic_share")
+											.resizable()
+											.imageScale(.small)
+											.frame(width: 28, height: 28)
+											.foregroundColor(Color("cardView.title"))
+										Spacer()
+									}
 								}
-								ProgressView(value: CGFloat(dhikr.count), total: CGFloat(dhikr.amount))
-									.progressViewStyle(BarProgressStyle())
-									.padding(.vertical, 8)
+								VStack{
+									Text(dhikr.nameAr)
+										.font(.title)
+										.padding(.top, 12)
+									HStack{
+										Text(dhikr.name)
+											.font(.headline)
+											.fontWeight(.bold)
+											.foregroundColor(Color("textColor"))
+											.frame(maxWidth: .infinity, alignment: .leading)
+											.padding(.top, 1)
+										Spacer()
+										Text("\(dhikr.count) / \(dhikr.amount)")
+											.font(.body)
+											.foregroundColor(Color("subTextColor"))
+											.frame(maxWidth: .infinity, alignment: .trailing)
+									}
+									ProgressView(value: CGFloat(dhikr.count), total: CGFloat(dhikr.amount))
+										.progressViewStyle(BarProgressStyle())
+										.padding(.vertical, 8)
+								}
 							}
 						}
 						.scrollTransition { content, phase in

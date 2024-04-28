@@ -14,13 +14,13 @@ struct SettingsView: View {
 	
 	@State private var showLanguage = false
 	@State private var showCalculation = false
+	@State private var scrollOffset = CGFloat.zero
 	@State private var show = false
-	@State private var defaultv: CGPoint = .zero
-	
+
 	var body: some View {
 		ZStack(alignment: .top){
 			PatternBG(pattern: false)
-			ScrollView {
+			OScrollView(scrollOffset: $scrollOffset) { _ in
 				Form {
 					Section{
 						Button("Language") {
@@ -77,22 +77,10 @@ struct SettingsView: View {
 					}.listRowBackground(Color("cardView"))
 				}
 				.frame(height: 600)
-				.background(GeometryReader { geometry in
-					Color.clear
-						.preference(key: ScrollOffsetPreferenceKey.self, value: geometry.frame(in: .named("scroll")).origin)
-						.onAppear{
-							defaultv = geometry.frame(in: .named("scroll")).origin
-						}
-				})
-				.onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
-					withAnimation(.linear(duration: 0.1)){
-						show = value.y < defaultv.y - 30.0
-					}
-				}
 				.scrollContentBackground(.hidden)
 			}
-			.coordinateSpace(name: "scroll")
-			
+			.onChange(of: scrollOffset) { show = scrollOffset.isLess(than: 30) ? false : true }
+
 			ToolbarBck(title: "Settings", show: $show)
 		}
 		.navigationBarBackButtonHidden(true)

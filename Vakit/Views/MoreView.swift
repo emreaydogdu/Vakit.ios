@@ -2,8 +2,8 @@ import SwiftUI
 
 struct MoreView: View {
 	@State private var hideTabBar = true
-	@State var scrollOffset = CGFloat.zero
-	@State var show = false
+	@State private var scrollOffset = CGFloat.zero
+	@State private var show = false
 
 	var body: some View {
 		NavigationView {

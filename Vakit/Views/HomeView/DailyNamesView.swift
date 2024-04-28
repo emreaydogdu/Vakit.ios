@@ -8,15 +8,8 @@ struct DailyNamesView: View {
 	@State private var title = String(localized: "Al-Asma-ul-Husna", table: "LocalizableNames")
 	
 	var body: some View {
-		ZStack {
-			RoundedRectangle(cornerRadius: 20, style: .continuous)
-				.fill(.ultraThinMaterial)
-				.shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
-			RoundedRectangle(cornerRadius: 16, style: .continuous)
-				.fill(.regularMaterial)
-				.shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
-				.padding(5)
-			VStack{
+		CardView(option: false) {
+			VStack {
 				ShareLink(item: "\(title)\n\n\(LocalizedStringKey(stringLiteral: "99namesAr\(idx)").localizedt!)\n\n\(LocalizedStringKey(stringLiteral: "99names\(idx)").localizedt!)\n\n\(LocalizedStringKey(stringLiteral: "99namesDesc\(idx)").localizedt!)") {
 					HStack {
 						Text(title)
@@ -45,7 +38,6 @@ struct DailyNamesView: View {
 					.foregroundColor(Color("subTextColor"))
 					.frame(maxWidth: .infinity, alignment: .leading)
 			}
-			.padding(22)
 		}
 	}
 	

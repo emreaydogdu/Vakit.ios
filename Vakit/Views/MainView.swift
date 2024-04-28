@@ -12,12 +12,6 @@ struct MainView: View {
 					}
 					.tag(0)
 
-				TestView()
-					.tabItem {
-						Image("ic_home")
-					}
-					.tag(0)
-
 				CompasView()
 					.tabItem {
 						Image("ic_compas")

@@ -49,14 +49,114 @@ struct CardViewDouble<Content: View> : View {
 	var body: some View {
 		ZStack(alignment: .topLeading) {
 			RoundedRectangle(cornerRadius: 20, style: .continuous)
-				.fill(Color("cardView.sub"))
+				.fill(.ultraThinMaterial)
 				.shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
 			RoundedRectangle(cornerRadius: 16, style: .continuous)
-				.fill(Color("cardView"))
+				.fill(.regularMaterial)
 				.shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
 				.padding(5)
 			content()
 				.padding(22)
+		}
+		.padding(.horizontal)
+		.padding(.bottom, 8)
+	}
+}
+
+struct CardView2<Content: View, Content2: View> : View {
+
+	var content: () -> Content
+	var content2: () -> Content2
+	init(@ViewBuilder content: @escaping () -> Content, @ViewBuilder content2: @escaping () -> Content2) {
+		self.content = content
+		self.content2 = content2
+	}
+	
+	var body: some View {
+		ZStack(alignment: .topLeading) {
+			RoundedRectangle(cornerRadius: 20, style: .continuous)
+				.fill(.ultraThinMaterial)
+				.shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
+			RoundedRectangle(cornerRadius: 16, style: .continuous)
+				.fill(.regularMaterial)
+				.shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
+				.padding(5)
+			content()
+				.padding(22)
+		}
+		.padding(.horizontal)
+		.padding(.bottom, 8)
+	}
+}
+
+struct CardView3<Content: View, Content2: View> : View {
+
+	var content: () -> Content
+	var content2: () -> Content2
+	init(@ViewBuilder content: @escaping () -> Content, @ViewBuilder content2: @escaping () -> Content2) {
+		self.content = content
+		self.content2 = content2
+	}
+	
+	var body: some View {
+		ZStack(alignment: .topLeading) {
+			RoundedRectangle(cornerRadius: 20, style: .continuous)
+				.fill(.ultraThinMaterial)
+				.shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
+			RoundedRectangle(cornerRadius: 16, style: .continuous)
+				.fill(.regularMaterial)
+				.shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
+				.padding(5)
+			content()
+				.padding(22)
+		}
+		.padding(.horizontal)
+		.padding(.bottom, 8)
+	}
+}
+
+struct CardView<Content: View>: View {
+	let option: Bool
+	var content: Content
+
+	init(option: Bool, @ViewBuilder content: () -> Content) {
+		self.content = content()
+		self.option = option
+	}
+	
+	var body: some View {
+		_VariadicView.Tree(DividedVStackLayout(option: option)) {
+			content
+		}
+	}
+}
+
+struct DividedVStackLayout: _VariadicView_UnaryViewRoot {
+
+	let option: Bool
+
+	@ViewBuilder
+	func body(children: _VariadicView.Children) -> some View {
+		let last = children.last?.id
+
+		ZStack(alignment: .topLeading) {
+			RoundedRectangle(cornerRadius: 20, style: .continuous)
+				.fill(.ultraThinMaterial)
+				.shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
+			VStack {
+				ForEach(children) { child in
+					ZStack(alignment: .topLeading) {
+						if !(option && child.id == last){
+							RoundedRectangle(cornerRadius: 16, style: .continuous)
+								.fill(.regularMaterial)
+								.shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
+						}
+						child
+							.padding(22)
+					}
+				}
+			}
+			.padding(5)
 		}
 		.padding(.horizontal)
 		.padding(.bottom, 8)

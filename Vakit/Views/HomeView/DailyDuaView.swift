@@ -15,14 +15,7 @@ struct DailyDuaView: View {
 	
 	
 	var body: some View {
-		ZStack {
-			RoundedRectangle(cornerRadius: 20, style: .continuous)
-				.fill(.ultraThinMaterial)
-				.shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
-			RoundedRectangle(cornerRadius: 16, style: .continuous)
-				.fill(.regularMaterial)
-				.shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
-				.padding(5)
+		CardView(option: false) {
 			VStack{
 				ShareLink(item: "\(title)\n\n\(dua.replacingOccurrences(of: "&quot;", with: "\""))\n\n\(duaArab)\n\n\(chapter)") {
 					HStack {
@@ -71,7 +64,6 @@ struct DailyDuaView: View {
 						count = Int.random(in: 1..<114)
 					})
 			}
-			.padding(22)
 		}
 	}
 	

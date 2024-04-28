@@ -11,14 +11,7 @@ struct NextHolyDayView: View {
 	@State private var isExpanded: Bool = false
 	
 	var body: some View {
-		ZStack {
-			RoundedRectangle(cornerRadius: 20, style: .continuous)
-				.fill(.ultraThinMaterial)
-				.shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
-			RoundedRectangle(cornerRadius: 16, style: .continuous)
-				.fill(.regularMaterial)
-				.shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
-				.padding(5)
+		CardView(option: false) {
 			VStack{
 				ShareLink(item: "\(title)\n\n\(holyDayTitle)・\(leftDaysT)\n\n\(holyDayDesc)\n\n\(Date().getHolyGregorianStrNorm(dateStr: capitals.gregorian))\n\(Date().getHolyHijri(dateStr: capitals.gregorian))") {
 					HStack {
@@ -73,7 +66,6 @@ struct NextHolyDayView: View {
 					}
 				}
 			}
-			.padding(22)
 		}
 	}
 	

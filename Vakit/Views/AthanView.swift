@@ -39,13 +39,8 @@ struct AthanView: View {
 						 */
 					}
 					DailyNamesView()
-						.padding(.horizontal)
-						.padding(.bottom)
 					NextHolyDayView()
-						.padding(.horizontal)
-						.padding(.bottom)
 					DailyDuaView()
-						.padding(.horizontal)
 						.padding(.bottom, 50)
 				}
 				.onChange(of: scrollOffset) { show = scrollOffset.isLess(than: 30) ? false : true }

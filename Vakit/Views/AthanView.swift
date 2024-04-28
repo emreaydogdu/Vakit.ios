@@ -22,7 +22,6 @@ struct AthanView: View {
 								.padding(.top, 80)
 								.listRowSeparator(.hidden)
 						} else if prayer2!.nextPrayer() != nil {
-							Text("2")
 							PrayerTimeHeader(prayer: prayer2)
 								.frame(maxWidth: .infinity , alignment: .center)
 								.padding(.top, 80)
@@ -52,11 +51,6 @@ struct AthanView: View {
 				.onChange(of: scrollOffset) { show = scrollOffset.isLess(than: 30) ? false : true }
 				.fullScreenCover(isPresented: $isPresented, content: { LocationNotFoundView() })
 				.onAppear{
-
-					print(prayer!.nextPrayer())
-					print(prayer2!.nextPrayer())
-					print(prayer2!.nextPrayerDate()!.formatted(date: .omitted, time: .shortened))
-					print(prayer2!.isha!.timeIntervalSince(Date()))
 					/*
 					prayerClass.startUpdatingLocation {
 						print("hello")

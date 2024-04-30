@@ -174,30 +174,23 @@ struct DhikrAddView: View {
 				Capsule().fill(Color.secondary).frame(width: 35, height: 5).padding(.top, 12)
 				Spacer()
 			}
-			VStack{
+			ScrollView{
 				if((editDhikr == nil)){
-					FormSection(header: "SELECT DHIKR", footer: "Select a predefined Dhikr from the List or create a new one right below") {
+					FormSection2(header: "SELECT DHIKR", footer: "Select a predefined Dhikr from the List or create a new one right below", option: true) {
 						Button(action: {preDefined.toggle()}, label: {
-							ZStack(alignment: .center) {
-								RoundedRectangle(cornerRadius: 13, style: .continuous)
-									.fill(Color("cardView"))
-									.frame(maxWidth: .infinity, maxHeight: 60, alignment: .leading)
-									.padding(5)
-								HStack {
-									Text("Select Dhikr")
-										.font(.headline)
-										.fontWeight(.bold)
-										.foregroundColor(Color("cardView.title"))
-									Spacer()
-									Image("ic_share")
-										.resizable()
-										.imageScale(.small)
-										.frame(width: 30, height: 30)
-										.rotationEffect(.degrees(45))
-										.foregroundColor(Color("cardView.title"))
-								}.padding(.horizontal, 22)
+							HStack {
+								Text("Select Dhikr")
+									.font(.headline)
+									.fontWeight(.bold)
+									.foregroundColor(Color("cardView.title"))
+								Spacer()
+								Image("ic_share")
+									.resizable()
+									.imageScale(.small)
+									.frame(width: 30, height: 30)
+									.rotationEffect(.degrees(45))
+									.foregroundColor(Color("cardView.title"))
 							}
-							.padding(.horizontal)
 						})
 						.sheet(isPresented: $preDefined){
 							ZStack{
@@ -259,64 +252,37 @@ struct DhikrAddView: View {
 						}
 					}
 				}
-				FormSection(header: (editDhikr == nil) ? "Create Dhikr" : "Edit Dhikr", footer: "Please provide the original spelling of your dhikr and the translation"){
+
+				FormSection2(header: (editDhikr == nil) ? "Create Dhikr" : "Edit Dhikr", footer: "Please provide the original spelling of your dhikr and the translation", option: true){
 					VStack {
-						ZStack(alignment: .center) {
-							RoundedRectangle(cornerRadius: 13, style: .continuous)
-								.fill(Color("cardView"))
-								.frame(maxWidth: .infinity, maxHeight: 60, alignment: .leading)
-								.padding(5)
-							HStack {
-								TextField("Original", text: $original)
-									.font(.headline)
-									.foregroundColor(Color("cardView.title"))
-									.frame(maxWidth: .infinity, maxHeight: 60, alignment: .leading)
-									.focused($focusItem)
-									.padding(.vertical, 10)
-							}.padding(.horizontal, 22)
-						}
-						.padding(.horizontal)
-						ZStack(alignment: .center) {
-							RoundedRectangle(cornerRadius: 13, style: .continuous)
-								.fill(Color("cardView"))
-								.frame(maxWidth: .infinity, maxHeight: 60, alignment: .leading)
-								.padding(5)
-							HStack {
-								TextField("Translation", text: $translation)
-									.font(.headline)
-									.foregroundColor(Color("cardView.title"))
-									.focused($focusItem)
-									.padding(.vertical, 10)
-							}.padding(.horizontal, 22)
-						}
-						.padding(.horizontal)
+						TextField("Original", text: $original)
+							.font(.headline)
+							.foregroundColor(Color("cardView.title"))
+							.frame(maxWidth: .infinity, maxHeight: 60, alignment: .leading)
+							.focused($focusItem)
+							.padding(.vertical, 10)
+						Divider()
+						TextField("Translation", text: $translation)
+							.font(.headline)
+							.foregroundColor(Color("cardView.title"))
+							.focused($focusItem)
+							.padding(.vertical, 10)
 					}
 				}
 				
-				FormSection(header: "Choose Amount", footer: ""){
-					VStack {
-						ZStack(alignment: .center) {
-							RoundedRectangle(cornerRadius: 13, style: .continuous)
-								.fill(Color("cardView"))
-								.frame(maxWidth: .infinity, maxHeight: 60, alignment: .leading)
-								.padding(5)
-							HStack {
-								TextField("99", text: $amount)
-									.font(.headline)
-									.foregroundColor(Color("cardView.title"))
-									.padding(.vertical, 10)
-									.keyboardType(.numberPad)
-									.focused($focusItem)
-									.onReceive(Just(amount)) { newValue in
-										let filtered = newValue.filter { "0123456789".contains($0) }
-										if filtered != newValue {
-											self.amount = filtered
-										}
-									}
-							}.padding(.horizontal, 22)
+				FormSection2(header: "Choose Amount", footer: "Set Amount", option: false){
+					TextField("99", text: $amount)
+						.font(.headline)
+						.foregroundColor(Color("cardView.title"))
+						.focused($focusItem)
+						.keyboardType(.numberPad)
+						.onReceive(Just(amount)) { newValue in
+							let filtered = newValue.filter { "0123456789".contains($0) }
+							if filtered != newValue {
+								self.amount = filtered
+							}
 						}
-						.padding(.horizontal)
-					}
+						.padding(.vertical, 10)
 				}
 				
 				Spacer()
@@ -368,7 +334,9 @@ struct FormSection<Content: View>: View {
 				.frame(maxWidth: .infinity, alignment: .leading)
 				.padding(.horizontal, 38))
 		{
-			content()
+			CardView(option: false) {
+				content()
+			}
 		}
 	}
 }

@@ -80,7 +80,7 @@ struct MoreView: View {
 											}.frame(width: 70, height: 70)
 										}
 									}
-									Divider().frame(height: 2).overlay(Color("cardView.sub"))
+									Divider().frame(height: 2)
 									NavigationLink(destination: KazaView()) {
 										HStack{
 											VStack{
@@ -106,7 +106,7 @@ struct MoreView: View {
 											}.frame(width: 70, height: 70)
 										}
 									}
-									Divider().frame(height: 2).overlay(Color("cardView.sub"))
+									Divider().frame(height: 2)
 									NavigationLink(destination: HolyDateView()) {
 										HStack{
 											VStack{
@@ -133,7 +133,7 @@ struct MoreView: View {
 											}.frame(width: 70, height: 70)
 										}
 									}
-									Divider().frame(height: 2).overlay(Color("cardView.sub"))
+									Divider().frame(height: 2)
 									NavigationLink(destination: NamesListView()) {
 										HStack{
 											VStack{

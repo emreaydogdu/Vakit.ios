@@ -15,7 +15,8 @@ struct PatternBG : View {
 		// #7F809A #7E7267
 		// #8D9DAA #AA9A8D
 		// #7F809A #9A997F
-		LinearGradient(gradient: Gradient(colors: [Color(hex: "#797982"), Color(hex: "#D6C8BC")]), startPoint: .top, endPoint: .bottom)
+		// #474f55" #56504b
+		LinearGradient(gradient: Gradient(colors: [Color(hex: "#bbc4cc"), Color(hex: "#ddd7d1")]), startPoint: .top, endPoint: .bottom)
 			.ignoresSafeArea()
 		if(pattern){
 			Image("pattern")

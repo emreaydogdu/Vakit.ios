@@ -176,7 +176,7 @@ struct SubmitButton: View {
 			Button(action: { action() }, label: {
 				ZStack(alignment: .center) {
 					RoundedRectangle(cornerRadius: 16, style: .continuous)
-						.fill(Color(hex: "#C1D2E7"))
+						.fill(.regularMaterial)
 						.shadow(color: .black.opacity(0.15), radius: 24, x: 0, y: 8)
 						.frame(maxWidth: .infinity, maxHeight: 60, alignment: .leading)
 						.padding(5)

@@ -117,7 +117,7 @@ struct DhikrView: View {
 					.transition(AnyTransition.scale)
 				}
 			}
-			.animation(.easeInOut, value: dhikrs )
+			.animation(.easeInOut, value: dhikrs)
 			.contentMargins(.top, 80, for: .scrollContent)
 			.contentMargins(.bottom, 90, for: .scrollContent)
 			.onChange(of: scrollOffset) { show = scrollOffset.isLess(than: -60) ? false : true }

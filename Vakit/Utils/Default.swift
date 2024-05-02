@@ -4,6 +4,10 @@ import SwiftUI
 struct PatternBG : View {
 	
 	let pattern: Bool
+	@State var a =  Color.red
+	@AppStorage("themeMode")
+	var themeMode = "Auto"
+
 	var body: some View {
 		// #8D9DAA #D6C8BC
 		// #7F809A #D6C8BC
@@ -16,8 +20,17 @@ struct PatternBG : View {
 		// #8D9DAA #AA9A8D
 		// #7F809A #9A997F
 		// #474f55" #56504b
-		LinearGradient(gradient: Gradient(colors: [Color(hex: "#bbc4cc"), Color(hex: "#ddd7d1")]), startPoint: .top, endPoint: .bottom)
+		// #bbc4cc" #ddd7d1
+
+		LinearGradient(gradient: Gradient(colors: [a, .bgB]), startPoint: .top, endPoint: .bottom)
 			.ignoresSafeArea()
+			.onAppear{
+				if(themeMode == "Dark"){
+					self.a = Color(hex: "#8D9DAA")
+				} else {
+					self.a = Color(hex: "#D6C8BC")
+				}
+			}
 		if(pattern){
 			Image("pattern")
 				.resizable()
@@ -28,6 +41,7 @@ struct PatternBG : View {
 				.ignoresSafeArea()
 		}
 	}
+
 }
 
 struct BlurBG : UIViewRepresentable {
@@ -184,13 +198,13 @@ struct SubmitButton: View {
 						Text(title)
 							.font(.headline)
 							.fontWeight(.bold)
-							.foregroundColor(Color(hex: "#141414"))
+							.foregroundColor(Color("cardView.title"))
 						Spacer()
 						Image(icon)
 							.resizable()
 							.imageScale(.small)
 							.frame(width: 30, height: 30)
-							.foregroundColor(Color(hex: "#141414"))
+							.foregroundColor(Color("cardView.title"))
 					}.padding(.horizontal, 22)
 				}
 			})

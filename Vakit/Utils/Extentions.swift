@@ -24,6 +24,20 @@ extension Color {
 		let blueValue = Double(rgb & 0xFF) / 255.0
 		self.init(red: redValue, green: greenValue, blue: blueValue)
 	}
+
+	var bgA: Color {
+		@AppStorage("themeMode")
+		var themeMode = "Auto"
+
+		if(themeMode == "Dark"){
+			return Color.red
+		} else {
+			return Color(hex: "#8D9DAA")
+		}
+	}
+	static var bgB: Color {
+		Color(hex: "#D6C8BC")
+	}
 }
 
 extension Date: RawRepresentable {

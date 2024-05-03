@@ -3,34 +3,12 @@ import SwiftUI
 
 struct PatternBG : View {
 	
+	@Environment(\.colorScheme) var colorScheme
 	let pattern: Bool
-	@State var a =  Color.red
-	@AppStorage("themeMode")
-	var themeMode = "Auto"
 
 	var body: some View {
-		// #8D9DAA #D6C8BC
-		// #7F809A #D6C8BC
-		// #838FA3 #BBB39F
-		// #838FA3 #9CA086
-		// #838FA3 #9F9287
-		// #838FA3 #C4A68A
-		// #7F809A #C4A68A
-		// #7F809A #7E7267
-		// #8D9DAA #AA9A8D
-		// #7F809A #9A997F
-		// #474f55" #56504b
-		// #bbc4cc" #ddd7d1
-
-		LinearGradient(gradient: Gradient(colors: [a, .bgB]), startPoint: .top, endPoint: .bottom)
+		LinearGradient(gradient: Gradient(colors: [getBackgroundGradientA(), getBackgroundGradientB()]), startPoint: .top, endPoint: .bottom)
 			.ignoresSafeArea()
-			.onAppear{
-				if(themeMode == "Dark"){
-					self.a = Color(hex: "#8D9DAA")
-				} else {
-					self.a = Color(hex: "#D6C8BC")
-				}
-			}
 		if(pattern){
 			Image("pattern")
 				.resizable()
@@ -41,7 +19,39 @@ struct PatternBG : View {
 				.ignoresSafeArea()
 		}
 	}
+	// #8D9DAA #D6C8BC
+	// #7F809A #D6C8BC
+	// #838FA3 #BBB39F
+	// #838FA3 #9CA086
+	// #838FA3 #9F9287
+	// #838FA3 #C4A68A
+	// #7F809A #C4A68A
+	// #7F809A #7E7267
+	// #8D9DAA #AA9A8D
+	// #7F809A #9A997F
+	// #474f55" #56504b
+	// #bbc4cc" #ddd7d1
+	func getBackgroundGradientA() -> Color {
+		switch colorScheme {
+		case .light:
+			return Color(hex: "#8D9DAA")
+		case .dark:
+			return Color(hex: "#474F55")
+		default:
+			return .red
+		}
+	}
 
+	func getBackgroundGradientB() -> Color {
+		switch colorScheme {
+		case .light:
+			return Color(hex: "#D6C8BC")
+		case .dark:
+			return Color(hex: "#56504B")
+		default:
+			return .red
+		}
+	}
 }
 
 struct BlurBG : UIViewRepresentable {

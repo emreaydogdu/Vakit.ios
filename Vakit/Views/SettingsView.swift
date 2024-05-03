@@ -10,8 +10,7 @@ struct SettingsView: View {
 	
 	@AppStorage("themeMode")
 	private var themeMode = "Auto"
-	var themeModes = ["Auto", "Light", "Dark"]
-	
+
 	@State private var showLanguage = false
 	@State private var showCalculation = false
 	@State private var scrollOffset = CGFloat.zero
@@ -48,29 +47,15 @@ struct SettingsView: View {
 							.onTapGesture { showCalculation.toggle() }
 						}
 
-						/*
-						FormSection2(header: "Calculationmethod", footer: "", option: false) {
-							HStack {
-								Text("Prayer times")
-									.frame(maxWidth: .infinity, alignment: .leading)
-									.foregroundColor(Color("cardView.title"))
-									.sheet(isPresented: $showCalculation) { CalculationSettingsView() }
-								Image(systemName: "chevron.right")
-							}
-							.contentShape(Rectangle())
-							.onTapGesture { showCalculation.toggle() }
-						}
-						 */
-
 						FormSection2(header: "Appereance", footer: "", option: false) {
 							HStack(content: {
 								Text("Theme")
 									.foregroundColor(Color("cardView.title"))
 								Spacer()
 								Picker("Theme", selection: $themeMode) {
-									ForEach(themeModes, id: \.self) {
-										Text(LocalizedStringKey($0))
-									}
+									Text(LocalizedStringKey("Auto")).tag("Auto")
+									Text(LocalizedStringKey("Light")).tag("Light")
+									Text(LocalizedStringKey("Dark")).tag("Dark")
 								}
 								.pickerStyle(.segmented)
 								.fixedSize()

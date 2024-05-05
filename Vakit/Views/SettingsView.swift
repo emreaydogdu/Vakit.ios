@@ -305,7 +305,7 @@ struct CardViewLayout: _VariadicView_UnaryViewRoot {
 					if(option){
 						Text(.init("\(footer)"))
 							.font(.subheadline)
-							.foregroundColor(Color("cardView.subtitle"))
+							.opacity(0.8)
 							.frame(maxWidth: .infinity, alignment: .leading)
 							.padding(.horizontal, 18)
 							.padding(.bottom, 10)

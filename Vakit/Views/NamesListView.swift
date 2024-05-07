@@ -2,14 +2,14 @@ import SwiftUI
 
 struct NamesListView: View {
 	
-	@State private var scrollOffset = CGFloat.zero
+	@State private var offset = CGFloat.zero
 	@State private var show = false
 	@State private var title = String(localized: "Al-Asma-ul-Husna", table: "LocalizableNames")
 
 	var body: some View {
 		ZStack(alignment: .top){
 			PatternBG(pattern: false)
-			OScrollView(scrollOffset: $scrollOffset) { _ in
+			OScrollView(scrollOffset: $offset) { _ in
 				ForEach(0..<100){ idx in
 					CardView(option: false) {
 						ZStack {
@@ -44,11 +44,10 @@ struct NamesListView: View {
 					}
 				}
 			}
-			.onChange(of: scrollOffset) { show = scrollOffset.isLess(than: -60) ? false : true }
+			.onChange(of: offset) { show = offset.isLess(than: -60) ? false : true }
 			.contentMargins(.top, 70, for: .scrollContent)
 			ToolbarBck(title: String(localized: "Al-Asma-ul-Husna", table: "LocalizableNames"), show: $show)
 		}
-		.navigationBarBackButtonHidden(true)
 	}
 }
 

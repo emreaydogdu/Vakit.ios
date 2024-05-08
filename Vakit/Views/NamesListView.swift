@@ -8,7 +8,7 @@ struct NamesListView: View {
 
 	var body: some View {
 		ZStack(alignment: .top){
-			PatternBG(pattern: false)
+			Background(pattern: false)
 			OScrollView(scrollOffset: $offset) { _ in
 				ForEach(0..<100){ idx in
 					CardView(option: false) {

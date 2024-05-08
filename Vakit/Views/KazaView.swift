@@ -13,7 +13,7 @@ struct KazaView: View {
 	
 	var body: some View {
 		ZStack(alignment: .top) {
-			PatternBG(pattern: false)
+			Background(pattern: false)
 			OScrollView(scrollOffset: $offset) { _ in
 				FormSection2(header: "", footer: "KazaViewFooter", option: false) {
 					KazaCountView(count: $fajr, 	name: "ttFajr")

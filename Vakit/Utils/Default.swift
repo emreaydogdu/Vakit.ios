@@ -1,8 +1,8 @@
 import Foundation
 import SwiftUI
 
-struct PatternBG : View {
-	
+struct Background : View {
+
 	@Environment(\.colorScheme) var colorScheme
 	let pattern: Bool
 
@@ -52,16 +52,6 @@ struct PatternBG : View {
 			return .red
 		}
 	}
-}
-
-struct BlurBG : UIViewRepresentable {
-
-	func makeUIView(context: Context) -> UIVisualEffectView {
-		let view = UIVisualEffectView(effect: UIBlurEffect(style: .systemThinMaterial))
-		return view
-	}
-
-	func updateUIView(_ uiView: UIVisualEffectView, context: Context) {}
 }
 
 struct CardViewDouble<Content: View> : View {

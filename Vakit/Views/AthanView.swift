@@ -13,7 +13,7 @@ struct AthanView: View {
 	var body: some View {
 		NavigationView {
 			ZStack (alignment: .top) {
-				PatternBG(pattern: true)
+				Background(pattern: true)
 				OScrollView(scrollOffset: $scrollOffset) { _ in
 					if prayer != nil {
 						if prayer!.nextPrayer() != nil {
@@ -57,7 +57,7 @@ struct AthanView: View {
 					prayerClass.stopUpdatingLocation()
 					 */
 				}
-				TopView(show: $show)
+				ToolbarHome(show: $show)
 			}
 		}
 	}
@@ -67,38 +67,6 @@ struct ScrollOffsetPreferenceKey: PreferenceKey {
 	static var defaultValue: CGPoint = .zero
 	
 	static func reduce(value: inout CGPoint, nextValue: () -> CGPoint) {}
-}
-
-private struct TopView : View {
-	
-	@Binding var show: Bool
-	var body: some View {
-		HStack {
-			VStack(alignment: .leading, spacing: 5) {
-				Text(Date().getNavDate())
-					.font(.custom("Montserrat-Bold", size: 20.0))
-				Text(Date().getHijriDate())
-					.font(.custom("Montserrat-Medium", size: 18.0))
-			}
-			Spacer(minLength: 0)
-			Button(action: {}) {
-				Text("Try")
-					.foregroundColor(.white)
-					.padding(.vertical,10)
-					.padding(.horizontal, 25)
-					.background(Color("color"))
-					.clipShape(Capsule())
-			}
-		}
-		.padding(.top, UIApplication.safeAreaInsets.top == 0 ? 15 : UIApplication.safeAreaInsets.top + 5)
-		.padding(.horizontal)
-		.padding(.bottom)
-		.background(show ? BlurBG() : nil)
-		.onChange(of: show, { oldValue, newValue in
-			UIImpactFeedbackGenerator(style: .soft).impactOccurred()
-		})
-		.ignoresSafeArea()
-	}
 }
 
 #Preview {

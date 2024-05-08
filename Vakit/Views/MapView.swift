@@ -37,7 +37,7 @@ struct MapView: View {
 			}
 			.sheet(item: $selectedMosque) { mosque in
 				ZStack {
-					PatternBG(pattern: false)
+					Background(pattern: false)
 					VStack {
 						ZStack {
 							RoundedRectangle(cornerRadius: 20, style: .continuous)
@@ -166,7 +166,7 @@ struct MapView: View {
 					}
 				}.ignoresSafeArea()
 			}
-			ToolbarStd(title: "Nearby Mosques", show: $show)
+			Toolbar(title: "Nearby Mosques", show: $show)
 		}
 	}
 	

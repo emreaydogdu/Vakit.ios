@@ -18,7 +18,7 @@ struct SettingsView: View {
 
 	var body: some View {
 		ZStack(alignment: .top){
-			PatternBG(pattern: false)
+			Background(pattern: false)
 			OScrollView(scrollOffset: $scrollOffset) { _ in
 				ZStack {
 					RoundedRectangle(cornerRadius: 20, style: .continuous)
@@ -92,7 +92,7 @@ struct LanguageSettingsView: View {
 	var body: some View {
 		NavigationView {
 			ZStack {
-				PatternBG(pattern: false)
+				Background(pattern: false)
 				VStack {
 					Capsule().fill(Color.red).frame(width: 35, height: 5).padding(.top, 12)
 					Spacer()
@@ -152,7 +152,7 @@ struct CalculationSettingsView: View {
 
 	var body: some View {
 		ZStack {
-			PatternBG(pattern: false)
+			Background(pattern: false)
 			ScrollView {
 				VStack {
 					Capsule().fill(Color.secondary).frame(width: 35, height: 5).padding(.top)

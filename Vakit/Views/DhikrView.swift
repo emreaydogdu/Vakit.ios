@@ -18,7 +18,7 @@ struct DhikrView: View {
 	
 	var body: some View {
 		ZStack(alignment: .top){
-			PatternBG(pattern: false)
+			Background(pattern: false)
 			OScrollView(scrollOffset: $scrollOffset) { _ in
 				SwipeViewGroup {
 					ForEach(dhikrs.reversed() + Dhikr.preDefined, id: \.id) { dhikr in
@@ -169,7 +169,7 @@ struct DhikrAddView: View {
 	
 	var body: some View {
 		ZStack{
-			PatternBG(pattern: false)
+			Background(pattern: false)
 			VStack {
 				Capsule().fill(Color.secondary).frame(width: 35, height: 5).padding(.top, 12)
 				Spacer()
@@ -194,7 +194,7 @@ struct DhikrAddView: View {
 						})
 						.sheet(isPresented: $preDefined){
 							ZStack{
-								PatternBG(pattern: false)
+								Background(pattern: false)
 								VStack {
 									Capsule().fill(Color.secondary).frame(width: 35, height: 5).padding(.top, 12)
 									ScrollView {
@@ -350,7 +350,7 @@ struct DhikrCountView: View {
 	
 	var body: some View {
 		ZStack(alignment: .top) {
-			PatternBG(pattern: false)
+			Background(pattern: false)
 			Capsule().fill(Color.secondary).frame(width: 35, height: 5).padding(.top, 12)
 			VStack {
 				ZStack() {

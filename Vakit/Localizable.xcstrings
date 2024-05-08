@@ -174,6 +174,7 @@
       }
     },
     "Appereance" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -215,7 +216,7 @@
     "Bottom %@" : {
 
     },
-    "Calculationmethod" : {
+    "Calculation method" : {
 
     },
     "chapter" : {
@@ -369,6 +370,7 @@
 
     },
     "Generally" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -721,9 +723,6 @@
     "ISTANBUL" : {
 
     },
-    "KazaViewFooter" : {
-
-    },
     "Keep track of your missed prayers" : {
       "localizations" : {
         "de" : {
@@ -1010,12 +1009,6 @@
 
     },
     "Please provide location service access" : {
-
-    },
-    "Prayer times" : {
-
-    },
-    "Press" : {
 
     },
     "Qatar" : {

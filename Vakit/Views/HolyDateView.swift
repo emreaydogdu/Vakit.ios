@@ -8,7 +8,7 @@ struct HolyDateView: View {
 	
 	var body: some View {
 		ZStack(alignment: .top){
-			PatternBG(pattern: false)
+			Background(pattern: false)
 			ScrollView(showsIndicators: false) {
 				ForEach(capitals, id: \.id) { country in
 					ZStack(alignment: .leading){

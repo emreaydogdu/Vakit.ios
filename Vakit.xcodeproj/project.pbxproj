@@ -72,7 +72,6 @@
 		D44DF6702A811F910051E5E1 /* AthanUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44DF66F2A811F910051E5E1 /* AthanUITestsLaunchTests.swift */; };
 		D44DF67E2A81201A0051E5E1 /* Adhan in Frameworks */ = {isa = PBXBuildFile; productRef = D44DF67D2A81201A0051E5E1 /* Adhan */; };
 		D44DF68D2A8121AA0051E5E1 /* PrayerTimeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44DF68C2A8121AA0051E5E1 /* PrayerTimeHeader.swift */; };
-		D44DF6912A8125FC0051E5E1 /* PrayerTimeTableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44DF6902A8125FC0051E5E1 /* PrayerTimeTableItem.swift */; };
 		D44DF6932A8127B50051E5E1 /* AthanTimeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44DF6922A8127B50051E5E1 /* AthanTimeTable.swift */; };
 		D44DF6952A8129440051E5E1 /* LocationNotFoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44DF6942A8129440051E5E1 /* LocationNotFoundView.swift */; };
 		D44DF6982A812C050051E5E1 /* AthanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44DF6972A812C050051E5E1 /* AthanView.swift */; };
@@ -179,7 +178,6 @@
 		D44DF66D2A811F910051E5E1 /* AthanUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthanUITests.swift; sourceTree = "<group>"; };
 		D44DF66F2A811F910051E5E1 /* AthanUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthanUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D44DF68C2A8121AA0051E5E1 /* PrayerTimeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTimeHeader.swift; sourceTree = "<group>"; };
-		D44DF6902A8125FC0051E5E1 /* PrayerTimeTableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTimeTableItem.swift; sourceTree = "<group>"; };
 		D44DF6922A8127B50051E5E1 /* AthanTimeTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthanTimeTable.swift; sourceTree = "<group>"; };
 		D44DF6942A8129440051E5E1 /* LocationNotFoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationNotFoundView.swift; sourceTree = "<group>"; };
 		D44DF6972A812C050051E5E1 /* AthanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthanView.swift; sourceTree = "<group>"; };
@@ -381,7 +379,6 @@
 			isa = PBXGroup;
 			children = (
 				D44DF68C2A8121AA0051E5E1 /* PrayerTimeHeader.swift */,
-				D44DF6902A8125FC0051E5E1 /* PrayerTimeTableItem.swift */,
 				D44DF6922A8127B50051E5E1 /* AthanTimeTable.swift */,
 				D44DF6942A8129440051E5E1 /* LocationNotFoundView.swift */,
 				867562752BAA246600D262DE /* NextHolyDayView.swift */,
@@ -639,7 +636,6 @@
 				8675D0DB2B388E6900355925 /* MoreView.swift in Sources */,
 				867562762BAA246600D262DE /* NextHolyDayView.swift in Sources */,
 				86414EB72B40B9B600225946 /* Extentions.swift in Sources */,
-				D44DF6912A8125FC0051E5E1 /* PrayerTimeTableItem.swift in Sources */,
 				D44DF6532A811F900051E5E1 /* AthanApp.swift in Sources */,
 				86B1B4E12B48A4AA003CA145 /* KazaView.swift in Sources */,
 				D44DF68D2A8121AA0051E5E1 /* PrayerTimeHeader.swift in Sources */,

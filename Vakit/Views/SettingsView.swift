@@ -10,89 +10,73 @@ struct SettingsView: View {
 	
 	@AppStorage("themeMode")
 	private var themeMode = "Auto"
-	var themeModes = ["Auto", "Light", "Dark"]
-	
+
 	@State private var showLanguage = false
 	@State private var showCalculation = false
+	@State private var scrollOffset = CGFloat.zero
 	@State private var show = false
-	@State private var defaultv: CGPoint = .zero
-	
+
 	var body: some View {
 		ZStack(alignment: .top){
-			PatternBG(pattern: false)
-			ScrollView {
-				Form {
-					Section{
-						Button("Language") {
-							showLanguage.toggle()
-						}
-						.foregroundColor(Color("cardView.title"))
-						.sheet(isPresented: $showLanguage) {
-							LanguageSettingsView()
-						}
-					} header: {
-						Text("Generally")
-							.padding(.top, 70)
-					}
-					.listRowBackground(Color("cardView"))
-
-					Section{
-						Button("Prayer times") {
-							showCalculation.toggle()
-						}
-						.foregroundColor(Color("cardView.title"))
-						.sheet(isPresented: $showCalculation) {
-							CalculationSettingsView()
-						}
-					} header: {
-						Text("Calculationmethod")
-					}
-					.listRowBackground(Color("cardView"))
-
-					Section(header: Text("Appereance")) {
-						HStack(content: {
-							Text("Theme")
-								.foregroundColor(Color("cardView.title"))
-							Spacer()
-							Picker("Theme", selection: $themeMode) {
-								ForEach(themeModes, id: \.self) {
-									Text(LocalizedStringKey($0))
-								}
+			Background(pattern: false)
+			OScrollView(scrollOffset: $scrollOffset) { _ in
+				ZStack {
+					RoundedRectangle(cornerRadius: 20, style: .continuous)
+						.fill(.clear)
+						.shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
+					VStack{
+						FormSection2(header: "Generally", footer: "An approximation of the Diyanet method used in Turkey. This approximation is less accurate outside the region of Turkey.", option: false) {
+							HStack {
+								Text("Language")
+									.frame(maxWidth: .infinity, alignment: .leading)
+									.foregroundColor(Color("cardView.title"))
+									.sheet(isPresented: $showLanguage) { LanguageSettingsView() }
+								Image(systemName: "chevron.right")
 							}
-							.pickerStyle(.segmented)
-							.fixedSize()
-							.frame(alignment: .trailing)
-						})
+							.contentShape(Rectangle())
+							.onTapGesture { showLanguage.toggle() }
+
+							HStack {
+								Text("Calculation method")
+									.frame(maxWidth: .infinity, alignment: .leading)
+									.foregroundColor(Color("cardView.title"))
+									.sheet(isPresented: $showCalculation) { CalculationSettingsView() }
+								Image(systemName: "chevron.right")
+							}
+							.contentShape(Rectangle())
+							.onTapGesture { showCalculation.toggle() }
+						}
+
+						FormSection2(header: "Appereance", footer: "", option: false) {
+							HStack(content: {
+								Text("Theme")
+									.foregroundColor(Color("cardView.title"))
+								Spacer()
+								Picker("Theme", selection: $themeMode) {
+									Text(LocalizedStringKey("Auto")).tag("Auto")
+									Text(LocalizedStringKey("Light")).tag("Light")
+									Text(LocalizedStringKey("Dark")).tag("Dark")
+								}
+								.pickerStyle(.segmented)
+								.fixedSize()
+								.frame(alignment: .trailing)
+							})
+						}
+
+						FormSection2(header: "", footer: "", option: false) {
+							Button("Review the app") { requestReview() }
+								.frame(maxWidth: .infinity, alignment: .leading)
+								.foregroundColor(Color("cardView.title"))
+							Button("Restore purchase") { }
+								.frame(maxWidth: .infinity, alignment: .leading)
+								.foregroundColor(Color("cardView.title"))
+						}
 					}
-					.listRowBackground(Color("cardView"))
-					
-					Section {
-						Button("Review the app") {
-							requestReview()
-						}
-						.foregroundColor(Color("cardView.title"))
-						Button("Restore purchase") {
-						}
-						.foregroundColor(Color("cardView.title"))
-					}.listRowBackground(Color("cardView"))
 				}
-				.frame(height: 600)
-				.background(GeometryReader { geometry in
-					Color.clear
-						.preference(key: ScrollOffsetPreferenceKey.self, value: geometry.frame(in: .named("scroll")).origin)
-						.onAppear{
-							defaultv = geometry.frame(in: .named("scroll")).origin
-						}
-				})
-				.onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
-					withAnimation(.linear(duration: 0.1)){
-						show = value.y < defaultv.y - 30.0
-					}
-				}
-				.scrollContentBackground(.hidden)
+				.padding(.top, 70)
 			}
-			.coordinateSpace(name: "scroll")
-			
+			.onChange(of: scrollOffset) { show = scrollOffset.isLess(than: 30) ? false : true }
+
 			ToolbarBck(title: "Settings", show: $show)
 		}
 		.navigationBarBackButtonHidden(true)
@@ -108,7 +92,7 @@ struct LanguageSettingsView: View {
 	var body: some View {
 		NavigationView {
 			ZStack {
-				PatternBG(pattern: false)
+				Background(pattern: false)
 				VStack {
 					Capsule().fill(Color.red).frame(width: 35, height: 5).padding(.top, 12)
 					Spacer()
@@ -168,16 +152,11 @@ struct CalculationSettingsView: View {
 
 	var body: some View {
 		ZStack {
-			PatternBG(pattern: false)
+			Background(pattern: false)
 			ScrollView {
 				VStack {
 					Capsule().fill(Color.secondary).frame(width: 35, height: 5).padding(.top)
-					FormSection(header: "Calculation for different regions", footer: "An approximation of the Diyanet method used in Turkey. This approximation is less accurate outside the region of Turkey.") {
-						ZStack(alignment: .center) {
-							RoundedRectangle(cornerRadius: 13, style: .continuous)
-								.fill(Color("cardView"))
-								.frame(maxWidth: .infinity, maxHeight: 60, alignment: .leading)
-								.padding(5)
+					FormSection2(header: "Calculation for different regions", footer: "An approximation of the Diyanet method used in Turkey. This approximation is less accurate outside the region of Turkey.", option: true) {
 							HStack {
 								Text("Method")
 									.font(.headline)
@@ -204,18 +183,9 @@ struct CalculationSettingsView: View {
 								.accentColor(.gray)
 								.pickerStyle(.menu)
 							}
-							.padding(.horizontal, 22)
-							.padding(.vertical, 12)
-						}
-						.padding(.horizontal)
 					}
 
-					FormSection(header: "Madhab", footer: "Rule for calculating the time for Asr.\n**Shafi:** Earlier Asr time (Shafi, Maliki, Hanbali, Jafari)\n**Hanafi:** Later Asr time.") {
-						ZStack(alignment: .center) {
-							RoundedRectangle(cornerRadius: 13, style: .continuous)
-								.fill(Color("cardView"))
-								.frame(maxWidth: .infinity, maxHeight: 60, alignment: .leading)
-								.padding(5)
+					FormSection2(header: "Madhab", footer: "Rule for calculating the time for Asr.\n**Shafi:** Earlier Asr time (Shafi, Maliki, Hanbali, Jafari)\n**Hanafi:** Later Asr time.", option: true) {
 							HStack {
 								Text("Rule")
 									.font(.headline)
@@ -232,28 +202,17 @@ struct CalculationSettingsView: View {
 								.accentColor(.gray)
 								.pickerStyle(.menu)
 							}
-							.padding(.horizontal, 22)
-							.padding(.vertical, 12)
-						}
-						.padding(.horizontal)
 					}
 
-					FormSection(header: "Time correction", footer: "") {
-						ZStack(alignment: .center) {
-							RoundedRectangle(cornerRadius: 13, style: .continuous)
-								.fill(Color("cardView"))
-								.frame(maxWidth: .infinity, alignment: .leading)
-								.padding(5)
-							VStack {
-								TimeShiftView(count: $fajr, 	name: "ttFajr")
-								TimeShiftView(count: $sunrise, 	name: "ttSunrise")
-								TimeShiftView(count: $dhur, 	name: "ttDhur")
-								TimeShiftView(count: $asr, 		name: "ttAsr")
-								TimeShiftView(count: $maghrib,	name: "ttMaghrib")
-								TimeShiftView(count: $isha, 	name: "ttIsha")
-							}.padding(.vertical)
+					FormSection2(header: "Time correction", footer: "", option: false) {
+						VStack {
+							TimeShiftView(count: $fajr, 	name: "ttFajr")
+							TimeShiftView(count: $sunrise, 	name: "ttSunrise")
+							TimeShiftView(count: $dhur, 	name: "ttDhur")
+							TimeShiftView(count: $asr, 		name: "ttAsr")
+							TimeShiftView(count: $maghrib,	name: "ttMaghrib")
+							TimeShiftView(count: $isha, 	name: "ttIsha")
 						}
-						.padding(.horizontal)
 					}
 				}
 			}
@@ -280,11 +239,84 @@ struct CalculationSettingsView: View {
 				Stepper("", value: $count)
 					.labelsHidden()
 					.padding(.vertical, 8)
-			}.padding(.horizontal, 22)
+			}
 		}
 	}
 }
 
+struct FormSection2<Content: View>: View {
+	let header: String
+	let footer: String
+	let option: Bool
+	var content: Content
+
+	init(header: String, footer: String, option: Bool, @ViewBuilder content: () -> Content) {
+		self.content = content()
+		self.option = option
+		self.header = header
+		self.footer = footer
+	}
+
+	var body: some View {
+		_VariadicView.Tree(CardViewLayout(header: header, footer: footer, option: option)) {
+			content
+		}
+	}
+}
+
+struct CardViewLayout: _VariadicView_UnaryViewRoot {
+	let header: String
+	let footer: String
+	let option: Bool
+
+	@ViewBuilder
+	func body(children: _VariadicView.Children) -> some View {
+		Section(
+			header: Text("\(header)".uppercased())
+				.font(.subheadline)
+				.fontWeight(.bold)
+				.foregroundColor(Color("cardView.title"))
+				.frame(maxWidth: .infinity, alignment: .leading)
+				.padding(.leading, 38)
+				.padding(.top, 20))
+		{
+			ZStack(alignment: .topLeading) {
+				RoundedRectangle(cornerRadius: 20, style: .continuous)
+					.fill(.ultraThinMaterial)
+					.frame(maxWidth: .infinity, maxHeight: .infinity)
+					.shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
+				VStack(spacing: 0){
+					ZStack{
+						RoundedRectangle(cornerRadius: 16, style: .continuous)
+							.fill(.regularMaterial)
+							.frame(maxWidth: .infinity, maxHeight: .infinity)
+							.shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
+						VStack {
+							ForEach(children.indices, id: \.self) { idx in
+								children[idx]
+									.padding()
+								if (idx != children.count - 1){
+									Divider()
+								}
+							}
+						}
+					}
+					.padding([.leading, .top, .trailing, .bottom], 5)
+					if(option){
+						Text(.init("\(footer)"))
+							.font(.subheadline)
+							.opacity(0.8)
+							.frame(maxWidth: .infinity, alignment: .leading)
+							.padding(.horizontal, 18)
+							.padding(.bottom, 10)
+							.fixedSize(horizontal: false, vertical: true)
+					}
+				}
+			}
+			.padding(.horizontal)
+		}
+	}
+}
 #Preview {
 	SettingsView()
 }

@@ -3,7 +3,7 @@ import SwiftUI
 struct KazaView: View {
 	
 	@State private var show = false
-	@State private var defaultv: CGPoint = .zero
+	@State private var offset = CGFloat.zero
 	@AppStorage("kaza_fajr")	private var fajr 	= 0
 	@AppStorage("kaza_sunrise")	private var sunrise = 0
 	@AppStorage("kaza_dhur")	private var dhur 	= 0
@@ -13,44 +13,27 @@ struct KazaView: View {
 	
 	var body: some View {
 		ZStack(alignment: .top) {
-			PatternBG(pattern: false)
-			ScrollView {
-				Form {
-					Section(header: Text(""), footer: Text("KazaViewFooter")) {
-						KazaCountView(count: $fajr, 	name: "ttFajr")
-						KazaCountView(count: $sunrise, 	name: "ttSunrise")
-						KazaCountView(count: $dhur, 	name: "ttDhur")
-						KazaCountView(count: $asr, 		name: "ttAsr")
-						KazaCountView(count: $maghrib,	name: "ttMaghrib")
-						KazaCountView(count: $isha, 	name: "ttIsha")
-					}
-					.listRowBackground(Color("cardView"))
-				}
-				.frame(height: 550)
-				.contentMargins(.top, 40, for: .scrollContent)
-				.scrollContentBackground(.hidden)
-				.background(GeometryReader { geometry in
-					Color.clear
-						.preference(key: ScrollOffsetPreferenceKey.self, value: geometry.frame(in: .named("scroll")).origin)
-						.onAppear{
-							defaultv = geometry.frame(in: .named("scroll")).origin
-						}
-				})
-				.onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
-					withAnimation(.linear(duration: 0.1)){
-						show = value.y < defaultv.y - 10.0
-					}
+			Background(pattern: false)
+			OScrollView(scrollOffset: $offset) { _ in
+				FormSection2(header: "", footer: "KazaViewFooter", option: false) {
+					KazaCountView(count: $fajr, 	name: "ttFajr")
+					KazaCountView(count: $sunrise, 	name: "ttSunrise")
+					KazaCountView(count: $dhur, 	name: "ttDhur")
+					KazaCountView(count: $asr, 		name: "ttAsr")
+					KazaCountView(count: $maghrib,	name: "ttMaghrib")
+					KazaCountView(count: $isha, 	name: "ttIsha")
 				}
 			}
-			.coordinateSpace(name: "scroll")
+			.onChange(of: offset) { show = offset.isLess(than: -25) ? false : true }
+			.contentMargins(.top, 40, for: .scrollContent)
 			ToolbarBck(title: "Missed Prayers", show: $show)
 		}
 		.navigationBarBackButtonHidden(true)
 	}
 }
 
-struct KazaCountView : View {
-	
+private struct KazaCountView : View {
+
 	@Binding
 	var count : Int
 	var name  : LocalizedStringKey

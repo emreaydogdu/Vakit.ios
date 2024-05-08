@@ -1,21 +1,13 @@
 import Foundation
 import SwiftUI
 
-struct PatternBG : View {
-	
+struct Background : View {
+
+	@Environment(\.colorScheme) var colorScheme
 	let pattern: Bool
+
 	var body: some View {
-		// #8D9DAA #D6C8BC
-		// #7F809A #D6C8BC
-		// #838FA3 #BBB39F
-		// #838FA3 #9CA086
-		// #838FA3 #9F9287
-		// #838FA3 #C4A68A
-		// #7F809A #C4A68A
-		// #7F809A #7E7267
-		// #8D9DAA #AA9A8D
-		// #7F809A #9A997F
-		LinearGradient(gradient: Gradient(colors: [Color(hex: "#797982"), Color(hex: "#D6C8BC")]), startPoint: .top, endPoint: .bottom)
+		LinearGradient(gradient: Gradient(colors: [getBackgroundGradientA(), getBackgroundGradientB()]), startPoint: .top, endPoint: .bottom)
 			.ignoresSafeArea()
 		if(pattern){
 			Image("pattern")
@@ -27,16 +19,39 @@ struct PatternBG : View {
 				.ignoresSafeArea()
 		}
 	}
-}
-
-struct BlurBG : UIViewRepresentable {
-
-	func makeUIView(context: Context) -> UIVisualEffectView {
-		let view = UIVisualEffectView(effect: UIBlurEffect(style: .systemThinMaterial))
-		return view
+	// #8D9DAA #D6C8BC
+	// #7F809A #D6C8BC
+	// #838FA3 #BBB39F
+	// #838FA3 #9CA086
+	// #838FA3 #9F9287
+	// #838FA3 #C4A68A
+	// #7F809A #C4A68A
+	// #7F809A #7E7267
+	// #8D9DAA #AA9A8D
+	// #7F809A #9A997F
+	// #474f55" #56504b
+	// #bbc4cc" #ddd7d1
+	func getBackgroundGradientA() -> Color {
+		switch colorScheme {
+		case .light:
+			return Color(hex: "#8D9DAA")
+		case .dark:
+			return Color(hex: "#474F55")
+		default:
+			return .red
+		}
 	}
 
-	func updateUIView(_ uiView: UIVisualEffectView, context: Context) {}
+	func getBackgroundGradientB() -> Color {
+		switch colorScheme {
+		case .light:
+			return Color(hex: "#D6C8BC")
+		case .dark:
+			return Color(hex: "#56504B")
+		default:
+			return .red
+		}
+	}
 }
 
 struct CardViewDouble<Content: View> : View {
@@ -49,14 +64,114 @@ struct CardViewDouble<Content: View> : View {
 	var body: some View {
 		ZStack(alignment: .topLeading) {
 			RoundedRectangle(cornerRadius: 20, style: .continuous)
-				.fill(Color("cardView.sub"))
+				.fill(.ultraThinMaterial)
 				.shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
 			RoundedRectangle(cornerRadius: 16, style: .continuous)
-				.fill(Color("cardView"))
+				.fill(.regularMaterial)
 				.shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
 				.padding(5)
 			content()
 				.padding(22)
+		}
+		.padding(.horizontal)
+		.padding(.bottom, 8)
+	}
+}
+
+struct CardView2<Content: View, Content2: View> : View {
+
+	var content: () -> Content
+	var content2: () -> Content2
+	init(@ViewBuilder content: @escaping () -> Content, @ViewBuilder content2: @escaping () -> Content2) {
+		self.content = content
+		self.content2 = content2
+	}
+	
+	var body: some View {
+		ZStack(alignment: .topLeading) {
+			RoundedRectangle(cornerRadius: 20, style: .continuous)
+				.fill(.ultraThinMaterial)
+				.shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
+			RoundedRectangle(cornerRadius: 16, style: .continuous)
+				.fill(.regularMaterial)
+				.shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
+				.padding(5)
+			content()
+				.padding(22)
+		}
+		.padding(.horizontal)
+		.padding(.bottom, 8)
+	}
+}
+
+struct CardView3<Content: View, Content2: View> : View {
+
+	var content: () -> Content
+	var content2: () -> Content2
+	init(@ViewBuilder content: @escaping () -> Content, @ViewBuilder content2: @escaping () -> Content2) {
+		self.content = content
+		self.content2 = content2
+	}
+	
+	var body: some View {
+		ZStack(alignment: .topLeading) {
+			RoundedRectangle(cornerRadius: 20, style: .continuous)
+				.fill(.ultraThinMaterial)
+				.shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
+			RoundedRectangle(cornerRadius: 16, style: .continuous)
+				.fill(.regularMaterial)
+				.shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
+				.padding(5)
+			content()
+				.padding(22)
+		}
+		.padding(.horizontal)
+		.padding(.bottom, 8)
+	}
+}
+
+struct CardView<Content: View>: View {
+	let option: Bool
+	var content: Content
+
+	init(option: Bool, @ViewBuilder content: () -> Content) {
+		self.content = content()
+		self.option = option
+	}
+	
+	var body: some View {
+		_VariadicView.Tree(DividedVStackLayout(option: option)) {
+			content
+		}
+	}
+}
+
+struct DividedVStackLayout: _VariadicView_UnaryViewRoot {
+
+	let option: Bool
+
+	@ViewBuilder
+	func body(children: _VariadicView.Children) -> some View {
+		let last = children.last?.id
+
+		ZStack(alignment: .topLeading) {
+			RoundedRectangle(cornerRadius: 20, style: .continuous)
+				.fill(.ultraThinMaterial)
+				.shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
+			VStack {
+				ForEach(children) { child in
+					ZStack(alignment: .topLeading) {
+						if !(option && child.id == last){
+							RoundedRectangle(cornerRadius: 16, style: .continuous)
+								.fill(.regularMaterial)
+								.shadow(color: .black.opacity(0.05), radius: 24, x: 0, y: 8)
+						}
+						child
+							.padding(22)
+					}
+				}
+			}
+			.padding(5)
 		}
 		.padding(.horizontal)
 		.padding(.bottom, 8)
@@ -75,7 +190,7 @@ struct SubmitButton: View {
 			Button(action: { action() }, label: {
 				ZStack(alignment: .center) {
 					RoundedRectangle(cornerRadius: 16, style: .continuous)
-						.fill(Color(hex: "#C1D2E7"))
+						.fill(.regularMaterial)
 						.shadow(color: .black.opacity(0.15), radius: 24, x: 0, y: 8)
 						.frame(maxWidth: .infinity, maxHeight: 60, alignment: .leading)
 						.padding(5)
@@ -83,13 +198,13 @@ struct SubmitButton: View {
 						Text(title)
 							.font(.headline)
 							.fontWeight(.bold)
-							.foregroundColor(Color(hex: "#141414"))
+							.foregroundColor(Color("cardView.title"))
 						Spacer()
 						Image(icon)
 							.resizable()
 							.imageScale(.small)
 							.frame(width: 30, height: 30)
-							.foregroundColor(Color(hex: "#141414"))
+							.foregroundColor(Color("cardView.title"))
 					}.padding(.horizontal, 22)
 				}
 			})

@@ -28,6 +28,7 @@ struct KazaView: View {
 			.contentMargins(.top, 40, for: .scrollContent)
 			ToolbarBck(title: "Missed Prayers", show: $show)
 		}
+		.navigationBarBackButtonHidden(true)
 	}
 }
 

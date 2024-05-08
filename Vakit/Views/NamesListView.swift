@@ -48,6 +48,7 @@ struct NamesListView: View {
 			.contentMargins(.top, 70, for: .scrollContent)
 			ToolbarBck(title: String(localized: "Al-Asma-ul-Husna", table: "LocalizableNames"), show: $show)
 		}
+		.navigationBarBackButtonHidden(true)
 	}
 }
 

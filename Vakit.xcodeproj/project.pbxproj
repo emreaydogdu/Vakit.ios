@@ -12,6 +12,8 @@
 		86079F362BA73BAC00364ECF /* QuranApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86079F352BA73BAC00364ECF /* QuranApi.swift */; };
 		860B321F2B30D50C0037D5A9 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860B321E2B30D50C0037D5A9 /* MapView.swift */; };
 		861A26C82B48C0D2001C6F8C /* Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861A26C72B48C0D2001C6F8C /* Default.swift */; };
+		8629C8F62BEC224800E207D1 /* SubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8629C8F52BEC224800E207D1 /* SubscriptionView.swift */; };
+		8629C8FB2BEC352200E207D1 /* StoreKitTestCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 8629C8FA2BEC352200E207D1 /* StoreKitTestCertificate.cer */; };
 		8639D8892B475D4500055204 /* Dhikr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8639D8882B475D4500055204 /* Dhikr.swift */; };
 		863AC0AB2B49FDD90021BD10 /* HolyDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863AC0AA2B49FDD90021BD10 /* HolyDateView.swift */; };
 		863AC0AD2B49FE220021BD10 /* HolyDates.csv in Resources */ = {isa = PBXBuildFile; fileRef = 863AC0AC2B49FE220021BD10 /* HolyDates.csv */; };
@@ -121,6 +123,9 @@
 		86079F352BA73BAC00364ECF /* QuranApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuranApi.swift; sourceTree = "<group>"; };
 		860B321E2B30D50C0037D5A9 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		861A26C72B48C0D2001C6F8C /* Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Default.swift; sourceTree = "<group>"; };
+		8629C8F52BEC224800E207D1 /* SubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionView.swift; sourceTree = "<group>"; };
+		8629C8F72BEC28E500E207D1 /* StoreKitConfig.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = StoreKitConfig.storekit; sourceTree = "<group>"; };
+		8629C8FA2BEC352200E207D1 /* StoreKitTestCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = StoreKitTestCertificate.cer; sourceTree = "<group>"; };
 		8639D8852B45E26900055204 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		8639D8862B45E26900055204 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		8639D8872B45E26900055204 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Bold.ttf"; path = "Vakit/Fonts/Roboto-Bold.ttf"; sourceTree = SOURCE_ROOT; };
@@ -285,6 +290,8 @@
 				863AC0AC2B49FE220021BD10 /* HolyDates.csv */,
 				869DE13E2B3B15A60061724F /* Localizable.xcstrings */,
 				86B31B3A2BACCB6D00449FD0 /* LocalizableNames.xcstrings */,
+				8629C8F72BEC28E500E207D1 /* StoreKitConfig.storekit */,
+				8629C8FA2BEC352200E207D1 /* StoreKitTestCertificate.cer */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -405,6 +412,7 @@
 				8675D0DE2B39D4FF00355925 /* SettingsView.swift */,
 				86B31B402BACDC9F00449FD0 /* NamesListView.swift */,
 				865124852BC06479008FCFE0 /* SplashScreen.swift */,
+				8629C8F52BEC224800E207D1 /* SubscriptionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -576,6 +584,7 @@
 				867400F82B543F8D00346972 /* Montserrat-Medium.ttf in Resources */,
 				867400EF2B543AA100346972 /* Roboto-Light.ttf in Resources */,
 				867400FE2B543F8D00346972 /* Montserrat-ExtraBold.ttf in Resources */,
+				8629C8FB2BEC352200E207D1 /* StoreKitTestCertificate.cer in Resources */,
 				867400FD2B543F8D00346972 /* Montserrat-Bold.ttf in Resources */,
 				867400EE2B543A7C00346972 /* Roboto-Bold.ttf in Resources */,
 				D44DF6572A811F910051E5E1 /* Assets.xcassets in Resources */,
@@ -637,6 +646,7 @@
 				867562762BAA246600D262DE /* NextHolyDayView.swift in Sources */,
 				86414EB72B40B9B600225946 /* Extentions.swift in Sources */,
 				D44DF6532A811F900051E5E1 /* AthanApp.swift in Sources */,
+				8629C8F62BEC224800E207D1 /* SubscriptionView.swift in Sources */,
 				86B1B4E12B48A4AA003CA145 /* KazaView.swift in Sources */,
 				D44DF68D2A8121AA0051E5E1 /* PrayerTimeHeader.swift in Sources */,
 				D44DF6952A8129440051E5E1 /* LocationNotFoundView.swift in Sources */,

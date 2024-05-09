@@ -6,11 +6,17 @@ struct MainView: View {
 	var body: some View {
 		NavigationStack{
 			TabView(selection: $selectedTab) {
-				AthanView()
+				SubscriptionView()
 					.tabItem {
 						Image("ic_home")
 					}
 					.tag(0)
+
+				AthanView()
+					.tabItem {
+						Image("ic_home")
+					}
+					.tag(10)
 
 				CompasView()
 					.tabItem {

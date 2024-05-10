@@ -7,15 +7,15 @@ struct Background : View {
 	let pattern: Bool
 
 	var body: some View {
-		LinearGradient(gradient: Gradient(colors: [getBackgroundGradientA(), getBackgroundGradientB()]), startPoint: .top, endPoint: .bottom)
+		LinearGradient(gradient: Gradient(colors: [getBackgroundGradientA(), getBackgroundGradientA()]), startPoint: .top, endPoint: .bottom)
 			.ignoresSafeArea()
 		if(pattern){
 			Image("pattern")
 				.resizable()
 				.scaledToFit()
 				.mask(LinearGradient(gradient: Gradient(colors: [.black.opacity(0.15),  .black.opacity(0.1), .black.opacity(0)]), startPoint: .top, endPoint: .bottom))
-				.opacity(0.9)
-				.foregroundColor(Color("patternColor").opacity(0.4))
+				.foregroundColor(Color("patternColor").opacity(0.5))
+				.opacity(0.4)
 				.ignoresSafeArea()
 		}
 	}
@@ -34,9 +34,9 @@ struct Background : View {
 	func getBackgroundGradientA() -> Color {
 		switch colorScheme {
 		case .light:
-			return Color(hex: "#8D9DAA")
+			return Color(hex: "#ccced0")
 		case .dark:
-			return Color(hex: "#474F55")
+			return Color(hex: "#08090a")
 		default:
 			return .red
 		}

@@ -19,7 +19,7 @@ struct Toolbar : View {
 	
 	var body: some View {
 		Text(LocalizedStringKey(title))
-			.font(.title2)
+			.font(.title)
 			.fontWeight(.bold)
 			.frame(maxWidth: .infinity, alignment: .center)
 			.padding(.leading, 5.0)

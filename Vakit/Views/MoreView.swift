@@ -214,12 +214,13 @@ struct MoreView: View {
 						}
 						.padding(-22)
 					}
-						.padding(.top, 70)
+						.padding(.top, 10)
 				}
 				.onChange(of: offset) { show = offset.isLess(than: 30) ? false : true }
 
-				Toolbar(title: "Discover more", show: $show)
+				//Toolbar(title: "Discover more", show: $show)
 			}
+			.navigationBarTitle("Discover more", displayMode: .automatic)
 		}
 	}
 }

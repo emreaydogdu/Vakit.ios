@@ -331,7 +331,6 @@
       }
     },
     "Discover more" : {
-      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {

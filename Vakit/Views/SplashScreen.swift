@@ -16,7 +16,8 @@ struct SplashScreen: View {
 					Image("splashscreen")
 						.resizable()
 						.aspectRatio(contentMode: .fit)
-						
+						.opacity(0.5)
+
 				}
 			}
 		}

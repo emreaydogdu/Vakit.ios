@@ -19,7 +19,7 @@ struct DhikrView: View {
 	var body: some View {
 		ZStack(alignment: .top){
 			Background(pattern: false)
-			OScrollView(scrollOffset: $scrollOffset) { _ in
+			OScrollView(offset: $scrollOffset) { _ in
 				SwipeViewGroup {
 					ForEach(dhikrs.reversed() + Dhikr.preDefined, id: \.id) { dhikr in
 						CardView(option: false) {

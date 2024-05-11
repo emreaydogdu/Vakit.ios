@@ -228,11 +228,11 @@ struct ScrollViewOffsetPreferenceKey: PreferenceKey {
 struct OScrollView<Content>: View where Content : View {
 
 	@Namespace var scrollSpace
-	@Binding var scrollOffset: CGFloat
+	@Binding var offset: CGFloat
 	let content: (ScrollViewProxy) -> Content
 	
-	init(scrollOffset: Binding<CGFloat>, @ViewBuilder content: @escaping (ScrollViewProxy) -> Content) {
-		_scrollOffset = scrollOffset
+	init(offset: Binding<CGFloat>, @ViewBuilder content: @escaping (ScrollViewProxy) -> Content) {
+		_offset = offset
 		self.content = content
 	}
 	
@@ -248,7 +248,7 @@ struct OScrollView<Content>: View where Content : View {
 		}
 		.coordinateSpace(name: scrollSpace)
 		.onPreferenceChange(ScrollViewOffsetPreferenceKey.self) { value in
-			scrollOffset = value
+			offset = value
 		}
 	}
 }

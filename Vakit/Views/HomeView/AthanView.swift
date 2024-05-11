@@ -14,7 +14,7 @@ struct AthanView: View {
 		NavigationView {
 			ZStack (alignment: .top) {
 				Background(pattern: true)
-				OScrollView(scrollOffset: $scrollOffset) { _ in
+				OScrollView(offset: $scrollOffset) { _ in
 					if prayer != nil {
 						if prayer!.nextPrayer() != nil {
 							PrayerTimeHeader(prayer: prayer)

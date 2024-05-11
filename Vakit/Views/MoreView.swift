@@ -9,7 +9,7 @@ struct MoreView: View {
 		NavigationView {
 			ZStack(alignment: .top){
 				Background(pattern: false)
-				OScrollView(scrollOffset: $offset) { _ in
+				OScrollView(offset: $offset) { _ in
 					CardView(option: false) {
 						ZStack{
 							RoundedRectangle(cornerRadius: 16, style: .continuous)
